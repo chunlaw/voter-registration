@@ -24,6 +24,7 @@
     "extra-mobile": "",
     "extra-office": "",
     "extra-email": "",
+    "email-to-candidate": "",
     "extra-lang": "✔ ",
     "date": (new Date().toJSON().slice(0,10).split("-").join("")),
     "step": 0,
@@ -90,6 +91,10 @@
     {"key":"extra-mobile", "position": [[768,762]] ,"size": 28, "align": "left"},
     {"key":"extra-office", "position": [[206,804]], "size": 28, "align": "left"},
     {"key":"extra-email", "position": [[206,850]], "size": 28, "align": "left"},
+    {"key":"email-to-candidate",
+     "position": [[88,892]],
+     "size": 22,
+    },
     {"key":"extra-lang",
      "position": [[559,1258],[719,1258]],
      "size": 22,
@@ -144,7 +149,6 @@
     var digits = $("#idcard-digits").val().match(digitsRegExp)[0];
 
     var checkdigit = voterRegistration.calculateCheckdigit(letters, digits);
-    console.log(checkdigit);
 
     // UI draw checksum
     $("#idcard-checksum").text("("+checkdigit+")");
@@ -165,7 +169,14 @@
       voterRegistration.data.optin = false;
       return false;
     }
-    if ($.inArray(this.id, ["gender-male", "dc-yes-new", "dc-yes-exist", "extra-lang-zh"]) >= 0) {
+    if (this.id == "email-to-candidate-yes") {
+      voterRegistration.data[this.name] = "✔";
+      return false;
+    }
+    if (this.id == "email-to-candidate-no") {
+      return false;
+    }
+    if ($.inArray(this.id, ["gender-male", "extra-lang-zh"]) >= 0) {
       voterRegistration.data[this.name] = "✔ ";
     } else {
       voterRegistration.data[this.name] = " ✔";
@@ -190,7 +201,7 @@
 
     $(".step-nav-1 .nav-content").text(voterRegistration.data["name-zh"]);
     $(".step-nav-2 .nav-content").text(voterRegistration.data["name-en-surname"]+", "+voterRegistration.data["name-en-othername"]);
-    $(".step-nav-3 .nav-content").text(voterRegistration.data["idcard"]+", "+ $(".gender-btn.active .btn-text").text());
+    $(".step-nav-3 .nav-content").text(voterRegistration.data["idcard"]+", "+$(".gender-btn.active .btn-text").text());
     $(".step-nav-4 .nav-content").text(
       voterRegistration.data["address-flat"]+" "+
         voterRegistration.data["address-floor"]+" "+
@@ -200,13 +211,21 @@
         voterRegistration.data["address-line2"]+" "+
         voterRegistration.data["address-line3"]
     );
+    var emailToCandidateText = '';
+    if (voterRegistration.data["extra-email"]) {
+      if (voterRegistration.data['email-to-candidate']) {
+        emailToCandidateText = '提供電郵地址予相關選區候選人';
+      } else {
+        emailToCandidateText = '不提供電郵地址予相關選區候選人';
+      }
+    }
     $(".step-nav-5 .nav-content").text(
       voterRegistration.data["extra-landline"]+" "+
         voterRegistration.data["extra-mobile"]+" "+
         voterRegistration.data["extra-office"]+" "+
         voterRegistration.data["extra-email"]+" "+
         $(".lang-btn.active .btn-text").text()+" "+
-        $(".extra-dc-btn.active .btn-text").text()
+        emailToCandidateText
     );
 
     $('html, body').animate({
@@ -393,6 +412,13 @@
   });
   $("#extra-form input.email-control").each(function(){
     $(this).on('input', voterRegistration.emailBind);
+  });
+  $('#extra-email').on('input', function() {
+    if ($(this).val()) {
+      $('.email-to-candidate-container').css('display', 'initial');
+    } else {
+      $('.email-to-candidate-container').css('display', 'none');
+    }
   });
 
   $(".nextButton").on('click', voterRegistration.nextStep);
