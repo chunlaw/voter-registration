@@ -258,6 +258,19 @@
               <input class="form-control email-control" id="extra-email" type="text" maxlength="40" autocomplete="off">
             </div>
           </div><!-- /.col-sm-9 -->
+          <div class="col-sm-9 email-to-candidate-container" style="display:none">
+            <p>是否同意將上述電郵地址提供予相關選區候選人？</p>
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-default email-to-candidate-btn">
+                <input type="radio" name="email-to-candidate" id="email-to-candidate-yes" class="radio-button" autocomplete="off">
+                <span class="btn-text"><span class="glyphicon glyphicon-ok text-primary" aria-hidden="true"></span>是</span>
+              </label>
+              <label class="btn btn-default email-to-candidate-btn">
+                <input type="radio" name="email-to-candidate" id="email-to-candidate-no" class="radio-button" autocomplete="off">
+                <span class="btn-text"><span class="glyphicon glyphicon-remove text-primary" aria-hidden="true"></span>否</span>
+              </label>
+            </div>
+          </div><!-- /.col-sm-9 -->
           <div class="col-sm-9">
             <p>語言</p>
             <div class="btn-group" data-toggle="buttons">
@@ -268,31 +281,6 @@
               <label class="btn lang-btn btn-default">
                 <input type="radio" name="extra-lang" id="extra-lang-en" class="radio-button extra-lang" autocomplete="off">
                 <span class="btn-text">English</span>
-              </label>
-            </div>
-          </div><!-- /.col-sm-9 -->
-          <div class="col-sm-9">
-            <p>區議會（第二）功能界別 (即超級區議會)</p>
-            <div class="btn-group extra-dc-group" data-toggle="buttons">
-              <label class="btn btn-default extra-dc-btn active">
-                <input type="radio" name="extra-dc" id="dc-yes-new" class="radio-button extra-dc" autocomplete="off" checked>
-                <span class="btn-text"><span class="glyphicon glyphicon-ok text-primary" aria-hidden="true"></span> 我是新登記選民，並選擇登記為區議會（第二）功能界別選民</span>
-              </label>
-              <label class="btn btn-default extra-dc-btn">
-                <input type="radio" name="extra-dc" id="dc-yes-exist" class="radio-button extra-dc" autocomplete="off">
-                <span class="btn-text"><span class="glyphicon glyphicon-ok text-primary" aria-hidden="true"></span> 我是已登記選民，並選擇繼續登記為區議會（第二）功能界別選民</span>
-              </label>
-              <label class="btn btn-default extra-dc-btn">
-                <input type="radio" name="extra-dc" id="dc-no-new" class="radio-button extra-dc" autocomplete="off">
-                <span class="btn-text"><span class="glyphicon glyphicon-remove text-primary" aria-hidden="true"></span> 我是新登記選民，我拒絕登記為區議會（第二）功能界別選民</span>
-              </label>
-              <label class="btn btn-default extra-dc-btn">
-                <input type="radio" name="extra-dc" id="dc-no-exist" class="radio-button extra-dc" autocomplete="off">
-                <span class="btn-text"><span class="glyphicon glyphicon-remove text-primary" aria-hidden="true"></span> 我是已登記選民，我拒絕成為區議會（第二）功能界別選民</span>
-              </label>
-              <label class="btn btn-default extra-dc-btn">
-                <input type="radio" name="extra-dc" id="dc-fc" class="radio-button extra-dc" autocomplete="off">
-                <span class="btn-text"><span class="glyphicon glyphicon-minus text-primary" aria-hidden="true"></span> 我是其他功能界別的選民，此項不適用</span>
               </label>
             </div>
           </div><!-- /.col-sm-9 -->
