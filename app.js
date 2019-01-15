@@ -6,7 +6,7 @@
   voterRegistration.signarea = document.getElementById('sign-area');
 
   // chinese telecode
-  voterRegistration.telecode = window.telecode;
+  // voterRegistration.telecode = window.telecode;
 
   // form data
   voterRegistration.data = {
@@ -14,7 +14,7 @@
     "idcard": "",
     "gender": "",
     "name-zh": "",
-    "telecode": "",
+    // "telecode": "",
     "name-en-surname": "",
     "name-en-othername": "",
     "address-flat": "",
@@ -51,17 +51,17 @@
      "position": [[200,370],[240,370],[280,370],[320,370],[360,370],[400,370]],
      "size": 36,
     },
-    {"key":"telecode",
-     "position": [
-       [410,454],[440,454],[470,454],[500,454],
-       [534,454],[564,454],[594,454],[624,454],
-       [656,454],[686,454],[716,454],[746,454],
-       [778,454],[808,454],[838,454],[868,454],
-       [900,454],[930,454],[960,454],[990,454],
-       [1022,454],[1052,454],[1082,454],[1112,454],
-     ],
-     "size": 28,
-    },
+    // {"key":"telecode",
+    //  "position": [
+    //    [410,454],[440,454],[470,454],[500,454],
+    //    [534,454],[564,454],[594,454],[624,454],
+    //    [656,454],[686,454],[716,454],[746,454],
+    //    [778,454],[808,454],[838,454],[868,454],
+    //    [900,454],[930,454],[960,454],[990,454],
+    //    [1022,454],[1052,454],[1082,454],[1112,454],
+    //  ],
+    //  "size": 28,
+    // },
     {"key":"name-en-surname",
      "position": [
        [318,414],[349,414],[380,414],[411,414],
@@ -178,35 +178,35 @@
   // set chinese telecode as user type their chinese name
   voterRegistration.setNameZhAndTelecode = function(){
     var name = $("#name-zh").val();
-    var fullcode="";
-    for (var i = 0; i <= 5; i++) {
-      if (i<name.length) {
-	if (typeof voterRegistration.telecode[name.charAt(i)] != 'undefined') {
-	  $("#name-telecode-"+i).show().val(voterRegistration.telecode[name.charAt(i)]);
-	  fullcode += voterRegistration.telecode[name.charAt(i)];
-	} else {
-	  $("#name-telecode-"+i).show().val("????");
-	  fullcode += "    ";
-	}
-      }else{
-	$("#name-telecode-"+i).hide().val('');
-      }
-    }
-    voterRegistration.data["telecode"] = fullcode;
+    // var fullcode="";
+    // for (var i = 0; i <= 5; i++) {
+    //   if (i<name.length) {
+    //     if (typeof voterRegistration.telecode[name.charAt(i)] != 'undefined') {
+    //       $("#name-telecode-"+i).show().val(voterRegistration.telecode[name.charAt(i)]);
+    //       fullcode += voterRegistration.telecode[name.charAt(i)];
+    //     } else {
+    //       $("#name-telecode-"+i).show().val("????");
+    //       fullcode += "    ";
+    //     }
+    //   }else{
+    //     $("#name-telecode-"+i).hide().val('');
+    //   }
+    // }
+    // voterRegistration.data["telecode"] = fullcode;
     voterRegistration.data["name-zh"] = name;
   }
 
-  voterRegistration.setTelecodeOnly = function(){
-    var fullcode = "";
-    for (var i = 0; i <= 5; i++) {
-      if ($("#name-telecode-"+i).val().match(/\d{4}/)) {
-	fullcode += $("#name-telecode-"+i).val();
-      } else {
-	fullcode += "    ";
-      }
-    }
-    voterRegistration.data["telecode"] = fullcode;
-  }
+  // voterRegistration.setTelecodeOnly = function(){
+  //   var fullcode = "";
+  //   for (var i = 0; i <= 5; i++) {
+  //     if ($("#name-telecode-"+i).val().match(/\d{4}/)) {
+  //       fullcode += $("#name-telecode-"+i).val();
+  //     } else {
+  //       fullcode += "    ";
+  //     }
+  //   }
+  //   voterRegistration.data["telecode"] = fullcode;
+  // }
 
   // FIXME: quick and dirty radio button to string
   voterRegistration.setRadio = function(){
@@ -241,7 +241,7 @@
     var navtarget = $(".step-nav-container");
     navtarget.removeClass("step-current-"+(step-1)).addClass("step-current-"+step);
 
-    $(".step-nav-1 .nav-content").text(voterRegistration.data["name-zh"]+", "+voterRegistration.data["telecode"]);
+    // $(".step-nav-1 .nav-content").text(voterRegistration.data["name-zh"]+", "+voterRegistration.data["telecode"]);
     $(".step-nav-2 .nav-content").text(voterRegistration.data["name-en-surname"]+", "+voterRegistration.data["name-en-othername"]);
     $(".step-nav-3 .nav-content").text(voterRegistration.data["idcard"]+", "+	$(".gender-btn.active .btn-text").text());
     $(".step-nav-4 .nav-content").text(
@@ -427,9 +427,9 @@
   $("#idcard-digits").on('input', voterRegistration.setIdCheckdigit);
 
   $("#name-zh").on('input', voterRegistration.setNameZhAndTelecode);
-  $(".name-telecode").each(function(){
-    $(this).on('input', voterRegistration.setTelecodeOnly);
-  });
+  // $(".name-telecode").each(function(){
+  //   $(this).on('input', voterRegistration.setTelecodeOnly);
+  // });
 
   $(".radio-button").each(function(){
     $(this).on('change', voterRegistration.setRadio);
