@@ -33,62 +33,72 @@
   voterRegistration.textPosition = [
     {"key":"idcard", // data key
      "position": [
-       [376,273],[409,273],
-       [508,273],[542,273],[574,273],[606,273],[638,273],[670,273],[782,273]
+       [393,282],[427,282],
+       [529,282],[563,282],[597,282],[631,282],[665,282],[699,282],[815,282]
      ], // position for each char
      "size": 36,
     },
     {"key":"gender",
-     "position": [[1006,273],[1092,273]],
+     "position": [[1049,282],[1137,282]],
      "size": 36,
     },
-    {"key":"name-zh", "position": [[294,360]], "size": 36, "align": "left"},
+    {"key":"name-zh",
+     "position": [[200,370],[240,370],[280,370],[320,370],[360,370],[400,370]],
+     "size": 36,
+    },
     {"key":"name-en-surname",
      "position": [
-       [306,401],[336,401],[365,401],[395,401],
-       [424,401],[454,401],[484,401],[514,401],
-       [543,401],[573,401],[603,401],[633,401],
-       [663,401],[693,401],[723,401],[753,401],
-       [782,401],[812,401],[842,401],[872,401],
-       [902,401],[932,401],[962,401],[992,401],
-       [1022,401],[1052,401],[1082,401],[1112,401],
-       [1138,401],
+       [318,414],[349,414],[380,414],[411,414],
+       [443,414],[474,414],[505,414],[536,414],
+       [569,414],[598,414],[629,414],[660,414],
+       [692,414],[723,414],[754,414],[785,414],
+       [816,414],[847,414],[878,414],[909,414],
+       [940,414],[971,414],[1002,414],[1033,414],
+       [1065,414],[1096,414],[1127,414],[1158,414]
      ],
      "size": 28,
     },
     {"key":"name-en-othername",
      "position": [
-       [306,440],[336,440],[365,440],[395,440],
-       [424,440],[454,440],[484,440],[514,440],
-       [543,440],[573,440],[603,440],[633,440],
-       [663,440],[693,440],[723,440],[753,440],
-       [782,440],[812,440],[842,440],[872,440],
-       [902,440],[932,440],[962,440],[992,440],
-       [1022,440],[1052,440],[1082,440],[1112,440],
-       [1138,440],
+       [318,452],[349,452],[380,452],[411,452],
+       [443,452],[474,452],[505,452],[536,452],
+       [569,452],[598,452],[629,452],[660,452],
+       [692,452],[723,452],[754,452],[785,452],
+       [816,452],[847,452],[878,452],[909,452],
+       [940,452],[971,452],[1002,452],[1033,452],
+       [1065,452],[1096,452],[1127,452],[1158,452]
      ],
      "size": 28,
     },
-    {"key":"address-flat", "position": [[160,520]], "size": 28, "align": "left"},
-    {"key":"address-floor", "position": [[460,520]], "size": 28, "align": "left"},
-    {"key":"address-block", "position": [[960,520]], "size": 28, "align": "left"},
-    {"key":"address-line0", "position": [[320,564]], "size": 28, "align": "left"},
-    {"key":"address-line1", "position": [[320,610]], "size": 28, "align": "left"},
-    {"key":"address-line2", "position": [[320,650]], "size": 28, "align": "left"},
-    {"key":"address-line3", "position": [[320,690]], "size": 28, "align": "left"},
-    {"key":"extra-landline", "position": [[190,735]], "size": 28, "align": "left"},
-    {"key":"extra-mobile", "position": [[730,735]] ,"size": 28, "align": "left"},
-    {"key":"extra-office", "position": [[190,775]], "size": 28, "align": "left"},
-    {"key":"extra-email", "position": [[190,815]], "size": 22, "align": "left"},
+    {"key":"address-flat",
+     "position": [[190,540],[222,540],[254,540],[286,540],[318,540]],
+     "size": 28,
+    },
+    {"key":"address-floor",
+     "position": [[490,540],[522,540],[554,540]],
+     "size": 28,
+    },
+    {"key":"address-block",
+     "position": [[1010,540],[1042,540],[1074,540]],
+     "size": 28,
+    },
+    {"key":"address-line0", "position": [[340,583]], "size": 28, "align": "left"},
+    {"key":"address-line1", "position": [[340,630]], "size": 28, "align": "left"},
+    {"key":"address-line2", "position": [[340,678]], "size": 28, "align": "left"},
+    {"key":"address-line3", "position": [[340,720]], "size": 28, "align": "left"},
+    {"key":"extra-landline", "position": [[206,762]], "size": 28, "align": "left" },
+    {"key":"extra-mobile", "position": [[768,762]] ,"size": 28, "align": "left"},
+    {"key":"extra-office", "position": [[206,804]], "size": 28, "align": "left"},
+    {"key":"extra-email", "position": [[206,850]], "size": 28, "align": "left"},
     {"key":"extra-lang",
-     "position": [[536,1206],[690,1206]],
+     "position": [[559,1258],[719,1258]],
      "size": 22,
     },
     {"key":"date",
      "position": [
-       [425,1585],[458,1585],[490,1585],[515,1585],
-       [305,1585],[335,1585],
-       [185,1585],[215,1585],
+       [445,1650],[477,1650],[508,1650],[540,1650],
+       [319,1650],[351,1650],
+       [192,1650],[225,1650],
      ],
      "size": 22,
     },
@@ -180,23 +190,23 @@
 
     $(".step-nav-1 .nav-content").text(voterRegistration.data["name-zh"]);
     $(".step-nav-2 .nav-content").text(voterRegistration.data["name-en-surname"]+", "+voterRegistration.data["name-en-othername"]);
-    $(".step-nav-3 .nav-content").text(voterRegistration.data["idcard"]+", "+	$(".gender-btn.active .btn-text").text());
+    $(".step-nav-3 .nav-content").text(voterRegistration.data["idcard"]+", "+ $(".gender-btn.active .btn-text").text());
     $(".step-nav-4 .nav-content").text(
       voterRegistration.data["address-flat"]+" "+
-	voterRegistration.data["address-floor"]+" "+
-	voterRegistration.data["address-block"]+" "+
-	voterRegistration.data["address-line0"]+" "+
-	voterRegistration.data["address-line1"]+" "+
-	voterRegistration.data["address-line2"]+" "+
-	voterRegistration.data["address-line3"]
+        voterRegistration.data["address-floor"]+" "+
+        voterRegistration.data["address-block"]+" "+
+        voterRegistration.data["address-line0"]+" "+
+        voterRegistration.data["address-line1"]+" "+
+        voterRegistration.data["address-line2"]+" "+
+        voterRegistration.data["address-line3"]
     );
     $(".step-nav-5 .nav-content").text(
       voterRegistration.data["extra-landline"]+" "+
-	voterRegistration.data["extra-mobile"]+" "+
-	voterRegistration.data["extra-office"]+" "+
-	voterRegistration.data["extra-email"]+" "+
-	$(".lang-btn.active .btn-text").text()+" "+
-	$(".extra-dc-btn.active .btn-text").text()
+        voterRegistration.data["extra-mobile"]+" "+
+        voterRegistration.data["extra-office"]+" "+
+        voterRegistration.data["extra-email"]+" "+
+        $(".lang-btn.active .btn-text").text()+" "+
+        $(".extra-dc-btn.active .btn-text").text()
     );
 
     $('html, body').animate({
@@ -213,8 +223,9 @@
     }
     var canvas = voterRegistration.canvas;
     var context = voterRegistration.canvas.getContext('2d');
-    canvas.height = 3368;
-    canvas.width = 1190;
+
+    canvas.height = 3508;
+    canvas.width = 1240;
 
     context.drawImage(document.getElementById("source-img"), 0, 0);
 
@@ -227,8 +238,8 @@
   voterRegistration.initSign = function(){
     var canvas = voterRegistration.signarea;
     var context = voterRegistration.signarea.getContext('2d');
-    canvas.height = 110;
-    canvas.width = 340;
+    canvas.height = 124;
+    canvas.width = 360;
 
     context.drawsignature = function(x, y) {
       var path=new Path2D();
@@ -249,7 +260,7 @@
     };
     canvas.onmousemove = function(e) {
       if (!canvas.isDrawing) {
-	return;
+        return;
       }
       var x = e.pageX - $(canvas).offset().left;
       var y = e.pageY - $(canvas).offset().top;
@@ -269,7 +280,7 @@
     };
     canvas.addEventListener('touchmove', function(e) {
       if (!canvas.isDrawing) {
-	return;
+        return;
       }
       var x = e.targetTouches[0].pageX - $(canvas).offset().left;
       var y = e.targetTouches[0].pageY - $(canvas).offset().top;
@@ -297,7 +308,15 @@
     var canvas = voterRegistration.signarea;
     var context = voterRegistration.signarea.getContext('2d');
     context.fillStyle="white";
-    context.fillRect(0, 0, 340, 110);
+    context.fillRect(0, 0, 360, 100);
+    context.fillStyle=null;
+    context.strokeStyle = '#c91f37';
+    context.lineWidth = 1;
+    var path=new Path2D();
+    path.moveTo(0,100);
+    path.lineTo(360,100);
+    path.closePath();
+    context.stroke(path);
     voterRegistration.sendSign();
     voterRegistration.updateImgLink();
     return false;
@@ -306,7 +325,7 @@
   // mirror signature stokes to output canvas
   voterRegistration.sendSign = function(){
     var target = voterRegistration.canvas.getContext('2d');
-    target.drawImage(voterRegistration.signarea, 780, 1480);
+    target.drawImage(voterRegistration.signarea, 807, 1555);
   }
 
   // convert output canvas to png data url
@@ -326,16 +345,16 @@
     for (var text of voterRegistration.textPosition) {
       context.font = text.size+"px 'Noto Sans TC', sans-serif";
       if (text.align) {
-	context.textAlign = text.align;
+        context.textAlign = text.align;
       } else {
-	context.textAlign = "center"
+        context.textAlign = "center"
       }
       if (text.position.length > 1) {
-	for (var i = 0; i < text.position.length; i++) {
-	  context.fillText(voterRegistration.data[text.key].charAt(i), text.position[i][0], text.position[i][1]);
-	}
+        for (var i = 0; i < text.position.length; i++) {
+          context.fillText(voterRegistration.data[text.key].charAt(i), text.position[i][0], text.position[i][1]);
+        }
       } else {
-	context.fillText(voterRegistration.data[text.key], text.position[0][0], text.position[0][1]);
+        context.fillText(voterRegistration.data[text.key], text.position[0][0], text.position[0][1]);
       }
     }
   }
@@ -354,6 +373,7 @@
   $("#idcard-letters").on('input', voterRegistration.setIdCheckdigit);
   $("#idcard-digits").on('input', voterRegistration.setIdCheckdigit);
 
+
   $(".radio-button").each(function(){
     $(this).on('change', voterRegistration.setRadio);
   });
@@ -361,6 +381,7 @@
   $("#name-zh-form input").each(function(){
     $(this).on('input', voterRegistration.simpleBind);
   });
+
   $("#name-en-form input").each(function(){
     $(this).on('input', voterRegistration.simpleBind);
   });
