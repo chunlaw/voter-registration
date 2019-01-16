@@ -2,7 +2,9 @@
   var voterRegistration = new Object();
 
   // canvas
-  voterRegistration.canvas = document.getElementById('output-canvas');
+  voterRegistration.reo1Canvas = document.getElementById('reo1-canvas');
+  voterRegistration.reo41Canvas = document.getElementById('reo41-canvas');
+  voterRegistration.reo43Canvas = document.getElementById('reo43-canvas');
   voterRegistration.signarea = document.getElementById('sign-area');
 
   // chinese telecode
@@ -10,6 +12,7 @@
 
   // form data
   voterRegistration.data = {
+    "reo1TextPosition": {},
     "optin": false,
     "idcard": "",
     "gender": "",
@@ -42,7 +45,7 @@
   };
 
   // text position on canvas
-  voterRegistration.textPosition = [
+  voterRegistration.reo1TextPosition = [
     {"key":"idcard", // data key
      "position": [
        [393,282],[427,282],
@@ -303,15 +306,25 @@
     if (voterRegistration.data.optin) {
       $("<img src='https://www.google-analytics.com/collect?v=1&t=event&tid=UA-72771086-1&cid=force-anonymous-client-id&ec=Form&ea=Generate&ni=1'>").appendTo("body");
     }
-    var canvas = voterRegistration.canvas;
-    var context = voterRegistration.canvas.getContext('2d');
+    var reo1Canvas = voterRegistration.reo1Canvas;
+    var reo41Canvas = voterRegistration.reo41Canvas;
+    var reo43Canvas = voterRegistration.reo43Canvas;
+    var reo1Context = voterRegistration.reo1Canvas.getContext('2d');
+    var reo41Context = voterRegistration.reo41Canvas.getContext('2d');
+    var reo43Context = voterRegistration.reo43Canvas.getContext('2d');
 
-    canvas.height = 3508;
-    canvas.width = 1240;
+    reo1Canvas.height = 3508;
+    reo1Canvas.width = 1240;
+    reo41Canvas.height = 3508;
+    reo41Canvas.width = 1240;
+    reo43Canvas.height = 3508;
+    reo43Canvas.width = 1240;
 
-    context.drawImage(document.getElementById("source-img"), 0, 0);
+    reo1Context.drawImage(document.getElementById("reo1-source-img"), 0, 0);
+    reo41Context.drawImage(document.getElementById("reo41-source-img"), 0, 0);
+    reo43Context.drawImage(document.getElementById("reo43-source-img"), 0, 0);
 
-    voterRegistration.insertTexts(context);
+    voterRegistration.insertTexts(reo1Context, reo41Context, reo43Context);
     voterRegistration.initSign();
     voterRegistration.resetSign();
   }
@@ -406,7 +419,7 @@
 
   // mirror signature stokes to output canvas
   voterRegistration.sendSign = function(){
-    var target = voterRegistration.canvas.getContext('2d');
+    var target = voterRegistration.reo1Canvas.getContext('2d');
     target.drawImage(voterRegistration.signarea, 807, 1555);
   }
 
@@ -416,7 +429,7 @@
       $("<img src='https://www.google-analytics.com/collect?v=1&t=event&tid=UA-72771086-1&cid=force-anonymous-client-id&ec=Form&ea=Download&ni=1'>").appendTo("body");
       voterRegistration.data.optin=false;
     }
-    var dataURL = voterRegistration.canvas.toDataURL("image/png");
+    var dataURL = voterRegistration.reo1Canvas.toDataURL("image/png");
     $("#downloadButton").attr("href", dataURL);
     $("#downloadArea").attr("src", dataURL);
   }
@@ -424,7 +437,7 @@
   // render data string on output canvas
   voterRegistration.insertTexts = function(context){
     context.fillStyle = "black";
-    for (var text of voterRegistration.textPosition) {
+    for (var text of voterRegistration.reo1TextPosition) {
       context.font = text.size+"px 'Noto Sans TC', sans-serif";
       if (text.align) {
         context.textAlign = text.align;
