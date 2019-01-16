@@ -30,6 +30,13 @@
     "extra-email": "",
     "email-to-candidate": "",
     "extra-lang": "✔ ",
+    "extra-is-district": true,
+    "functional-constituency": "",
+    "election-commitee": "",
+    "organisation-name": "",
+    "membership": "",
+    "staff-number": "",
+    "other": "",
     "date": (new Date().toJSON().slice(0,10).split("-").join("")),
     "step": 0,
   };
@@ -222,6 +229,14 @@
       return false;
     }
     if (this.id == "email-to-candidate-no") {
+      return false;
+    }
+    if (this.id == "fc-district") {
+      voterRegistration.data["extra-is-district"] = true;
+      return false;
+    }
+    if (this.id == "fc-other") {
+      voterRegistration.data["extra-is-district"] = false;
       return false;
     }
     if ($.inArray(this.id, ["gender-male", "extra-lang-zh"]) >= 0) {
@@ -436,6 +451,10 @@
     voterRegistration.data["extra-email"] = $("#extra-email").val();
   }
 
+  voterRegistration.literalBind = function() {
+    voterRegistration.data[this.id] = $(this).val();
+  }
+
   // MISC
   $("#idcard-letters").on('input', voterRegistration.setIdCheckdigit);
   $("#idcard-digits").on('input', voterRegistration.setIdCheckdigit);
@@ -461,6 +480,13 @@
   $("#extra-form input.email-control").each(function(){
     $(this).on('input', voterRegistration.emailBind);
   });
+  $(".fc-form select").each(function() {
+    $(this).on('change', voterRegistration.literalBind);
+  });
+  $('.fc-form input').each(function() {
+    $(this).on('input', voterRegistration.literalBind);
+  });
+
   $('#extra-email').on('input', function() {
     if ($(this).val()) {
       $('.email-to-candidate-container').css('display', 'initial');
