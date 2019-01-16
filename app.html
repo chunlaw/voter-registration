@@ -101,7 +101,7 @@
               <input class="form-control name-zh" id="name-zh" type="text" placeholder="王一心" maxlength="6" autocomplete="off">
             </div>
           </div><!-- /.name-zh-form -->
-        </div><!-- /.col-sm-6 -->
+        </div> <!-- /.col-sm-8 -->
         <div class="col-sm-4">
           <img src="assets/id-zh.png" class="img-responsive" alt="Illustration">
         </div><!-- /.col-sm-6 -->
@@ -282,6 +282,19 @@
             </div>
           </div><!-- /.col-sm-9 -->
           <div class="col-sm-9">
+            <p>功能界別及／或選舉委員會界別</p>
+            <div class="btn-group extra-fc-group" data-toggle="buttons">
+              <label class="btn btn-default extra-dc-btn active">
+                <input type="radio" name="extra-fc" id="fc-district" class="radio-button extra-fc" autocomplete="off" checked>
+                <span class="btn-text">登記為區議會（第二）功能界別選民</span>
+              </label>
+              <label class="btn btn-default extra-dc-btn">
+                <input type="radio" name="extra-fc" id="fc-other" class="radio-button extra-fc" autocomplete="off">
+                <span class="btn-text">登記為傳統功能界別選民</span>
+              </label>
+            </div>
+          </div><!-- /.col-sm-9 -->
+          <div class="col-sm-9">
             <p>超級區議會</p>
             <p>新登記選民將自動成為區議會（第二）功能界別選民，如果你有意登記成為其他功能組別選民，請自行遞交REO-43表格。</p>
             <p class="redtape">
@@ -293,14 +306,96 @@
             </p>
           </div><!-- /.col-sm-9 -->
           <div class="col-sm-12">
-            <p><button type="button" class="btn btn-primary nextButton">核對資料 (未完成，需要簽名並上載)</button></p>
+            <p><button type="button" class="btn btn-primary nextButton">下一步</button></p>
           </div>
         </div>
       </div>
-
       <div class="step step-6 row">
+        <div class="col-sm-9">
+          <h3>六、功能界別及／或選舉委員會界別資料</h3>
+          <div class="form-group fc-form">
+            <label for="functional-constituency">功能界別</label>
+            <select class="form-control" id="functional-constituency">
+              <option disabled selected>請選擇</option>
+              <option>會計界</option>
+              <option>衞生服務界</option>
+              <option>醫學界</option>
+              <option>建築、測量、都市規劃及園境界</option>
+              <option>鄉議局</option>
+              <option>地產及建造界</option>
+              <option>飲食界</option>
+              <option>進出口界</option>
+              <option>社會福利界</option>
+              <option>商界（第二）</option>
+              <option>工業界（第一）</option>
+              <option>體育、演藝、文化及出版界</option>
+              <option>區議會（第一）</option>
+              <option>資訊科技界</option>
+              <option>紡織及製衣界</option>
+              <option>教育界</option>
+              <option>法律界</option>
+              <option>批發及零售界</option>
+              <option>工程界</option>
+              <option>區議會（第二）功能界別</option>
+              <option>中醫界</option>
+              <option>中國人民政治協商會議</option>
+              <option>香港中國企業協會</option>
+            </select>
+          </div>
+          <div class="form-group fc-form">
+            <label for="election-commitee">選舉委員會界別分組</label>
+            <select class="form-control" id="election-commitee">
+              <option disabled selected>請選擇</option>
+              <option>會計界</option>
+              <option>衞生服務界</option>
+              <option>醫學界</option>
+              <option>建築、測量、都市規劃及園境界</option>
+              <option>鄉議局</option>
+              <option>地產及建造界</option>
+              <option>飲食界</option>
+              <option>進出口界</option>
+              <option>社會福利界</option>
+              <option>商界（第二）</option>
+              <option>工業界（第一）</option>
+              <option>體育、演藝、文化及出版界</option>
+              <option>區議會（第一）</option>
+              <option>資訊科技界</option>
+              <option>紡織及製衣界</option>
+              <option>教育界</option>
+              <option>法律界</option>
+              <option>批發及零售界</option>
+              <option>工程界</option>
+              <option>區議會（第二）功能界別</option>
+              <option>中醫界</option>
+              <option>中國人民政治協商會議</option>
+              <option>香港中國企業協會</option>
+            </select>
+          </div>
+          <p>登記資格（請填寫適用者)</p>
+          <div class="form-group fc-form">
+            <label class="control-label" for="organisation-name" >所屬團體名稱</label>
+            <input class="form-control organisation-name" id="organisation-name" type="text" placeholder="" autocomplete="off">
+          </div>
+          <div class="form-group fc-form">
+            <label class="control-label" for="membership" >會員編號／註冊編號／牌照編號</label>
+            <input class="form-control membership" id="membership" type="text" placeholder="" autocomplete="off">
+          </div>
+          <div class="form-group fc-form">
+            <label class="control-label" for="staff-number" >任職機構及職員編號</label>
+            <input class="form-control staff-number" id="staff-number" type="text" placeholder="" autocomplete="off">
+          </div>
+          <div class="form-group fc-form">
+            <label class="control-label" for="other" >其他（如適用）</label>
+            <input class="form-control other" id="other" type="text" placeholder="" autocomplete="off">
+          </div>
+        </div><!-- /.col-sm-9 -->
         <div class="col-sm-12">
-          <h3>六、睇清楚先</h3>
+          <p><button type="button" class="btn btn-primary nextButton">下一步</button></p>
+        </div><!-- /.col-sm-12 -->
+      </div>
+      <div class="step step-7 row">
+        <div class="col-sm-12">
+          <h3>七、睇清楚先</h3>
           <p>在下一步驟下載檔案後，請開啟選舉事務處網站，選擇上載<span class="text-primary">Completed REO-1 Form.png</span>、選取「我已簽署電子登記表格」、塡寫驗證碼、再按傳送。</p>
           <p><img src="assets/uploader-1.png" alt="code"></p>
           <p>完成後，你會收到下圖所示的參考編號，請記低以便查詢跟進。</p>
@@ -311,16 +406,16 @@
         </div>
       </div>
 
-      <div class="step step-7 checkout row">
+      <div class="step step-8 checkout row">
         <div class="col-sm-12">
-          <h3>七、核對資料</h3>
+          <h3>八、核對資料</h3>
           <div class="alert alert-success" role="alert"><p>請核對資料，並留意表格上的注意事項及聲明。</p></div>
           <canvas id="output-canvas"></canvas>
           <img id="source-img" src="reo-1-c.png" style="display:none;" alt="source image loader">
           <!--<p>請核對以上資料，並留意表格上的注意事項及聲明，然後選擇遞交方式。</p>-->
         </div>
         <div class="col-sm-9">
-          <h3>六、簽署及遞交表格</h3>
+          <h3>八、到選舉事務處網站上載表格</h3>
           <p class="redtape">
             本人謹此聲明表格上所填報詳情均屬真實及正確，及<br>
             (a) 上述住址是本人在香港的唯一或主要居所；及<br>
