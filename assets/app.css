@@ -125,7 +125,7 @@ p, .control-label {
   overflow-x: auto;
   white-space: nowrap;
   width: 125%;
-  height: 800px;
+  height: 60vh;
 }
 canvas {
   border: solid 2px #aaa;
