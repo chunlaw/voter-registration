@@ -121,11 +121,28 @@ p, .control-label {
 }
 
 /* canvas*/
+#canvas-container {
+  overflow-x: auto;
+  white-space: nowrap;
+  width: 125%;
+  height: 800px;
+}
 canvas {
   border: solid 2px #aaa;
 }
-#output-canvas {
-  width: 100%;
+#reo1-canvas {
+  display: inline-block;
+  width: 80%;
+  max-width: 100vw;
+}
+#reo41-canvas {
+  display: inline-block;
+  width: 80%;
+  max-width: 100vw;
+}
+#reo43-canvas {
+  display: inline-block;
+  width: 80%;
   max-width: 100vw;
 }
 #sign-area {
