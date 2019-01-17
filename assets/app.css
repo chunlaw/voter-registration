@@ -150,10 +150,10 @@ canvas {
 }
 
 /* */
-#downloadArea {
+.downloadArea {
   opacity: 0;
 }
-#downloadArea, .downloadAreaContainer {
+.downloadArea, .downloadAreaContainer {
   min-width: 320px;
   min-height: 200px;
   max-width: 320px;

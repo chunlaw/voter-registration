@@ -479,7 +479,7 @@
     document.onmouseup = function(e) {
       canvas.isDrawing = false;
       voterRegistration.sendSign();
-      voterRegistration.updateImgLink();
+      voterRegistration.updateImgLinks();
     };
     canvas.addEventListener('touchmove', function(e) {
       if (!canvas.isDrawing) {
@@ -501,7 +501,7 @@
     canvas.addEventListener('touchend', function(e) {
       canvas.isDrawing = false;
       voterRegistration.sendSign();
-      voterRegistration.updateImgLink();
+      voterRegistration.updateImgLinks();
       e.preventDefault();
     }, false);
   }
@@ -521,7 +521,7 @@
     path.closePath();
     context.stroke(path);
     voterRegistration.sendSign();
-    voterRegistration.updateImgLink();
+    voterRegistration.updateImgLinks();
     return false;
   }
 
@@ -536,14 +536,20 @@
   }
 
   // convert output canvas to png data url
-  voterRegistration.updateImgLink = function(){
+  voterRegistration.updateImgLinks = function(){
     if (voterRegistration.data.optin) {
       $("<img src='https://www.google-analytics.com/collect?v=1&t=event&tid=UA-72771086-1&cid=force-anonymous-client-id&ec=Form&ea=Download&ni=1'>").appendTo("body");
       voterRegistration.data.optin=false;
     }
-    var dataURL = voterRegistration.reo1Canvas.toDataURL("image/png");
-    $("#downloadButton").attr("href", dataURL);
-    $("#downloadArea").attr("src", dataURL);
+    var reo1DataURL = voterRegistration.reo1Canvas.toDataURL("image/png");
+    var reo41DataURL = voterRegistration.reo41Canvas.toDataURL("image/png");
+    var reo43DataURL = voterRegistration.reo43Canvas.toDataURL("image/png");
+    $("#reo1DownloadButton").attr("href", reo1DataURL);
+    $("#reo41DownloadButton").attr("href", reo41DataURL);
+    $("#reo43DownloadButton").attr("href", reo43DataURL);
+    $("#reo1DownloadArea").attr("src", reo1DataURL);
+    $("#reo41DownloadArea").attr("src", reo41ataURL);
+    $("#reo43DownloadArea").attr("src", reo43ataURL);
   }
 
   // render data string on output canvas
