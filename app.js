@@ -409,6 +409,11 @@
   // FIXME: quick and dirty next step button
   voterRegistration.nextStep = function(){
     voterRegistration.data.step++;
+    // Skip step 7 if register for 超級區議會
+    if (voterRegistration.data.step === 6 && voterRegistration.data['extra-is-district']) {
+      voterRegistration.setStep(voterRegistration.data.step);
+      voterRegistration.data.step++;
+    }
     voterRegistration.setStep(voterRegistration.data.step);
     return false;
   }
@@ -461,26 +466,39 @@
       $("<img src='https://www.google-analytics.com/collect?v=1&t=event&tid=UA-72771086-1&cid=force-anonymous-client-id&ec=Form&ea=Generate&ni=1'>").appendTo("body");
     }
     var reo1Canvas = voterRegistration.reo1Canvas;
-    var reo41Canvas = voterRegistration.reo41Canvas;
-    var reo43Canvas = voterRegistration.reo43Canvas;
     var reo1Context = voterRegistration.reo1Canvas.getContext('2d');
-    var reo41Context = voterRegistration.reo41Canvas.getContext('2d');
-    var reo43Context = voterRegistration.reo43Canvas.getContext('2d');
+    if (!voterRegistration.data['extra-is-district']) {
+      $('#reo41-canvas').css('display', 'initial');
+      $('#reo43-canvas').css('display', 'initial');
+      var reo41Canvas = voterRegistration.reo41Canvas;
+      var reo41Context = voterRegistration.reo41Canvas.getContext('2d');
+      var reo43Canvas = voterRegistration.reo43Canvas;
+      var reo43Context = voterRegistration.reo43Canvas.getContext('2d');
+    } else {
+      $('#reo41-canvas').css('display', 'none');
+      $('#reo43-canvas').css('display', 'none');
+    }
 
     reo1Canvas.height = 3508;
     reo1Canvas.width = 1240;
-    reo41Canvas.height = 3508;
-    reo41Canvas.width = 1240;
-    reo43Canvas.height = 3508;
-    reo43Canvas.width = 1240;
+    if (!voterRegistration.data['extra-is-district']) {
+      reo41Canvas.height = 3508;
+      reo41Canvas.width = 1240;
+      reo43Canvas.height = 3508;
+      reo43Canvas.width = 1240;
+    }
 
     reo1Context.drawImage(document.getElementById("reo1-source-img"), 0, 0);
-    reo41Context.drawImage(document.getElementById("reo41-source-img"), 0, 0);
-    reo43Context.drawImage(document.getElementById("reo43-source-img"), 0, 0);
+    if (!voterRegistration.data['extra-is-district']) {
+      reo41Context.drawImage(document.getElementById("reo41-source-img"), 0, 0);
+      reo43Context.drawImage(document.getElementById("reo43-source-img"), 0, 0);
+    }
 
     voterRegistration.insertTexts(reo1Context, voterRegistration.reo1TextPosition);
-    voterRegistration.insertTexts(reo41Context, voterRegistration.reo41TextPosition);
-    voterRegistration.insertTexts(reo43Context, voterRegistration.reo43TextPosition);
+    if (!voterRegistration.data['extra-is-district']) {
+      voterRegistration.insertTexts(reo41Context, voterRegistration.reo41TextPosition);
+      voterRegistration.insertTexts(reo43Context, voterRegistration.reo43TextPosition);
+    }
     voterRegistration.initSign();
     voterRegistration.resetSign();
   }
@@ -590,14 +608,18 @@
       voterRegistration.data.optin=false;
     }
     var reo1DataURL = voterRegistration.reo1Canvas.toDataURL("image/png");
-    var reo41DataURL = voterRegistration.reo41Canvas.toDataURL("image/png");
-    var reo43DataURL = voterRegistration.reo43Canvas.toDataURL("image/png");
+    if (!voterRegistration.data['extra-is-district']) {
+      var reo41DataURL = voterRegistration.reo41Canvas.toDataURL("image/png");
+      var reo43DataURL = voterRegistration.reo43Canvas.toDataURL("image/png");
+    }
     $("#reo1DownloadButton").attr("href", reo1DataURL);
-    $("#reo41DownloadButton").attr("href", reo41DataURL);
-    $("#reo43DownloadButton").attr("href", reo43DataURL);
     $("#reo1DownloadArea").attr("src", reo1DataURL);
-    $("#reo41DownloadArea").attr("src", reo41ataURL);
-    $("#reo43DownloadArea").attr("src", reo43ataURL);
+    if (!voterRegistration.data['extra-is-district']) {
+      $("#reo41DownloadButton").attr("href", reo41DataURL);
+      $("#reo41DownloadArea").attr("src", reo41DataURL);
+      $("#reo43DownloadButton").attr("href", reo43DataURL);
+      $("#reo43DownloadArea").attr("src", reo43DataURL);
+    }
   }
 
   // render data string on output canvas
