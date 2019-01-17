@@ -561,7 +561,7 @@
     context.fillStyle="white";
     context.fillRect(0, 0, 360, 100);
     context.fillStyle=null;
-    context.strokeStyle = '#c91f37';
+    context.strokeStyle = '#black';
     context.lineWidth = 1;
     var path=new Path2D();
     path.moveTo(0,100);
@@ -579,8 +579,8 @@
     var reo41Context = voterRegistration.reo41Canvas.getContext('2d');
     var reo43Context = voterRegistration.reo43Canvas.getContext('2d');
     reo1Context.drawImage(voterRegistration.signarea, 807, 1555);
-    reo41Context.drawImage(voterRegistration.signarea, 807, 1555);
-    reo43Context.drawImage(voterRegistration.signarea, 807, 1555);
+    reo41Context.drawImage(voterRegistration.signarea, 716, 2107, 288, 99.2);
+    reo43Context.drawImage(voterRegistration.signarea, 840, 2082, 180, 62);
   }
 
   // convert output canvas to png data url
