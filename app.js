@@ -559,7 +559,7 @@
     var canvas = voterRegistration.signarea;
     var context = voterRegistration.signarea.getContext('2d');
     context.fillStyle="white";
-    context.fillRect(0, 0, 360, 100);
+    context.fillRect(0, 0, 360, 124);
     context.fillStyle=null;
     context.strokeStyle = '#black';
     context.lineWidth = 1;
