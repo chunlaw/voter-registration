@@ -34,6 +34,7 @@
     "email-to-candidate": "",
     "extra-lang": "✔ ",
     "extra-is-district": true,
+    "extra-not-district-text": "",
     "functional-constituency": "",
     "election-commitee": "",
     "organisation-name": "",
@@ -112,7 +113,7 @@
     {"key":"address-line1", "position": [[340,630]], "size": 28, "align": "left"},
     {"key":"address-line2", "position": [[340,678]], "size": 28, "align": "left"},
     {"key":"address-line3", "position": [[340,720]], "size": 28, "align": "left"},
-    {"key":"extra-landline", "position": [[206,762]], "size": 28 },
+    {"key":"extra-landline", "position": [[206,762]], "size": 28, "align": "left" },
     {"key":"extra-mobile", "position": [[768,762]] ,"size": 28, "align": "left"},
     {"key":"extra-office", "position": [[206,804]], "size": 28, "align": "left"},
     {"key":"extra-email", "position": [[206,850]], "size": 28, "align": "left"},
@@ -132,6 +133,157 @@
      ],
      "size": 22,
     },
+  ];
+
+  voterRegistration.reo41TextPosition = [
+    {"key":"idcard", // data key
+     "position": [
+       [447,248],[481,248],
+       [548,248],[582,248],[616,248],[650,248],[684,248],[718,248],[810,248]
+     ], // position for each char
+     "size": 36,
+    },
+    {"key":"gender",
+     "position": [[1064,248],[1145,248]],
+     "size": 36,
+    },
+    {"key":"name-zh",
+     "position": [[340,320],[370,320],[400,320],[430,320],[460,320],[490,320]],
+     "size": 26,
+    },
+    {"key":"name-zh",
+     "position": [[665,2239]],
+     "size": 26,
+     "align": "left"
+    },
+    {"key":"name-en-surname",
+     "position": [
+       [337,356],[367,356],[395,356],[423,356],
+       [452,356],[481,356],[510,356],[539,356],
+       [567,356],[596,356],[625,356],[654,356],
+       [683,356],[711,356],[740,356],[769,356],
+       [798,356],[827,356],[855,356],[884,356],
+       [913,356],[942,356],[971,356],[1000,356],
+       [1028,356],[1057,356],[1086,356],[1115,356]
+     ],
+     "size": 28,
+    },
+    {"key":"name-en-othername",
+     "position": [
+       [337,391],[367,391],[395,391],[423,391],
+       [452,391],[481,391],[510,391],[539,391],
+       [567,391],[596,391],[625,391],[654,391],
+       [683,391],[711,391],[740,391],[769,391],
+       [798,391],[827,391],[855,391],[884,391],
+       [913,391],[942,391],[971,391],[1000,391],
+       [1028,391],[1057,391],[1086,391],[1115,391]
+     ],
+     "size": 28,
+    },
+    {"key":"address-flat",
+     "position": [[150,500],[182,500],[214,500],[246,500],[278,500]],
+     "size": 28,
+    },
+    {"key":"address-floor",
+     "position": [[456,500],[488,500],[520,500]],
+     "size": 28,
+    },
+    {"key":"address-block",
+     "position": [[1006,500],[1038,500],[1070,500]],
+     "size": 28,
+    },
+    {"key":"address-line0", "position": [[280,536]], "size": 28, "align": "left"},
+    {"key":"address-line1", "position": [[280,565]], "size": 26, "align": "left"},
+    {"key":"address-line2", "position": [[280,598]], "size": 28, "align": "left"},
+    {"key":"address-line3", "position": [[280,633]], "size": 28, "align": "left"},
+    {"key":"extra-landline", "position": [[365,670]], "size": 28, "align": "left" },
+    {"key":"extra-mobile", "position": [[890,670]] ,"size": 28, "align": "left"},
+    {"key":"extra-office", "position": [[365,710]], "size": 28, "align": "left"},
+    {"key":"extra-email", "position": [[360,752]], "size": 28, "align": "left"},
+    {"key":"email-to-candidate",
+     "position": [[58,776]],
+     "size": 20,
+    },
+    {"key":"extra-lang",
+     "position": [[689,1672],[873,1672]],
+     "size": 36,
+    },
+    {"key": "functional-constituency", "position": [[260,954]], "size": 28, "align": "left"},
+    {"key": "election-commitee", "position": [[260,992]], "size": 28, "align": "left"},
+    {"key": "organisation-name", "position": [[385,1419]], "size": 28, "align": "left"},
+    {"key": "membership", "position": [[385,1460]], "size": 28, "align": "left"},
+    {"key": "staff-number", "position": [[385,1500]], "size": 28, "align": "left"},
+    {"key": "other", "position": [[385,1541]], "size": 28, "align": "left"},
+    {"key":"date",
+     "position": [
+       [400,2182],[424,2182],[448,2182],[472,2182],
+       [328,2182],[352,2182],
+       [255,2182],[279,2182],
+     ],
+     "size": 22,
+    }
+  ];
+
+  voterRegistration.reo43TextPosition = [
+    {"key":"idcard", // data key
+     "position": [
+       [426,427],[461,427],
+       [540,427],[574,427],[608,427],[642,427],[676,427],[710,427],[802,427]
+     ], // position for each char
+     "size": 36,
+    },
+    {"key":"name-zh",
+     "position": [[340,507],[372,507],[404,507],[436,507],[468,507],[500,507]],
+     "size": 28,
+    },
+    {"key":"name-zh",
+     "position": [[739,2194]],
+     "size": 28,
+     "align": "left"
+    },
+    {"key":"name-en-surname",
+     "position": [
+       [331,553],[360,553],[388,553],[417,553],
+       [446,553],[475,553],[504,553],[533,553],
+       [562,553],[591,553],[620,553],[649,553],
+       [678,553],[707,553],[736,553],[765,553],
+       [794,553],[823,553],[851,553],[881,553],
+       [909,553],[939,553],[967,553],[996,553],
+       [1025,553],[1054,553],[1083,553],[1112,553]
+     ],
+     "size": 28,
+    },
+    {"key":"name-en-othername",
+     "position": [
+       [331,595],[360,595],[388,595],[417,595],
+       [446,595],[475,595],[504,595],[533,595],
+       [562,595],[591,595],[620,595],[649,595],
+       [678,595],[707,595],[736,595],[765,595],
+       [794,595],[823,595],[851,595],[881,595],
+       [909,595],[939,595],[967,595],[996,595],
+       [1025,595],[1054,595],[1083,595],[1112,595]
+     ],
+     "size": 28,
+    },
+    {"key":"extra-mobile", "position": [[739,2262]] ,"size": 28, "align": "left"},
+    {"key":"extra-not-district-text",
+     "position": [[62, 1497]],
+     "size": 20,
+    },
+    {"key": "functional-constituency", "position": [[255,685]], "size": 28, "align": "left"},
+    {"key": "election-commitee", "position": [[255,720]], "size": 24, "align": "left"},
+    {"key": "organisation-name", "position": [[400,1206]], "size": 28, "align": "left"},
+    {"key": "membership", "position": [[400,1244]], "size": 28, "align": "left"},
+    {"key": "staff-number", "position": [[400,1283]], "size": 28, "align": "left"},
+    {"key": "other", "position": [[400,1321]], "size": 28, "align": "left"},
+    {"key":"date",
+     "position": [
+       [387,2126],[413,2126],[439,2126],[465,2126],
+       [300,2126],[326,2126],
+       [220,2126],[246,2126],
+     ],
+     "size": 22,
+    }
   ];
 
   // calculate checkdigit for id card
@@ -236,10 +388,12 @@
     }
     if (this.id == "fc-district") {
       voterRegistration.data["extra-is-district"] = true;
+      voterRegistration.data["extra-not-district-text"] = "";
       return false;
     }
     if (this.id == "fc-other") {
       voterRegistration.data["extra-is-district"] = false;
+      voterRegistration.data["extra-not-district-text"] = "✔";
       return false;
     }
     if ($.inArray(this.id, ["gender-male", "extra-lang-zh"]) >= 0) {
@@ -324,7 +478,9 @@
     reo41Context.drawImage(document.getElementById("reo41-source-img"), 0, 0);
     reo43Context.drawImage(document.getElementById("reo43-source-img"), 0, 0);
 
-    voterRegistration.insertTexts(reo1Context, reo41Context, reo43Context);
+    voterRegistration.insertTexts(reo1Context, voterRegistration.reo1TextPosition);
+    voterRegistration.insertTexts(reo41Context, voterRegistration.reo41TextPosition);
+    voterRegistration.insertTexts(reo43Context, voterRegistration.reo43TextPosition);
     voterRegistration.initSign();
     voterRegistration.resetSign();
   }
@@ -419,8 +575,12 @@
 
   // mirror signature stokes to output canvas
   voterRegistration.sendSign = function(){
-    var target = voterRegistration.reo1Canvas.getContext('2d');
-    target.drawImage(voterRegistration.signarea, 807, 1555);
+    var reo1Context = voterRegistration.reo1Canvas.getContext('2d');
+    var reo41Context = voterRegistration.reo41Canvas.getContext('2d');
+    var reo43Context = voterRegistration.reo43Canvas.getContext('2d');
+    reo1Context.drawImage(voterRegistration.signarea, 807, 1555);
+    reo41Context.drawImage(voterRegistration.signarea, 807, 1555);
+    reo43Context.drawImage(voterRegistration.signarea, 807, 1555);
   }
 
   // convert output canvas to png data url
@@ -435,9 +595,9 @@
   }
 
   // render data string on output canvas
-  voterRegistration.insertTexts = function(context){
+  voterRegistration.insertTexts = function(context, position){
     context.fillStyle = "black";
-    for (var text of voterRegistration.reo1TextPosition) {
+    for (var text of position) {
       context.font = text.size+"px 'Noto Sans TC', sans-serif";
       if (text.align) {
         context.textAlign = text.align;
