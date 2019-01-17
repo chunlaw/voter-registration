@@ -1,4 +1,5 @@
 (function(){
+
   var voterRegistration = new Object();
 
   // canvas
@@ -626,7 +627,7 @@
   voterRegistration.insertTexts = function(context, position){
     context.fillStyle = "black";
     for (var text of position) {
-      context.font = text.size+"px 'Noto Sans TC', sans-serif";
+      context.font = text.size+"px 'Noto Sans TC Regular', sans-serif";
       if (text.align) {
         context.textAlign = text.align;
       } else {
