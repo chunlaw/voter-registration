@@ -14,7 +14,6 @@
   // form data
   voterRegistration.data = {
     "reo1TextPosition": {},
-    "optin": false,
     "idcard": "",
     "gender": "",
     "name-zh": "",
@@ -43,7 +42,7 @@
     "staff-number": "",
     "other": "",
     "date": (new Date().toJSON().slice(0,10).split("-").join("")),
-    "step": 0,
+    "step": 1,
   };
 
   // text position on canvas
@@ -372,14 +371,6 @@
 
   // FIXME: quick and dirty radio button to string
   voterRegistration.setRadio = function(){
-    if (this.id == "optin-agree") {
-      voterRegistration.data.optin = true;
-      return false;
-    }
-    if (this.id == "optin-decline") {
-      voterRegistration.data.optin = false;
-      return false;
-    }
     if (this.id == "email-to-candidate-yes") {
       voterRegistration.data[this.name] = "✔";
       return false;
@@ -463,9 +454,6 @@
 
   // FIXME: quick and dirty generate button
   voterRegistration.generate = function(){
-    if (voterRegistration.data.optin) {
-      $("<img src='https://www.google-analytics.com/collect?v=1&t=event&tid=UA-72771086-1&cid=force-anonymous-client-id&ec=Form&ea=Generate&ni=1'>").appendTo("body");
-    }
     var reo1Canvas = voterRegistration.reo1Canvas;
     var reo1Context = voterRegistration.reo1Canvas.getContext('2d');
     if (!voterRegistration.data['extra-is-district']) {
@@ -604,10 +592,6 @@
 
   // convert output canvas to png data url
   voterRegistration.updateImgLinks = function(){
-    if (voterRegistration.data.optin) {
-      $("<img src='https://www.google-analytics.com/collect?v=1&t=event&tid=UA-72771086-1&cid=force-anonymous-client-id&ec=Form&ea=Download&ni=1'>").appendTo("body");
-      voterRegistration.data.optin=false;
-    }
     var reo1DataURL = voterRegistration.reo1Canvas.toDataURL("image/png");
     if (!voterRegistration.data['extra-is-district']) {
       var reo41DataURL = voterRegistration.reo41Canvas.toDataURL("image/png");

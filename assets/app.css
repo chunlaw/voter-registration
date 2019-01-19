@@ -87,7 +87,6 @@ p, .control-label {
 .step-container .step, .step-nav-container .step-nav {
   display: none;
 }
-.step-container.step-current-0 .step-0,
 .step-container.step-current-1 .step-1,
 .step-container.step-current-2 .step-2,
 .step-container.step-current-3 .step-3,
