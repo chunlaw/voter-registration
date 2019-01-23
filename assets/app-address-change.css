@@ -84,7 +84,7 @@ p, .control-label {
 }
 
 /* step control */
-.step-container .step, .step-nav-container .step-nav {
+.step-container .step {
   display: none;
 }
 .step-container.step-current-0 .step-0,
@@ -95,7 +95,14 @@ p, .control-label {
 .step-container.step-current-5 .step-5,
 .step-container.step-current-6 .step-6,
 .step-container.step-current-7 .step-7,
-.step-container.step-current-8 .step-8,
+.step-container.step-current-8 .step-8 {
+  display: block;
+}
+
+.step-nav {
+  color: grey;
+}
+
 .step-nav-container.step-current-2 .step-nav:nth-last-child(1n+8),
 .step-nav-container.step-current-3 .step-nav:nth-last-child(1n+7),
 .step-nav-container.step-current-4 .step-nav:nth-last-child(1n+6),
@@ -103,7 +110,31 @@ p, .control-label {
 .step-nav-container.step-current-6 .step-nav:nth-last-child(1n+4),
 .step-nav-container.step-current-7 .step-nav:nth-last-child(1n+3),
 .step-nav-container.step-current-8 .step-nav:nth-last-child(1n+2) {
-  display: block;
+  color: #c91f37;
+}
+
+.step-nav .step-nav-number {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  border: solid 1px;
+  border-radius: 30px;
+  vertical-align: middle;
+}
+
+.step-nav .nav-content {
+  border-left: solid 1px #c91f37;
+  margin-top: 2px;
+  margin-bottom: 1px;
+  margin-left: -25px;
+  padding-left: 20px;
+  padding-bottom: 10px;
+}
+
+.step-nav:last-child .nav-content {
+  border-left: none;
 }
 
 .step-nav-container .step-nav ul, .step-nav-container .step-nav ul>li{

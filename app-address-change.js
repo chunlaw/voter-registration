@@ -178,26 +178,36 @@ voterRegistration.setStep = function(step){
 	var navtarget = $(".step-nav-container");
 	navtarget.removeClass("step-current-"+(step-1)).addClass("step-current-"+step);
 
-	$(".step-nav-2 .nav-content").text(voterRegistration.data["name-zh"]);
-	$(".step-nav-3 .nav-content").text(voterRegistration.data["name-en-surname"]+", "+voterRegistration.data["name-en-othername"]);
-	$(".step-nav-4 .nav-content").text(voterRegistration.data["idcard"]+", "+	$(".gender-btn.active .btn-text").text());
-	$(".step-nav-5 .nav-content").text(
-		voterRegistration.data["address-flat"]+" "+
-		voterRegistration.data["address-floor"]+" "+
-		voterRegistration.data["address-block"]+" "+
-		voterRegistration.data["address-line0"]+" "+
-		voterRegistration.data["address-line1"]+" "+
-		voterRegistration.data["address-line2"]+" "+
-		voterRegistration.data["address-line3"]
-  );
-	$(".step-nav-6 .nav-content").text(
-		voterRegistration.data["extra-landline"]+" "+
-		voterRegistration.data["extra-mobile"]+" "+
-		voterRegistration.data["extra-office"]+" "+
-		voterRegistration.data["extra-email"]+" "+
-		$(".lang-btn.active .btn-text").text()+" "+
-		$(".extra-dc-btn.active .btn-text").text()
-	);
+  if (voterRegistration.data.step > 2) {
+    $(".step-nav-2 .nav-content").text(voterRegistration.data["name-zh"]);
+  }
+  if (voterRegistration.data.step > 3) {
+    $(".step-nav-3 .nav-content").text(voterRegistration.data["name-en-surname"]+", "+voterRegistration.data["name-en-othername"]);
+  }
+  if (voterRegistration.data.step > 4) {
+    $(".step-nav-4 .nav-content").text(voterRegistration.data["idcard"]+", "+	$(".gender-btn.active .btn-text").text());
+  }
+  if (voterRegistration.data.step > 5) {
+    $(".step-nav-5 .nav-content").text(
+      voterRegistration.data["address-flat"]+" "+
+	voterRegistration.data["address-floor"]+" "+
+	voterRegistration.data["address-block"]+" "+
+	voterRegistration.data["address-line0"]+" "+
+	voterRegistration.data["address-line1"]+" "+
+	voterRegistration.data["address-line2"]+" "+
+	voterRegistration.data["address-line3"]
+    );
+  }
+  if (voterRegistration.data.step > 6) {
+    $(".step-nav-6 .nav-content").text(
+      voterRegistration.data["extra-landline"]+" "+
+	voterRegistration.data["extra-mobile"]+" "+
+	voterRegistration.data["extra-office"]+" "+
+	voterRegistration.data["extra-email"]+" "+
+	$(".lang-btn.active .btn-text").text()+" "+
+	$(".extra-dc-btn.active .btn-text").text()
+    );
+  }
 
 	$('html, body').animate({
 		scrollTop: 0
