@@ -103,18 +103,16 @@ p, .control-label {
   color: grey;
 }
 
-.step-nav-container.step-current-2 .step-nav:nth-last-child(1n+6),
-.step-nav-container.step-current-3 .step-nav:nth-last-child(1n+5),
-.step-nav-container.step-current-4 .step-nav:nth-last-child(1n+4),
-.step-nav-container.step-current-5 .step-nav:nth-last-child(1n+3),
-.step-nav-container.step-current-6 .step-nav:nth-last-child(1n+2),
-.step-nav-container.step-current-7 .step-nav:nth-last-child(1n+1),
-.step-nav-container.step-current-8 .step-nav:nth-last-child(1n+1) {
+.step-nav-container.step-current-1 .step-nav:nth-last-child(1n+9),
+.step-nav-container.step-current-2 .step-nav:nth-last-child(1n+8),
+.step-nav-container.step-current-3 .step-nav:nth-last-child(1n+7),
+.step-nav-container.step-current-4 .step-nav:nth-last-child(1n+6),
+.step-nav-container.step-current-5 .step-nav:nth-last-child(1n+5),
+.step-nav-container.step-current-6 .step-nav:nth-last-child(1n+4),
+.step-nav-container.step-current-7 .step-nav:nth-last-child(1n+3),
+.step-nav-container.step-current-8 .step-nav:nth-last-child(1n+2),
+.step-nav-container.step-current-9 .step-nav:nth-last-child(1n+1) {
   color: #c91f37;
-}
-
-.step-nav-container.step-current-9 {
-  display: none;
 }
 
 .step-nav .step-nav-number {
@@ -159,7 +157,7 @@ p, .control-label {
 #canvas-container {
   overflow-x: auto;
   white-space: nowrap;
-  width: 125%;
+  width: 100%;
   height: 60vh;
 }
 canvas {
@@ -167,17 +165,17 @@ canvas {
 }
 #reo1-canvas {
   display: inline-block;
-  width: 80%;
+  width: 100%;
   max-width: 100vw;
 }
 #reo41-canvas {
   display: inline-block;
-  width: 80%;
+  width: 100%;
   max-width: 100vw;
 }
 #reo43-canvas {
   display: inline-block;
-  width: 80%;
+  width: 100%;
   max-width: 100vw;
 }
 #sign-area {

@@ -419,6 +419,7 @@
         );
       } else {
         $(".step-nav-6").remove();
+        $(".step-nav-7").remove();
       }
     }
     $('html, body').animate({
