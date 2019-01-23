@@ -370,44 +370,56 @@
     var navtarget = $(".step-nav-container");
     navtarget.removeClass("step-current-"+(step-1)).addClass("step-current-"+step);
 
-    $(".step-nav-1 .nav-content").text(voterRegistration.data["name-zh"]);
-    $(".step-nav-2 .nav-content").text(voterRegistration.data["name-en-surname"]+", "+voterRegistration.data["name-en-othername"]);
-    $(".step-nav-3 .nav-content").text(voterRegistration.data["idcard"]+", "+$(".gender-btn.active .btn-text").text());
-    $(".step-nav-4 .nav-content").text(
-      voterRegistration.data["address-flat"]+" "+
-        voterRegistration.data["address-floor"]+" "+
-        voterRegistration.data["address-block"]+" "+
-        voterRegistration.data["address-line0"]+" "+
-        voterRegistration.data["address-line1"]+" "+
-        voterRegistration.data["address-line2"]+" "+
-        voterRegistration.data["address-line3"]
-    );
-    var emailToCandidateText = '';
-    if (voterRegistration.data["extra-email"]) {
-      if (voterRegistration.data['email-to-candidate']) {
-        emailToCandidateText = '提供電郵地址予相關選區候選人';
-      } else {
-        emailToCandidateText = '不提供電郵地址予相關選區候選人';
+    if (voterRegistration.data.step > 1) {
+      $(".step-nav-1 .nav-content").text(voterRegistration.data["name-zh"]);
+    }
+    if (voterRegistration.data.step > 2) {
+      $(".step-nav-2 .nav-content").text(voterRegistration.data["name-en-surname"]+", "+voterRegistration.data["name-en-othername"]);
+    }
+    if (voterRegistration.data.step > 3) {
+      $(".step-nav-3 .nav-content").text(voterRegistration.data["idcard"]+", "+$(".gender-btn.active .btn-text").text());
+    }
+    if (voterRegistration.data.step > 4) {
+      $(".step-nav-4 .nav-content").text(
+        voterRegistration.data["address-flat"]+" "+
+          voterRegistration.data["address-floor"]+" "+
+          voterRegistration.data["address-block"]+" "+
+          voterRegistration.data["address-line0"]+" "+
+          voterRegistration.data["address-line1"]+" "+
+          voterRegistration.data["address-line2"]+" "+
+          voterRegistration.data["address-line3"]
+      );
+      var emailToCandidateText = '';
+      if (voterRegistration.data["extra-email"]) {
+        if (voterRegistration.data['email-to-candidate']) {
+          emailToCandidateText = '提供電郵地址予相關選區候選人';
+        } else {
+          emailToCandidateText = '不提供電郵地址予相關選區候選人';
+        }
       }
     }
-    $(".step-nav-5 .nav-content").text(
-      voterRegistration.data["extra-landline"]+" "+
-        voterRegistration.data["extra-mobile"]+" "+
-        voterRegistration.data["extra-office"]+" "+
-        voterRegistration.data["extra-email"]+" "+
-        $(".lang-btn.active .btn-text").text()+" "+
-        emailToCandidateText
-    );
-    if (!voterRegistration.data['extra-is-district']) {
-      $(".step-nav-6 .nav-content").text(
-        voterRegistration.data["functional-constituency"]+" "+
-          voterRegistration.data["election-commitee"]+" "+
-          voterRegistration.data["organisation-name"]+" "+
-          voterRegistration.data["membership"]+" "+
-          voterRegistration.data["staff-number"]
+    if (voterRegistration.data.step > 5) {
+      $(".step-nav-5 .nav-content").text(
+        voterRegistration.data["extra-landline"]+" "+
+          voterRegistration.data["extra-mobile"]+" "+
+          voterRegistration.data["extra-office"]+" "+
+          voterRegistration.data["extra-email"]+" "+
+          $(".lang-btn.active .btn-text").text()+" "+
+          emailToCandidateText
       );
-    } else {
-      $(".step-nav-6").css('display', 'none');
+    }
+    if (voterRegistration.data.step > 6) {
+      if (!voterRegistration.data['extra-is-district']) {
+        $(".step-nav-6 .nav-content").text(
+          voterRegistration.data["functional-constituency"]+" "+
+            voterRegistration.data["election-commitee"]+" "+
+            voterRegistration.data["organisation-name"]+" "+
+            voterRegistration.data["membership"]+" "+
+            voterRegistration.data["staff-number"]
+        );
+      } else {
+        $(".step-nav-6").remove();
+      }
     }
     $('html, body').animate({
       scrollTop: 0
