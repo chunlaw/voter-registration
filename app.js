@@ -540,8 +540,8 @@
     $("#reo41DownloadButton").attr("href", reo41DataURL);
     $("#reo43DownloadButton").attr("href", reo43DataURL);
     $("#reo1DownloadArea").attr("src", reo1DataURL);
-    $("#reo41DownloadArea").attr("src", reo41ataURL);
-    $("#reo43DownloadArea").attr("src", reo43ataURL);
+    $("#reo41DownloadArea").attr("src", reo41DataURL);
+    $("#reo43DownloadArea").attr("src", reo43DataURL);
   }
 
   // render data string on output canvas
