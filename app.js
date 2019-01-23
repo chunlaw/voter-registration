@@ -398,7 +398,17 @@
         $(".lang-btn.active .btn-text").text()+" "+
         emailToCandidateText
     );
-
+    if (!voterRegistration.data['extra-is-district']) {
+      $(".step-nav-6 .nav-content").text(
+        voterRegistration.data["functional-constituency"]+" "+
+          voterRegistration.data["election-commitee"]+" "+
+          voterRegistration.data["organisation-name"]+" "+
+          voterRegistration.data["membership"]+" "+
+          voterRegistration.data["staff-number"]
+      );
+    } else {
+      $(".step-nav-6").css('display', 'none');
+    }
     $('html, body').animate({
       scrollTop: 0
     }, 500);
