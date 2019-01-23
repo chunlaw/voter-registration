@@ -353,6 +353,13 @@
   // FIXME: quick and dirty next step button
   voterRegistration.nextStep = function(){
     voterRegistration.data.step++;
+    // Skip step 6 and 7 if register for 超級區議會
+    if (voterRegistration.data.step === 6 && voterRegistration.data['extra-is-district']) {
+      voterRegistration.setStep(voterRegistration.data.step);
+      voterRegistration.data.step++;
+      voterRegistration.setStep(voterRegistration.data.step);
+      voterRegistration.data.step++;
+    }
     voterRegistration.setStep(voterRegistration.data.step);
     return false;
   }
