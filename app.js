@@ -409,26 +409,30 @@
   // FIXME: quick and dirty generate button
   voterRegistration.generate = function(){
     var reo1Canvas = voterRegistration.reo1Canvas;
-    var reo41Canvas = voterRegistration.reo41Canvas;
-    var reo43Canvas = voterRegistration.reo43Canvas;
     var reo1Context = voterRegistration.reo1Canvas.getContext('2d');
-    var reo41Context = voterRegistration.reo41Canvas.getContext('2d');
-    var reo43Context = voterRegistration.reo43Canvas.getContext('2d');
-
     reo1Canvas.height = 3508;
     reo1Canvas.width = 1240;
-    reo41Canvas.height = 3508;
-    reo41Canvas.width = 1240;
-    reo43Canvas.height = 3508;
-    reo43Canvas.width = 1240;
-
     reo1Context.drawImage(document.getElementById("reo1-source-img"), 0, 0);
-    reo41Context.drawImage(document.getElementById("reo41-source-img"), 0, 0);
-    reo43Context.drawImage(document.getElementById("reo43-source-img"), 0, 0);
-
     voterRegistration.insertTexts(reo1Context, voterRegistration.reo1TextPosition);
-    voterRegistration.insertTexts(reo41Context, voterRegistration.reo41TextPosition);
-    voterRegistration.insertTexts(reo43Context, voterRegistration.reo43TextPosition);
+
+    if (!voterRegistration.data['extra-is-district']) {
+      var reo41Canvas = voterRegistration.reo41Canvas;
+      var reo41Context = voterRegistration.reo41Canvas.getContext('2d');
+      var reo43Canvas = voterRegistration.reo43Canvas;
+      var reo43Context = voterRegistration.reo43Canvas.getContext('2d');
+      reo41Canvas.height = 3508;
+      reo41Canvas.width = 1240;
+      reo43Canvas.height = 3508;
+      reo43Canvas.width = 1240;
+      reo41Context.drawImage(document.getElementById("reo41-source-img"), 0, 0);
+      reo43Context.drawImage(document.getElementById("reo43-source-img"), 0, 0);
+      voterRegistration.insertTexts(reo41Context, voterRegistration.reo41TextPosition);
+      voterRegistration.insertTexts(reo43Context, voterRegistration.reo43TextPosition);
+    } else {
+      $('#reo41-canvas').css('display', 'none');
+      $('#reo43-canvas').css('display', 'none');
+    }
+
     voterRegistration.initSign();
     voterRegistration.resetSign();
   }
@@ -524,24 +528,28 @@
   // mirror signature stokes to output canvas
   voterRegistration.sendSign = function(){
     var reo1Context = voterRegistration.reo1Canvas.getContext('2d');
-    var reo41Context = voterRegistration.reo41Canvas.getContext('2d');
-    var reo43Context = voterRegistration.reo43Canvas.getContext('2d');
     reo1Context.drawImage(voterRegistration.signarea, 807, 1555);
-    reo41Context.drawImage(voterRegistration.signarea, 716, 2107, 288, 99.2);
-    reo43Context.drawImage(voterRegistration.signarea, 840, 2082, 180, 62);
+    if (!voterRegistration.data['extra-is-district']) {
+      var reo41Context = voterRegistration.reo41Canvas.getContext('2d');
+      var reo43Context = voterRegistration.reo43Canvas.getContext('2d');
+      reo41Context.drawImage(voterRegistration.signarea, 716, 2107, 288, 99.2);
+      reo43Context.drawImage(voterRegistration.signarea, 840, 2082, 180, 62);
+    }
   }
 
   // convert output canvas to png data url
   voterRegistration.updateImgLinks = function(){
     var reo1DataURL = voterRegistration.reo1Canvas.toDataURL("image/png");
-    var reo41DataURL = voterRegistration.reo41Canvas.toDataURL("image/png");
-    var reo43DataURL = voterRegistration.reo43Canvas.toDataURL("image/png");
     $("#reo1DownloadButton").attr("href", reo1DataURL);
-    $("#reo41DownloadButton").attr("href", reo41DataURL);
-    $("#reo43DownloadButton").attr("href", reo43DataURL);
     $("#reo1DownloadArea").attr("src", reo1DataURL);
-    $("#reo41DownloadArea").attr("src", reo41DataURL);
-    $("#reo43DownloadArea").attr("src", reo43DataURL);
+    if (!voterRegistration.data['extra-is-district']) {
+      var reo41DataURL = voterRegistration.reo41Canvas.toDataURL("image/png");
+      var reo43DataURL = voterRegistration.reo43Canvas.toDataURL("image/png");
+      $("#reo41DownloadButton").attr("href", reo41DataURL);
+      $("#reo43DownloadButton").attr("href", reo43DataURL);
+      $("#reo41DownloadArea").attr("src", reo41DataURL);
+      $("#reo43DownloadArea").attr("src", reo43DataURL);
+    }
   }
 
   // render data string on output canvas
