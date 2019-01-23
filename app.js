@@ -431,6 +431,8 @@
     } else {
       $('#reo41-canvas').css('display', 'none');
       $('#reo43-canvas').css('display', 'none');
+      $('#reo41DownloadBtnContainer').css('display', 'none');
+      $('#reo43DownloadBtnContainer').css('display', 'none');
     }
 
     voterRegistration.initSign();

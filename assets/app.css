@@ -174,6 +174,10 @@ canvas {
    }
  }
 
+.reo-download-btn-container {
+  margin-bottom: 10px;
+}
+
 /* footer */
 footer {
   margin-top:5em;
