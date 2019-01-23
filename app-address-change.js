@@ -26,7 +26,7 @@ voterRegistration.data = {
 	"extra-email": "",
 	"extra-lang": "✔ ",
 	"date": (new Date().toJSON().slice(0,10).split("-").join("")),
-	"step": 0,
+	"step": 1,
 };
 
 // text position on canvas
