@@ -252,9 +252,6 @@ voterRegistration.setRadio = function(){
 
 // FIXME: quick and dirty generate button
 voterRegistration.generate = function(){
-	if (voterRegistration.data.optin) {
-		$("<img src='https://www.google-analytics.com/collect?v=1&t=event&tid=UA-72771086-1&cid=force-anonymous-client-id&ec=Form&ea=Generate&ni=1'>").appendTo("body");
-	}
 	var canvas = voterRegistration.canvas;
 	var context = voterRegistration.canvas.getContext('2d');
 	canvas.height = 3368;
@@ -355,10 +352,6 @@ voterRegistration.sendSign = function(){
 
 // convert output canvas to png data url
 voterRegistration.updateImgLink = function(){
-	if (voterRegistration.data.optin) {
-		$("<img src='https://www.google-analytics.com/collect?v=1&t=event&tid=UA-72771086-1&cid=force-anonymous-client-id&ec=Form&ea=Download&ni=1'>").appendTo("body");
-		voterRegistration.data.optin=false;
-	}
 	var dataURL = voterRegistration.canvas.toDataURL("image/png");
 	$("#downloadButton").attr("href", dataURL);
 	$("#downloadArea").attr("src", dataURL);
