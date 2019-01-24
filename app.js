@@ -451,7 +451,6 @@
 
   // FIXME: quick and dirty generate button
   voterRegistration.generate = function(){
-    console.log('omg');
     var reo1Canvas = voterRegistration.reo1Canvas;
     var reo1Context = voterRegistration.reo1Canvas.getContext('2d');
     reo1Canvas.height = 3508;
