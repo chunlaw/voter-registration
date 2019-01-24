@@ -489,6 +489,10 @@
       reo43Context.drawImage(document.getElementById("reo43-source-img"), 0, 0);
       voterRegistration.insertTexts(reo41Context, voterRegistration.reo41TextPosition);
       voterRegistration.insertTexts(reo43Context, voterRegistration.reo43TextPosition);
+      $('#reo41-canvas').css('display', 'initial');
+      $('#reo43-canvas').css('display', 'initial');
+      $('#reo41DownloadBtnContainer').css('display', 'initial');
+      $('#reo43DownloadBtnContainer').css('display', 'initial');
     } else {
       $('#reo41-canvas').css('display', 'none');
       $('#reo43-canvas').css('display', 'none');
