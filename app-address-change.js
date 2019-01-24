@@ -193,10 +193,30 @@ voterRegistration.setRadio = function(){
       $(".step-nav-2 .nav-content").text(voterRegistration.data["name-zh"]);
     }
     if (voterRegistration.data.step > 3) {
-      $(".step-nav-3 .nav-content").text(voterRegistration.data["name-en-surname"]+", "+voterRegistration.data["name-en-othername"]);
+      var englishNameText = '';
+      var surname = voterRegistration.data["name-en-surname"];
+      var othername = voterRegistration.data["name-en-othername"];
+      if (surname && othername) {
+        englishNameText = surname + ', ' + othername;
+      } else if (surname) {
+        englishNameText = surname;
+      } else if (othername) {
+        englishNameText = othername;
+      }
+      $(".step-nav-3 .nav-content").text(englishNameText);
     }
     if (voterRegistration.data.step > 4) {
-      $(".step-nav-4 .nav-content").text(voterRegistration.data["idcard"]+", "+	$(".gender-btn.active .btn-text").text());
+      var idcardText = '';
+      var idcard = voterRegistration.data["idcard"];
+      var gender = $(".gender-btn.active .btn-text").text();
+      if (idcard && gender) {
+        idcardText = idcard + ', ' + gender;
+      } else if (idcard) {
+        idcardText = idcard;
+      } else if (gender) {
+        idcardText = gender;
+      }
+      $(".step-nav-4 .nav-content").text(idcardText);
     }
     if (voterRegistration.data.step > 5) {
       $(".step-nav-5 .nav-content").text(
@@ -210,14 +230,13 @@ voterRegistration.setRadio = function(){
       );
     }
     if (voterRegistration.data.step > 6) {
-      $(".step-nav-6 .nav-content").text(
-        voterRegistration.data["extra-landline"]+" "+
-	  voterRegistration.data["extra-mobile"]+" "+
-	  voterRegistration.data["extra-office"]+" "+
-	  voterRegistration.data["extra-email"]+" "+
-	  $(".lang-btn.active .btn-text").text()+" "+
-	  $(".extra-dc-btn.active .btn-text").text()
-      );
+      $(".step-nav-6 .nav-content").html('')
+        .append($('<div></div>').text(voterRegistration.data["extra-mobile"]))
+        .append($('<div></div>').text(voterRegistration.data["extra-landline"]))
+        .append($('<div></div>').text(voterRegistration.data["extra-office"]))
+        .append($('<div></div>').text(voterRegistration.data["extra-email"]))
+        .append($('<div></div>').text($(".lang-btn.active .btn-text").text()))
+        .append($('<div></div>').text($(".extra-dc-btn.active .btn-text").text()))
     }
 
     if (step === 8) {

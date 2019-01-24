@@ -386,10 +386,30 @@
       $(".step-nav-1 .nav-content").text(voterRegistration.data["name-zh"]);
     }
     if (voterRegistration.data.step > 2) {
-      $(".step-nav-2 .nav-content").text(voterRegistration.data["name-en-surname"]+", "+voterRegistration.data["name-en-othername"]);
+      var englishNameText = '';
+      var surname = voterRegistration.data["name-en-surname"];
+      var othername = voterRegistration.data["name-en-othername"];
+      if (surname && othername) {
+        englishNameText = surname + ', ' + othername;
+      } else if (surname) {
+        englishNameText = surname;
+      } else if (othername) {
+        englishNameText = othername;
+      }
+      $(".step-nav-2 .nav-content").text(englishNameText);
     }
     if (voterRegistration.data.step > 3) {
-      $(".step-nav-3 .nav-content").text(voterRegistration.data["idcard"]+", "+$(".gender-btn.active .btn-text").text());
+      var idcardText = '';
+      var idcard = voterRegistration.data["idcard"];
+      var gender = $(".gender-btn.active .btn-text").text();
+      if (idcard && gender) {
+        idcardText = idcard + ', ' + gender;
+      } else if (idcard) {
+        idcardText = idcard;
+      } else if (gender) {
+        idcardText = gender;
+      }
+      $(".step-nav-3 .nav-content").text(idcardText);
     }
     if (voterRegistration.data.step > 4) {
       $(".step-nav-4 .nav-content").text(
@@ -401,33 +421,31 @@
           voterRegistration.data["address-line2"]+" "+
           voterRegistration.data["address-line3"]
       );
+    }
+    if (voterRegistration.data.step > 5) {
       var emailToCandidateText = '';
       if (voterRegistration.data["extra-email"]) {
         if (voterRegistration.data['email-to-candidate']) {
-          emailToCandidateText = '提供電郵地址予相關選區候選人';
+          emailToCandidateText = '提供電郵地址予區候選人';
         } else {
-          emailToCandidateText = '不提供電郵地址予相關選區候選人';
+          emailToCandidateText = '不提供電郵地址予候選人';
         }
       }
-    }
-    if (voterRegistration.data.step > 5) {
-      $(".step-nav-5 .nav-content").text(
-        voterRegistration.data["extra-landline"]+" "+
-          voterRegistration.data["extra-mobile"]+" "+
-          voterRegistration.data["extra-office"]+" "+
-          voterRegistration.data["extra-email"]+" "+
-          $(".lang-btn.active .btn-text").text()+" "+
-          emailToCandidateText
-      );
+      $(".step-nav-5 .nav-content").html('')
+        .append($('<div></div>').text(voterRegistration.data["extra-mobile"]))
+        .append($('<div></div>').text(voterRegistration.data["extra-landline"]))
+        .append($('<div></div>').text(voterRegistration.data["extra-office"]))
+        .append($('<div></div>').text(voterRegistration.data["extra-email"]))
+        .append($('<div></div>').text($(".lang-btn.active .btn-text").text()))
+        .append($('<div></div>').text(emailToCandidateText))
     }
     if (voterRegistration.data.step > 6) {
-      $(".step-nav-6 .nav-content").text(
-        voterRegistration.data["functional-constituency"]+" "+
-          voterRegistration.data["election-commitee"]+" "+
-          voterRegistration.data["organisation-name"]+" "+
-          voterRegistration.data["membership"]+" "+
-          voterRegistration.data["staff-number"]
-      );
+      $(".step-nav-6 .nav-content").html('')
+        .append($('<div></div>').text(voterRegistration.data["functional-constituency"]))
+        .append($('<div></div>').text(voterRegistration.data["election-commitee"]))
+        .append($('<div></div>').text(voterRegistration.data["organisation-name"]))
+        .append($('<div></div>').text(voterRegistration.data["membership"]))
+        .append($('<div></div>').text(voterRegistration.data["staff-number"]))
     }
 
     if (!voterRegistration.data['extra-is-district']) {
