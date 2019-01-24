@@ -165,56 +165,71 @@ voterRegistration.setRadio = function(){
 	}
 }
 
-// FIXME: quick and dirty next step button
-voterRegistration.nextStep = function(){
-	voterRegistration.data.step++;
-	voterRegistration.setStep(voterRegistration.data.step);
-	return false;
-}
-voterRegistration.setStep = function(step){
-	var target = $(".step-container");
-	target.removeClass("step-current-"+(step-1)).addClass("step-current-"+step);
-
-	var navtarget = $(".step-nav-container");
-	navtarget.removeClass("step-current-"+(step-1)).addClass("step-current-"+step);
-
-  if (voterRegistration.data.step > 2) {
-    $(".step-nav-2 .nav-content").text(voterRegistration.data["name-zh"]);
-  }
-  if (voterRegistration.data.step > 3) {
-    $(".step-nav-3 .nav-content").text(voterRegistration.data["name-en-surname"]+", "+voterRegistration.data["name-en-othername"]);
-  }
-  if (voterRegistration.data.step > 4) {
-    $(".step-nav-4 .nav-content").text(voterRegistration.data["idcard"]+", "+	$(".gender-btn.active .btn-text").text());
-  }
-  if (voterRegistration.data.step > 5) {
-    $(".step-nav-5 .nav-content").text(
-      voterRegistration.data["address-flat"]+" "+
-	voterRegistration.data["address-floor"]+" "+
-	voterRegistration.data["address-block"]+" "+
-	voterRegistration.data["address-line0"]+" "+
-	voterRegistration.data["address-line1"]+" "+
-	voterRegistration.data["address-line2"]+" "+
-	voterRegistration.data["address-line3"]
-    );
-  }
-  if (voterRegistration.data.step > 6) {
-    $(".step-nav-6 .nav-content").text(
-      voterRegistration.data["extra-landline"]+" "+
-	voterRegistration.data["extra-mobile"]+" "+
-	voterRegistration.data["extra-office"]+" "+
-	voterRegistration.data["extra-email"]+" "+
-	$(".lang-btn.active .btn-text").text()+" "+
-	$(".extra-dc-btn.active .btn-text").text()
-    );
+  // FIXME: quick and dirty next step button
+  voterRegistration.nextStep = function(){
+    var step = voterRegistration.data.step;
+    step++;
+    voterRegistration.setStep(step);
+    return false;
   }
 
-	$('html, body').animate({
-		scrollTop: 0
-	}, 500);
+  voterRegistration.setStep = function(step){
+    voterRegistration.data.step = step;
+    var target = $(".step-container");
+    target.removeClass(function(index, classNames) {
+      return classNames.split(' ').filter(function(className) {
+        return className.search(/step-current-[\d]+/) !== -1;
+      }).join(' ');
+    }).addClass("step-current-"+step);
 
-	return false;
-}
+    var navtarget = $(".step-nav-container");
+    navtarget.removeClass(function(index, classNames) {
+      return classNames.split(' ').filter(function(className) {
+        return className.search(/step-current-[\d]+/) !== -1;
+      }).join(' ');
+    }).addClass("step-current-"+step);
+
+    if (voterRegistration.data.step > 2) {
+      $(".step-nav-2 .nav-content").text(voterRegistration.data["name-zh"]);
+    }
+    if (voterRegistration.data.step > 3) {
+      $(".step-nav-3 .nav-content").text(voterRegistration.data["name-en-surname"]+", "+voterRegistration.data["name-en-othername"]);
+    }
+    if (voterRegistration.data.step > 4) {
+      $(".step-nav-4 .nav-content").text(voterRegistration.data["idcard"]+", "+	$(".gender-btn.active .btn-text").text());
+    }
+    if (voterRegistration.data.step > 5) {
+      $(".step-nav-5 .nav-content").text(
+        voterRegistration.data["address-flat"]+" "+
+	  voterRegistration.data["address-floor"]+" "+
+	  voterRegistration.data["address-block"]+" "+
+	  voterRegistration.data["address-line0"]+" "+
+	  voterRegistration.data["address-line1"]+" "+
+	  voterRegistration.data["address-line2"]+" "+
+	  voterRegistration.data["address-line3"]
+      );
+    }
+    if (voterRegistration.data.step > 6) {
+      $(".step-nav-6 .nav-content").text(
+        voterRegistration.data["extra-landline"]+" "+
+	  voterRegistration.data["extra-mobile"]+" "+
+	  voterRegistration.data["extra-office"]+" "+
+	  voterRegistration.data["extra-email"]+" "+
+	  $(".lang-btn.active .btn-text").text()+" "+
+	  $(".extra-dc-btn.active .btn-text").text()
+      );
+    }
+
+    if (step === 8) {
+      voterRegistration.generate();
+    }
+
+    $('html, body').animate({
+      scrollTop: 0
+    }, 500);
+
+    return false;
+  }
 
 // FIXME: quick and dirty generate button
 voterRegistration.generate = function(){
@@ -385,9 +400,12 @@ $("#extra-form input.email-control").each(function(){
 });
 
 $(".nextButton").on('click', voterRegistration.nextStep);
-$(".checkButton").on('click', voterRegistration.generate);
 
 $(".resetSign").on('click', voterRegistration.resetSign);
+
+  $(".step-nav-header").on('click', function() {
+    voterRegistration.setStep(parseInt($(this).attr("data-step")));
+  });
 
 })();
 
