@@ -352,23 +352,35 @@
 
   // FIXME: quick and dirty next step button
   voterRegistration.nextStep = function(){
-    voterRegistration.data.step++;
+    var step = voterRegistration.data.step;
+    step++;
     // Skip step 6 and 7 if register for 超級區議會
-    if (voterRegistration.data.step === 6 && voterRegistration.data['extra-is-district']) {
-      voterRegistration.setStep(voterRegistration.data.step);
-      voterRegistration.data.step++;
-      voterRegistration.setStep(voterRegistration.data.step);
-      voterRegistration.data.step++;
+    if (step === 6 && voterRegistration.data['extra-is-district']) {
+      voterRegistration.setStep(step);
+      step++;
+      voterRegistration.setStep(step);
+      step++;
     }
-    voterRegistration.setStep(voterRegistration.data.step);
+    voterRegistration.setStep(step);
     return false;
   }
+
   voterRegistration.setStep = function(step){
+    voterRegistration.data.step = step;
+
     var target = $(".step-container");
-    target.removeClass("step-current-"+(step-1)).addClass("step-current-"+step);
+    target.removeClass(function(index, classNames) {
+      return classNames.split(' ').filter(function(className) {
+        return className.search(/step-current-[\d]+/) !== -1;
+      }).join(' ');
+    }).addClass("step-current-"+step);
 
     var navtarget = $(".step-nav-container");
-    navtarget.removeClass("step-current-"+(step-1)).addClass("step-current-"+step);
+    navtarget.removeClass(function(index, classNames) {
+      return classNames.split(' ').filter(function(className) {
+        return className.search(/step-current-[\d]+/) !== -1;
+      }).join(' ');
+    }).addClass("step-current-"+step);
 
     if (voterRegistration.data.step > 1) {
       $(".step-nav-1 .nav-content").text(voterRegistration.data["name-zh"]);
@@ -409,19 +421,27 @@
       );
     }
     if (voterRegistration.data.step > 6) {
-      if (!voterRegistration.data['extra-is-district']) {
-        $(".step-nav-6 .nav-content").text(
-          voterRegistration.data["functional-constituency"]+" "+
-            voterRegistration.data["election-commitee"]+" "+
-            voterRegistration.data["organisation-name"]+" "+
-            voterRegistration.data["membership"]+" "+
-            voterRegistration.data["staff-number"]
-        );
-      } else {
-        $(".step-nav-6").remove();
-        $(".step-nav-7").remove();
-      }
+      $(".step-nav-6 .nav-content").text(
+        voterRegistration.data["functional-constituency"]+" "+
+          voterRegistration.data["election-commitee"]+" "+
+          voterRegistration.data["organisation-name"]+" "+
+          voterRegistration.data["membership"]+" "+
+          voterRegistration.data["staff-number"]
+      );
     }
+
+    if (!voterRegistration.data['extra-is-district']) {
+      $(".step-nav-6").css('display', 'initial');
+      $(".step-nav-7").css('display', 'initial');
+    } else {
+      $(".step-nav-6").css('display', 'none');
+      $(".step-nav-7").css('display', 'none');
+    }
+
+    if (step === 9) {
+      voterRegistration.generate();
+    }
+
     $('html, body').animate({
       scrollTop: 0
     }, 500);
@@ -431,6 +451,7 @@
 
   // FIXME: quick and dirty generate button
   voterRegistration.generate = function(){
+    console.log('omg');
     var reo1Canvas = voterRegistration.reo1Canvas;
     var reo1Context = voterRegistration.reo1Canvas.getContext('2d');
     reo1Canvas.height = 3508;
@@ -652,9 +673,12 @@
   });
 
   $(".nextButton").on('click', voterRegistration.nextStep);
-  $(".checkButton").on('click', voterRegistration.generate);
 
   $(".resetSign").on('click', voterRegistration.resetSign);
+
+  $(".step-nav-header").on('click', function() {
+    voterRegistration.setStep(parseInt($(this).attr("data-step")));
+  });
 
 })();
 

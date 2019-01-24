@@ -115,7 +115,11 @@ p, .control-label {
   color: #c91f37;
 }
 
-.step-nav .step-nav-number {
+.step-nav .step-nav-header {
+  cursor: pointer;
+}
+
+.step-nav .step-nav-header .step-nav-number {
   display: inline-block;
   width: 30px;
   height: 30px;
