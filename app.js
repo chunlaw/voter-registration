@@ -4,6 +4,7 @@
 
   // canvas
   voterRegistration.reo1Canvas = document.getElementById('reo1-canvas');
+  voterRegistration.reo2Canvas = document.getElementById('reo2-canvas');
   voterRegistration.reo41Canvas = document.getElementById('reo41-canvas');
   voterRegistration.reo43Canvas = document.getElementById('reo43-canvas');
   voterRegistration.signarea = document.getElementById('sign-area');
@@ -38,7 +39,7 @@
     "staff-number": "",
     "other": "",
     "date": (new Date().toJSON().slice(0,10).split("-").join("")),
-    "step": 1,
+    "step": 0,
   };
 
   // text position on canvas
@@ -115,6 +116,74 @@
        [445,1650],[477,1650],[508,1650],[540,1650],
        [319,1650],[351,1650],
        [192,1650],[225,1650],
+     ],
+     "size": 22,
+    },
+  ];
+
+  voterRegistration.reo2TextPosition = [
+    {"key":"idcard", // data key
+     "position": [
+       [393,337],[427,337],
+       [528,337],[563,337],[597,337],[631,337],[666,337],[700,337],[815,337]
+     ], // position for each char
+     "size": 36,
+    },
+    {"key":"gender",
+     "position": [[1048,337],[1132,337]],
+     "size": 36,
+    },
+    {"key":"name-zh", "position": [[190,425]], "size": 36, "align": "left"},
+    {"key":"name-en-surname",
+     "position": [
+       [318,469],[350,469],[381,469],[412,469],
+       [443,469],[474,469],[456,469],[537,469],
+       [568,469],[600,469],[631,469],[662,469],
+       [693,469],[724,469],[755,469],[786,469],
+       [818,469],[849,469],[880,469],[911,469],
+       [942,469],[973,469],[1004,469],[1035,469],
+       [1067,469],[1098,469],[1129,469],[1159,469],
+       [1187,469],
+     ],
+     "size": 28,
+    },
+    {"key":"name-en-othername",
+     "position": [
+       [318,508],[350,508],[381,508],[412,508],
+       [443,508],[474,508],[456,508],[537,508],
+       [568,508],[600,508],[631,508],[662,508],
+       [693,508],[724,508],[755,508],[786,508],
+       [818,508],[849,508],[880,508],[911,508],
+       [942,508],[973,508],[1004,508],[1035,508],
+       [1067,508],[1098,508],[1129,508],[1159,508],
+       [1187,508],
+     ],
+     "size": 28,
+    },
+    {"key":"address-flat", "position": [[180,582]], "size": 28, "align": "left"},
+    {"key":"address-floor", "position": [[472,582]], "size": 28, "align": "left"},
+    {"key":"address-block", "position": [[1004,582]], "size": 28, "align": "left"},
+    {"key":"address-line0", "position": [[344,627]], "size": 28, "align": "left"},
+    {"key":"address-line1", "position": [[344,672]], "size": 28, "align": "left"},
+    {"key":"address-line2", "position": [[344,720]], "size": 28, "align": "left"},
+    {"key":"address-line3", "position": [[344,762]], "size": 28, "align": "left"},
+    {"key":"extra-landline", "position": [[202,806]], "size": 28, "align": "left"},
+    {"key":"extra-mobile", "position": [[770,806]] ,"size": 28, "align": "left"},
+    {"key":"extra-office", "position": [[202,844]], "size": 28, "align": "left"},
+    {"key":"extra-email", "position": [[202,892]], "size": 28, "align": "left"},
+    {"key":"email-to-candidate",
+     "position": [[88,923]],
+     "size": 22,
+    },
+    {"key":"extra-lang",
+     "position": [[559,1287],[719,1287]],
+     "size": 22,
+    },
+    {"key":"date",
+     "position": [
+       [445,1663],[476,1663],[508,1663],[539,1663],
+       [319,1663],[350,1663],
+       [192,1663],[224,1663],
      ],
      "size": 22,
     },
@@ -372,6 +441,12 @@
         voterRegistration.setStep(step);
         step++;
       }
+    } else if (voterRegistration.data['application-type'] === 'change-address') {
+      // Skip step 7 if register for change address-proof
+      if (step === 7) {
+        voterRegistration.setStep(step);
+        step++;
+      }
     } else if (voterRegistration.data['application-type'] === 'change-functional') {
       // Skip step 1, 5, and 6 if register for change functional constituency
       if (step === 1) {
@@ -486,12 +561,16 @@
   voterRegistration.generate = function(){
     var reo1Canvas = voterRegistration.reo1Canvas;
     var reo1Context = voterRegistration.reo1Canvas.getContext('2d');
+    var reo2Canvas = voterRegistration.reo2Canvas;
+    var reo2Context = voterRegistration.reo2Canvas.getContext('2d');
     var reo41Canvas = voterRegistration.reo41Canvas;
     var reo41Context = voterRegistration.reo41Canvas.getContext('2d');
     var reo43Canvas = voterRegistration.reo43Canvas;
     var reo43Context = voterRegistration.reo43Canvas.getContext('2d');
     reo1Canvas.height = 3508;
     reo1Canvas.width = 1240;
+    reo2Canvas.height = 3508;
+    reo2Canvas.width = 1240;
     reo41Canvas.height = 3508;
     reo41Canvas.width = 1240;
     reo43Canvas.height = 3508;
@@ -501,31 +580,44 @@
       reo1Context.drawImage(document.getElementById("reo1-source-img"), 0, 0);
       voterRegistration.insertTexts(reo1Context, voterRegistration.reo1TextPosition);
       $('#reo1-canvas').css('display', 'initial');
+      $('#reo2-canvas').css('display', 'none');
       $('#reo41-canvas').css('display', 'none');
       $('#reo43-canvas').css('display', 'none');
       $('#reo1DownloadBtnContainer').css('display', 'block');
+      $('#reo2DownloadBtnContainer').css('display', 'none');
       $('#reo41DownloadBtnContainer').css('display', 'none');
       $('#reo43DownloadBtnContainer').css('display', 'none');
     } else if (voterRegistration.data['application-type'] === 'new-functional') {
-      reo1Context.drawImage(document.getElementById("reo1-source-img"), 0, 0);
       reo41Context.drawImage(document.getElementById("reo41-source-img"), 0, 0);
-      reo43Context.drawImage(document.getElementById("reo43-source-img"), 0, 0);
       voterRegistration.insertTexts(reo41Context, voterRegistration.reo41TextPosition);
-      voterRegistration.insertTexts(reo43Context, voterRegistration.reo43TextPosition);
-      voterRegistration.insertTexts(reo1Context, voterRegistration.reo1TextPosition);
       $('#reo1-canvas').css('display', 'none');
+      $('#reo2-canvas').css('display', 'none');
       $('#reo41-canvas').css('display', 'initial');
       $('#reo43-canvas').css('display', 'none');
       $('#reo1DownloadBtnContainer').css('display', 'none');
+      $('#reo2DownloadBtnContainer').css('display', 'none');
       $('#reo41DownloadBtnContainer').css('display', 'block');
+      $('#reo43DownloadBtnContainer').css('display', 'none');
+    } else if (voterRegistration.data['application-type'] === 'change-address') {
+      reo2Context.drawImage(document.getElementById("reo2-source-img"), 0, 0);
+      voterRegistration.insertTexts(reo2Context, voterRegistration.reo2TextPosition);
+      $('#reo1-canvas').css('display', 'none');
+      $('#reo2-canvas').css('display', 'initial');
+      $('#reo41-canvas').css('display', 'none');
+      $('#reo43-canvas').css('display', 'none');
+      $('#reo1DownloadBtnContainer').css('display', 'none');
+      $('#reo2DownloadBtnContainer').css('display', 'block');
+      $('#reo41DownloadBtnContainer').css('display', 'none');
       $('#reo43DownloadBtnContainer').css('display', 'none');
     } else if (voterRegistration.data['application-type'] === 'change-functional') {
       reo43Context.drawImage(document.getElementById("reo43-source-img"), 0, 0);
       voterRegistration.insertTexts(reo43Context, voterRegistration.reo43TextPosition);
       $('#reo1-canvas').css('display', 'none');
+      $('#reo2-canvas').css('display', 'none');
       $('#reo41-canvas').css('display', 'none');
       $('#reo43-canvas').css('display', 'initial');
       $('#reo1DownloadBtnContainer').css('display', 'none');
+      $('#reo2DownloadBtnContainer').css('display', 'none');
       $('#reo41DownloadBtnContainer').css('display', 'none');
       $('#reo43DownloadBtnContainer').css('display', 'block');
     }
@@ -625,12 +717,15 @@
   // mirror signature stokes to output canvas
   voterRegistration.sendSign = function(){
     var reo1Context = voterRegistration.reo1Canvas.getContext('2d');
+    var reo2Context = voterRegistration.reo2Canvas.getContext('2d');
     var reo41Context = voterRegistration.reo41Canvas.getContext('2d');
     var reo43Context = voterRegistration.reo43Canvas.getContext('2d');
     if (voterRegistration.data['application-type'] === 'new-district') {
       reo1Context.drawImage(voterRegistration.signarea, 807, 1555);
     } else if (voterRegistration.data['application-type'] === 'new-functional') {
       reo41Context.drawImage(voterRegistration.signarea, 716, 2107, 288, 99.2);
+    } else if (voterRegistration.data['application-type'] === 'change-address') {
+      reo2Context.drawImage(voterRegistration.signarea, 845, 1589, 288, 99.2);
     } else if (voterRegistration.data['application-type'] === 'change-functional') {
       reo43Context.drawImage(voterRegistration.signarea, 840, 2082, 180, 62);
     }
@@ -644,6 +739,9 @@
     } else if (voterRegistration.data['application-type'] === 'new-functional') {
       var reo41DataURL = voterRegistration.reo41Canvas.toDataURL("image/png");
       $("#reo41DownloadButton").attr("href", reo41DataURL);
+    } else if (voterRegistration.data['application-type'] === 'change-address') {
+      var reo2DataURL = voterRegistration.reo2Canvas.toDataURL("image/png");
+      $("#reo2DownloadButton").attr("href", reo2DataURL);
     } else if (voterRegistration.data['application-type'] === 'change-functional') {
       var reo43DataURL = voterRegistration.reo43Canvas.toDataURL("image/png");
       $("#reo43DownloadButton").attr("href", reo43DataURL);
@@ -684,7 +782,7 @@
     voterRegistration.data[this.id] = $(this).val();
   }
 
-  if ($.inArray(voterRegistration.getApplicationType(), ['new-district', 'new-functional', 'change-functional']) >= 0) {
+  if ($.inArray(voterRegistration.getApplicationType(), ['new-district', 'new-functional', 'change-address', 'change-functional']) >= 0) {
     voterRegistration.data['application-type'] = voterRegistration.getApplicationType();
   }
 
@@ -749,6 +847,34 @@
 
     $('#functional-constituency option.district').css('display', 'none');
     $('#election-commitee option.district').css('display', 'none');
+  } else if (voterRegistration.data['application-type'] === 'change-address') {
+    $(".step-nav-1").css('display', 'initial');
+    $(".step-nav-2").css('display', 'initial');
+    $(".step-nav-3").css('display', 'initial');
+    $(".step-nav-4").css('display', 'initial');
+    $(".step-nav-5").css('display', 'initial');
+    $(".step-nav-6").css('display', 'initial');
+    $(".step-nav-7").css('display', 'none');
+    $(".step-nav-8").css('display', 'initial');
+    $(".step-nav-9").css('display', 'initial');
+
+    $(".step-nav-1 .step-nav-number").html('1');
+    $(".step-nav-2 .step-nav-number").html('2');
+    $(".step-nav-3 .step-nav-number").html('3');
+    $(".step-nav-4 .step-nav-number").html('4');
+    $(".step-nav-5 .step-nav-number").html('5');
+    $(".step-nav-6 .step-nav-number").html('6');
+    $(".step-nav-8 .step-nav-number").html('7');
+    $(".step-nav-9 .step-nav-number").html('8');
+
+    $(".step-1 .step-number").html('一');
+    $(".step-2 .step-number").html('二');
+    $(".step-3 .step-number").html('三');
+    $(".step-4 .step-number").html('四');
+    $(".step-5 .step-number").html('五');
+    $(".step-6 .step-number").html('六');
+    $(".step-8 .step-number").html('七');
+    $(".step-9 .step-number").html('八');
   } else if (voterRegistration.data['application-type'] === 'change-functional') {
     voterRegistration.data['extra-not-district-text'] = '✔';
 
