@@ -1,5 +1,21 @@
 (function(){
 
+  var getApplicationType = function() {
+    var query = window.location.search.slice(1);
+    var item = query.split('&').map(function(item) {
+      return item.split('=');
+    }).filter((function(item) {
+      return item[0] === 'type';
+    }));
+    var value = '';
+    if (item.length >= 1) {
+      if (item[0].length >= 2) {
+        value = item[0][1];
+      }
+    }
+    return value;
+  }
+
   var voterRegistration = new Object();
 
   // canvas
@@ -330,16 +346,6 @@
     if (this.id == "email-to-candidate-no") {
       return false;
     }
-    if (this.id == "fc-district") {
-      voterRegistration.data["extra-is-district"] = true;
-      voterRegistration.data["extra-not-district-text"] = "";
-      return false;
-    }
-    if (this.id == "fc-other") {
-      voterRegistration.data["extra-is-district"] = false;
-      voterRegistration.data["extra-not-district-text"] = "✔";
-      return false;
-    }
     if ($.inArray(this.id, ["gender-male", "extra-lang-zh"]) >= 0) {
       voterRegistration.data[this.name] = "✔ ";
     } else {
@@ -446,14 +452,6 @@
         .append($('<div></div>').text(voterRegistration.data["organisation-name"]))
         .append($('<div></div>').text(voterRegistration.data["membership"]))
         .append($('<div></div>').text(voterRegistration.data["staff-number"]))
-    }
-
-    if (!voterRegistration.data['extra-is-district']) {
-      $(".step-nav-6").css('display', 'initial');
-      $(".step-nav-7").css('display', 'initial');
-    } else {
-      $(".step-nav-6").css('display', 'none');
-      $(".step-nav-7").css('display', 'none');
     }
 
     if (step === 9) {
@@ -651,6 +649,35 @@
 
   voterRegistration.literalBind = function() {
     voterRegistration.data[this.id] = $(this).val();
+  }
+
+  var applicationType = getApplicationType() === 'functional' ? 'functional' : 'district';
+  if (applicationType === 'functional') {
+    voterRegistration.data['extra-is-district'] = false;
+    voterRegistration.data['extra-not-district-text'] = '✔';
+  } else {
+    voterRegistration.data['extra-is-district'] = true;
+    voterRegistration.data['extra-not-district-text'] = '';
+  }
+  if (!voterRegistration.data['extra-is-district']) {
+    $(".step-nav-6").css('display', 'initial');
+    $(".step-nav-7").css('display', 'initial');
+
+    $(".step-nav-8 .step-nav-number").html('8');
+    $(".step-nav-9 .step-nav-number").html('9');
+
+    $(".step-8 .step-number").html('八');
+    $(".step-9 .step-number").html('九');
+
+  } else {
+    $(".step-nav-6").css('display', 'none');
+    $(".step-nav-7").css('display', 'none');
+
+    $(".step-nav-8 .step-nav-number").html('6');
+    $(".step-nav-9 .step-nav-number").html('7');
+
+    $(".step-8 .step-number").html('六');
+    $(".step-9 .step-number").html('七');
   }
 
   // MISC
