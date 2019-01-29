@@ -814,6 +814,9 @@
     $(".step-6 .step-number").html('五');
     $(".step-8 .step-number").html('六');
     $(".step-9 .step-number").html('七');
+
+    $(".step-8 .form-name").html('Completed REO-1 Form.png');
+    $(".step-8 .uploader-img").attr('src', 'assets/uploader-1.png');
   } else if (voterRegistration.data['application-type'] === 'new-functional') {
     voterRegistration.data['extra-not-district-text'] = '✔';
 
@@ -845,6 +848,9 @@
     $(".step-8 .step-number").html('七');
     $(".step-9 .step-number").html('八');
 
+    $(".step-8 .form-name").html('Completed REO-41 Form.png');
+    $(".step-8 .uploader-img").attr('src', 'assets/uploader-2.png');
+
     $('#functional-constituency option.district').css('display', 'none');
     $('#election-commitee option.district').css('display', 'none');
   } else if (voterRegistration.data['application-type'] === 'change-address') {
@@ -875,6 +881,9 @@
     $(".step-6 .step-number").html('六');
     $(".step-8 .step-number").html('七');
     $(".step-9 .step-number").html('八');
+
+    $(".step-8 .form-name").html('Completed REO-2 Form.png');
+    $(".step-8 .uploader-img").attr('src', 'assets/uploader-1.png');
   } else if (voterRegistration.data['application-type'] === 'change-functional') {
     voterRegistration.data['extra-not-district-text'] = '✔';
 
@@ -901,6 +910,9 @@
     $(".step-7 .step-number").html('四');
     $(".step-8 .step-number").html('五');
     $(".step-9 .step-number").html('六');
+
+    $(".step-8 .form-name").html('Completed REO-43 Form.png');
+    $(".step-8 .uploader-img").attr('src', 'assets/uploader-1.png');
 
     $('#functional-constituency option.district').css('display', 'initial');
     $('#election-commitee option.district').css('display', 'initial');
