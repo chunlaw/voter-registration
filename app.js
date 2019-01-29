@@ -45,7 +45,7 @@
     "extra-email": "",
     "email-to-candidate": "",
     "extra-lang": "✔ ",
-    "extra-is-district": true,
+    "application-type": "new-district",
     "extra-not-district-text": "",
     "functional-constituency": "",
     "election-commitee": "",
@@ -56,6 +56,10 @@
     "date": (new Date().toJSON().slice(0,10).split("-").join("")),
     "step": 1,
   };
+
+  if ($.inArray(getApplicationType(), ['new-district', 'new-functional', 'change-functional'])) {
+    voterRegistration.data['application-type'] = getApplicationType();
+  }
 
   // text position on canvas
   voterRegistration.reo1TextPosition = [
@@ -361,11 +365,24 @@
     var step = voterRegistration.data.step;
     step++;
     // Skip step 6 and 7 if register for 超級區議會
-    if (step === 6 && voterRegistration.data['extra-is-district']) {
+    if (step === 6 && voterRegistration.data['application-type'] === 'new-district') {
       voterRegistration.setStep(step);
       step++;
       voterRegistration.setStep(step);
       step++;
+    }
+    // Skip step 4, 5, and 7 if register for change functional constituency
+    if (voterRegistration.data['application-type'] === 'change-functional') {
+      if (step === 4) {
+        voterRegistration.setStep(step);
+        step++;
+        voterRegistration.setStep(step);
+        step++;
+      }
+      if (step === 7) {
+        voterRegistration.setStep(step);
+        step++;
+      }
     }
     voterRegistration.setStep(step);
     return false;
@@ -469,33 +486,48 @@
   voterRegistration.generate = function(){
     var reo1Canvas = voterRegistration.reo1Canvas;
     var reo1Context = voterRegistration.reo1Canvas.getContext('2d');
+    var reo41Canvas = voterRegistration.reo41Canvas;
+    var reo41Context = voterRegistration.reo41Canvas.getContext('2d');
+    var reo43Canvas = voterRegistration.reo43Canvas;
+    var reo43Context = voterRegistration.reo43Canvas.getContext('2d');
     reo1Canvas.height = 3508;
     reo1Canvas.width = 1240;
-    reo1Context.drawImage(document.getElementById("reo1-source-img"), 0, 0);
-    voterRegistration.insertTexts(reo1Context, voterRegistration.reo1TextPosition);
+    reo41Canvas.height = 3508;
+    reo41Canvas.width = 1240;
+    reo43Canvas.height = 3508;
+    reo43Canvas.width = 1240;
 
-    if (!voterRegistration.data['extra-is-district']) {
-      var reo41Canvas = voterRegistration.reo41Canvas;
-      var reo41Context = voterRegistration.reo41Canvas.getContext('2d');
-      var reo43Canvas = voterRegistration.reo43Canvas;
-      var reo43Context = voterRegistration.reo43Canvas.getContext('2d');
-      reo41Canvas.height = 3508;
-      reo41Canvas.width = 1240;
-      reo43Canvas.height = 3508;
-      reo43Canvas.width = 1240;
+    if (voterRegistration.data['application-type'] === 'new-district') {
+      reo1Context.drawImage(document.getElementById("reo1-source-img"), 0, 0);
+      voterRegistration.insertTexts(reo1Context, voterRegistration.reo1TextPosition);
+      $('#reo1-canvas').css('display', 'initial');
+      $('#reo41-canvas').css('display', 'none');
+      $('#reo43-canvas').css('display', 'none');
+      $('#reo1DownloadBtnContainer').css('display', 'initial');
+      $('#reo41DownloadBtnContainer').css('display', 'none');
+      $('#reo43DownloadBtnContainer').css('display', 'none');
+    } else if (voterRegistration.data['application-type'] === 'new-functional') {
+      reo1Context.drawImage(document.getElementById("reo1-source-img"), 0, 0);
       reo41Context.drawImage(document.getElementById("reo41-source-img"), 0, 0);
       reo43Context.drawImage(document.getElementById("reo43-source-img"), 0, 0);
       voterRegistration.insertTexts(reo41Context, voterRegistration.reo41TextPosition);
       voterRegistration.insertTexts(reo43Context, voterRegistration.reo43TextPosition);
+      voterRegistration.insertTexts(reo1Context, voterRegistration.reo1TextPosition);
+      $('#reo1-canvas').css('display', 'initial');
       $('#reo41-canvas').css('display', 'initial');
       $('#reo43-canvas').css('display', 'initial');
+      $('#reo1DownloadBtnContainer').css('display', 'initial');
       $('#reo41DownloadBtnContainer').css('display', 'initial');
       $('#reo43DownloadBtnContainer').css('display', 'initial');
-    } else {
+    } else if (voterRegistration.data['application-type'] === 'change-functional') {
+      reo43Context.drawImage(document.getElementById("reo43-source-img"), 0, 0);
+      voterRegistration.insertTexts(reo43Context, voterRegistration.reo43TextPosition);
+      $('#reo1-canvas').css('display', 'none');
       $('#reo41-canvas').css('display', 'none');
-      $('#reo43-canvas').css('display', 'none');
+      $('#reo43-canvas').css('display', 'initial');
+      $('#reo1DownloadBtnContainer').css('display', 'none');
       $('#reo41DownloadBtnContainer').css('display', 'none');
-      $('#reo43DownloadBtnContainer').css('display', 'none');
+      $('#reo43DownloadBtnContainer').css('display', 'initial');
     }
 
     voterRegistration.initSign();
@@ -593,11 +625,15 @@
   // mirror signature stokes to output canvas
   voterRegistration.sendSign = function(){
     var reo1Context = voterRegistration.reo1Canvas.getContext('2d');
-    reo1Context.drawImage(voterRegistration.signarea, 807, 1555);
-    if (!voterRegistration.data['extra-is-district']) {
-      var reo41Context = voterRegistration.reo41Canvas.getContext('2d');
-      var reo43Context = voterRegistration.reo43Canvas.getContext('2d');
+    var reo41Context = voterRegistration.reo41Canvas.getContext('2d');
+    var reo43Context = voterRegistration.reo43Canvas.getContext('2d');
+    if (voterRegistration.data['application-type'] === 'new-district') {
+      reo1Context.drawImage(voterRegistration.signarea, 807, 1555);
+    } else if (voterRegistration.data['application-type'] === 'new-functional') {
+      reo1Context.drawImage(voterRegistration.signarea, 807, 1555);
       reo41Context.drawImage(voterRegistration.signarea, 716, 2107, 288, 99.2);
+      reo43Context.drawImage(voterRegistration.signarea, 840, 2082, 180, 62);
+    } else if (voterRegistration.data['application-type'] === 'change-functional') {
       reo43Context.drawImage(voterRegistration.signarea, 840, 2082, 180, 62);
     }
   }
@@ -607,12 +643,23 @@
     var reo1DataURL = voterRegistration.reo1Canvas.toDataURL("image/png");
     $("#reo1DownloadButton").attr("href", reo1DataURL);
     $("#reo1DownloadArea").attr("src", reo1DataURL);
-    if (!voterRegistration.data['extra-is-district']) {
+    if (voterRegistration.data['application-type'] === 'new-district') {
+      var reo1DataURL = voterRegistration.reo1Canvas.toDataURL("image/png");
+      $("#reo1DownloadButton").attr("href", reo1DataURL);
+      $("#reo1DownloadArea").attr("src", reo1DataURL);
+    } else if (voterRegistration.data['application-type'] === 'new-functional') {
+      var reo1DataURL = voterRegistration.reo1Canvas.toDataURL("image/png");
       var reo41DataURL = voterRegistration.reo41Canvas.toDataURL("image/png");
       var reo43DataURL = voterRegistration.reo43Canvas.toDataURL("image/png");
+      $("#reo1DownloadButton").attr("href", reo1DataURL);
       $("#reo41DownloadButton").attr("href", reo41DataURL);
       $("#reo43DownloadButton").attr("href", reo43DataURL);
+      $("#reo1DownloadArea").attr("src", reo1DataURL);
       $("#reo41DownloadArea").attr("src", reo41DataURL);
+      $("#reo43DownloadArea").attr("src", reo43DataURL);
+    } else if (voterRegistration.data['application-type'] === 'change-functional') {
+      var reo43DataURL = voterRegistration.reo43Canvas.toDataURL("image/png");
+      $("#reo43DownloadButton").attr("href", reo43DataURL);
       $("#reo43DownloadArea").attr("src", reo43DataURL);
     }
   }
@@ -651,25 +698,9 @@
     voterRegistration.data[this.id] = $(this).val();
   }
 
-  var applicationType = getApplicationType() === 'functional' ? 'functional' : 'district';
-  if (applicationType === 'functional') {
-    voterRegistration.data['extra-is-district'] = false;
-    voterRegistration.data['extra-not-district-text'] = '✔';
-  } else {
-    voterRegistration.data['extra-is-district'] = true;
+  if (voterRegistration.data['application-type'] === 'new-district') {
     voterRegistration.data['extra-not-district-text'] = '';
-  }
-  if (!voterRegistration.data['extra-is-district']) {
-    $(".step-nav-6").css('display', 'initial');
-    $(".step-nav-7").css('display', 'initial');
 
-    $(".step-nav-8 .step-nav-number").html('8');
-    $(".step-nav-9 .step-nav-number").html('9');
-
-    $(".step-8 .step-number").html('八');
-    $(".step-9 .step-number").html('九');
-
-  } else {
     $(".step-nav-6").css('display', 'none');
     $(".step-nav-7").css('display', 'none');
 
@@ -678,6 +709,41 @@
 
     $(".step-8 .step-number").html('六');
     $(".step-9 .step-number").html('七');
+  } else if (voterRegistration.data['application-type'] === 'new-functional') {
+    voterRegistration.data['extra-not-district-text'] = '✔';
+
+    $(".step-nav-4").css('display', 'initial');
+    $(".step-nav-5").css('display', 'initial');
+    $(".step-nav-6").css('display', 'initial');
+    $(".step-nav-7").css('display', 'initial');
+
+    $(".step-nav-6 .step-nav-number").html('6');
+    $(".step-nav-8 .step-nav-number").html('8');
+    $(".step-nav-9 .step-nav-number").html('9');
+
+    $(".step-6 .step-number").html('六');
+    $(".step-8 .step-number").html('八');
+    $(".step-9 .step-number").html('九');
+
+    $('#functional-constituency option.district').css('display', 'none');
+    $('#election-commitee option.district').css('display', 'none');
+  } else if (voterRegistration.data['application-type'] === 'change-functional') {
+    voterRegistration.data['extra-not-district-text'] = '✔';
+
+    $(".step-nav-4").css('display', 'none');
+    $(".step-nav-5").css('display', 'none');
+    $(".step-nav-7").css('display', 'none');
+
+    $(".step-nav-6 .step-nav-number").html('4');
+    $(".step-nav-8 .step-nav-number").html('5');
+    $(".step-nav-9 .step-nav-number").html('6');
+
+    $(".step-6 .step-number").html('四');
+    $(".step-8 .step-number").html('五');
+    $(".step-9 .step-number").html('六');
+
+    $('#functional-constituency option.district').css('display', 'initial');
+    $('#election-commitee option.district').css('display', 'initial');
   }
 
   // MISC
@@ -707,6 +773,14 @@
   });
   $(".fc-form select").each(function() {
     $(this).on('change', voterRegistration.literalBind);
+  });
+  $('#functional-constituency, #election-commitee').each(function() {
+    if (voterRegistration.data['application-type'] === 'change-functional') {
+      if ($(this).val() === '區議會（第二）功能界別') {
+        console.log('omg');
+        voterRegistration.data['extra-not-district-text'] = '';
+      }
+    }
   });
   $('.fc-form input').each(function() {
     $(this).on('input', voterRegistration.literalBind);
