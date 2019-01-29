@@ -354,7 +354,6 @@ voterRegistration.sendSign = function(){
 voterRegistration.updateImgLink = function(){
 	var dataURL = voterRegistration.canvas.toDataURL("image/png");
 	$("#downloadButton").attr("href", dataURL);
-	$("#downloadArea").attr("src", dataURL);
 }
 
 // render data string on output canvas

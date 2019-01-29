@@ -642,11 +642,9 @@
   voterRegistration.updateImgLinks = function(){
     var reo1DataURL = voterRegistration.reo1Canvas.toDataURL("image/png");
     $("#reo1DownloadButton").attr("href", reo1DataURL);
-    $("#reo1DownloadArea").attr("src", reo1DataURL);
     if (voterRegistration.data['application-type'] === 'new-district') {
       var reo1DataURL = voterRegistration.reo1Canvas.toDataURL("image/png");
       $("#reo1DownloadButton").attr("href", reo1DataURL);
-      $("#reo1DownloadArea").attr("src", reo1DataURL);
     } else if (voterRegistration.data['application-type'] === 'new-functional') {
       var reo1DataURL = voterRegistration.reo1Canvas.toDataURL("image/png");
       var reo41DataURL = voterRegistration.reo41Canvas.toDataURL("image/png");
@@ -654,13 +652,9 @@
       $("#reo1DownloadButton").attr("href", reo1DataURL);
       $("#reo41DownloadButton").attr("href", reo41DataURL);
       $("#reo43DownloadButton").attr("href", reo43DataURL);
-      $("#reo1DownloadArea").attr("src", reo1DataURL);
-      $("#reo41DownloadArea").attr("src", reo41DataURL);
-      $("#reo43DownloadArea").attr("src", reo43DataURL);
     } else if (voterRegistration.data['application-type'] === 'change-functional') {
       var reo43DataURL = voterRegistration.reo43Canvas.toDataURL("image/png");
       $("#reo43DownloadButton").attr("href", reo43DataURL);
-      $("#reo43DownloadArea").attr("src", reo43DataURL);
     }
   }
 
