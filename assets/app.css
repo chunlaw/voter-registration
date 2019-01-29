@@ -148,6 +148,10 @@ p, .control-label {
   list-style-type: none;
 }
 
+.notice-img {
+  border: solid 1px;
+}
+
 /* name-zh */
 .form-inline .form-control.name-telecode {
   width: 5em;
