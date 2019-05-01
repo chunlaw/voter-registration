@@ -1,6 +1,15 @@
 /* body */
 body{
   padding-top: 100px;
+  color: #8e8e8e;
+}
+
+a {
+  color: #c9a305;
+}
+
+a:hover {
+  color: #c9a305;
 }
 
 .dropdown ul {
@@ -13,6 +22,21 @@ body{
 
 .dropdown ul li a:hover {
   background-color: #79888c !important;
+}
+
+.btn-primary {
+  color: #fff !important;
+  background-color: #00356b !important;
+  border-color: #043054 !important;
+}
+
+.btn-primary:hover {
+  background-color: #043054 !important;
+  border-color: #00356b !important;
+}
+
+.text-primary {
+  color: #c9a305;
 }
 
 /* navbar */
@@ -70,7 +94,6 @@ p, .control-label {
 }
 .redtape{
   font-size: 14px;
-  color: #666;
 }
 
 /* Responsive button fixes for analytics */
@@ -128,6 +151,10 @@ p, .control-label {
   border-radius: 0px;
 }
 
+.step-container .step h3 {
+  color: #7a888b;
+}
+
 /* step control */
 .step-container .step {
   display: none;
@@ -157,7 +184,7 @@ p, .control-label {
 .step-nav-container.step-current-7 .step-nav:nth-last-child(1n+3),
 .step-nav-container.step-current-8 .step-nav:nth-last-child(1n+2),
 .step-nav-container.step-current-9 .step-nav:nth-last-child(1n+1) {
-  color: #c91f37;
+  color: #c9a305;
 }
 
 .step-nav .step-nav-header {
@@ -176,7 +203,7 @@ p, .control-label {
 }
 
 .step-nav .nav-content {
-  border-left: solid 1px #c91f37;
+  border-left: solid 1px #c9a305;
   margin-top: 2px;
   margin-bottom: 1px;
   margin-left: -25px;
