@@ -63,6 +63,11 @@ nav.navbar-default .navbar-brand>.navbar-brand-text {
   margin-left: 10px;
 }
 
+nav.navbar-default .navbar-collapse {
+  background-color: #a3bbc2;
+  border: none;
+}
+
 nav.navbar-default .navbar-collapse .navbar-nav > li {
   height: 80px;
   line-height: 80px;
