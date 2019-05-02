@@ -91,7 +91,16 @@ nav.navbar-default .navbar-collapse .navbar-nav > li > a:focus {
 }
 
 @media (max-width: 768px) {
-  .navbar-brand-text {
+  nav.navbar-default .navbar-brand>.navbar-brand-text {
     display: none;
+  }
+
+  nav.navbar-default .navbar-collapse .navbar-nav .dropdown .dropdown-menu {
+    left: 100px;
+    right: 0;
+  }
+
+  nav.navbar-default .navbar-collapse .navbar-nav .dropdown .dropdown-menu li {
+    background-color: #79888c;
   }
 }
