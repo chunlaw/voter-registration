@@ -583,6 +583,10 @@
       $('#reo2-canvas').css('display', 'none');
       $('#reo41-canvas').css('display', 'none');
       $('#reo43-canvas').css('display', 'none');
+      $('#reo1DeclarationContainer').css('display', 'block');
+      $('#reo2DeclarationContainer').css('display', 'none');
+      $('#reo41DeclarationContainer').css('display', 'none');
+      $('#reo43DeclarationContainer').css('display', 'none');
       $('#reo1DownloadBtnContainer').css('display', 'block');
       $('#reo2DownloadBtnContainer').css('display', 'none');
       $('#reo41DownloadBtnContainer').css('display', 'none');
@@ -594,6 +598,10 @@
       $('#reo2-canvas').css('display', 'none');
       $('#reo41-canvas').css('display', 'initial');
       $('#reo43-canvas').css('display', 'none');
+      $('#reo1DeclarationContainer').css('display', 'none');
+      $('#reo2DeclarationContainer').css('display', 'none');
+      $('#reo41DeclarationContainer').css('display', 'block');
+      $('#reo43DeclarationContainer').css('display', 'none');
       $('#reo1DownloadBtnContainer').css('display', 'none');
       $('#reo2DownloadBtnContainer').css('display', 'none');
       $('#reo41DownloadBtnContainer').css('display', 'block');
@@ -605,6 +613,10 @@
       $('#reo2-canvas').css('display', 'initial');
       $('#reo41-canvas').css('display', 'none');
       $('#reo43-canvas').css('display', 'none');
+      $('#reo1DeclarationContainer').css('display', 'none');
+      $('#reo2DeclarationContainer').css('display', 'block');
+      $('#reo41DeclarationContainer').css('display', 'none');
+      $('#reo43DeclarationContainer').css('display', 'none');
       $('#reo1DownloadBtnContainer').css('display', 'none');
       $('#reo2DownloadBtnContainer').css('display', 'block');
       $('#reo41DownloadBtnContainer').css('display', 'none');
@@ -616,6 +628,10 @@
       $('#reo2-canvas').css('display', 'none');
       $('#reo41-canvas').css('display', 'none');
       $('#reo43-canvas').css('display', 'initial');
+      $('#reo1DeclarationContainer').css('display', 'none');
+      $('#reo2DeclarationContainer').css('display', 'none');
+      $('#reo41DeclarationContainer').css('display', 'none');
+      $('#reo43DeclarationContainer').css('display', 'block');
       $('#reo1DownloadBtnContainer').css('display', 'none');
       $('#reo2DownloadBtnContainer').css('display', 'none');
       $('#reo41DownloadBtnContainer').css('display', 'none');
