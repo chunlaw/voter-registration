@@ -83,6 +83,9 @@
     header>.banner-container>.banner {
       width: 710px;
     }
+    .img-btn {
+      height: 45px;
+    }
     @media all and (max-width: 710px) {
       header>nav.site-nav>ul {
         flex-direction: column;
@@ -212,16 +215,26 @@
   </header>
   <main class="container" id="container-header">
     <div class="content-container">
+      <p>
+        此選民登記填表機可協助你製作電子格式的選民登記表格，令你可於選舉事務處的上載平台提交選民登記或更改選民資料。我們不會在你填寫、製作表格的過程中收集任何個人資料，所有程序皆在你的電腦進行及完成。
+        <p>更改選民登記住址或其他個人資料的法定限期：6月2日</p>
+        <p>登記成為選民的法定限期：7月2日</p>
+      </p>
+      <p class="title" id="register">選民資格</p>
+      <p>
+        只要你是香港永久性居民、通常在香港居住及已年滿 18 歲(或在2019年9月25日前年滿 18 歲)，於選舉中投票和參選就是你的基本權利。詳情請參閱填表須知。
+      </p>
       <p class="title" id="register">新登記</p>
       <p>根據選舉事務處公布的數字，現時 18-30 歲的青年選民只有 618,300 人，而 18-20 歲則有 112,000 人。17-20 歲合資格登記人士中，有 52.1% 未有登記成為選民，明顯偏低。假如他們全數登記為選民並投票，足以包攬至少 2 個立法會議席。</p>
       <p><a id="register" href="app.html?type=new-district"><img class="img-btn" src="assets/btn-register-1.png" /></a></p>
       <p><a id="register" href="app.html?type=new-functional"><img class="img-btn" src="assets/btn-register-2.png" /></a></p>
       <p class="title" id="change_info">更改登記資料</p>
-      <p>此網上填表機直接在你的電腦製作選民登記表格圖像，以便上載至選舉事務處。<br>我們不會傳送及收集你的個人資料。</p>
+      <p>你可以更改選民地址、功能界別或其他登記資料。請注意你須提供住址證明文件以完成更改選民登記地址的程序。請預備有關文件的電子版本或掃瞄版本，以便與選民登記表格一同上傳至選舉事務處的網站。(<a href="https://www.reo.gov.hk/ch/voter/aptypes.htm">哪些文件是可接受的住址證明？</a>)</p>
       <p><a id="changeAddress" href="app.html?type=change-address"><img class="img-btn" src="assets/btn-change-info-1.png" /></a></p>
       <p><a id="changeAddress" href="app.html?type=change-functional"><img class="img-btn" src="assets/btn-change-info-2.png" /></a></p>
       <p class="title">檢查選民登記資料</p>
       <p><a id="externalCheck" href="https://www1.voterinfo.gov.hk/bd_reovi/OVIES/jsp/mob/intro.jsp"><img class="img-btn" src="assets/btn-check-info.png" /></a></p>
+      <p>(選舉事務處網站)</p>
     </div>
   </main><!-- #container-header -->
 <section class="container section-waiver" id="waiver">
@@ -233,8 +246,12 @@
       衍生自合同、保證、侵權、過失、嚴格責任、免責或其它理論，以及鍵盤戰線是否已告知你發生此類損失的可能性。即使與任何有限救濟的實質目的相矛>盾，此限制仍應有效。此外，在任何情況下，我們因本協定或與本協定相關原因而承擔的責任總額均不應超過港幣一元。</p>
     <p>你同意維護我們豁免於任何所有因你使用此程式中的責任而引起的任何索賠責任要求，同時承擔鍵盤戰線在對任何此類索賠要求或訴訟做出抗辯
       而引致的所有任何費用、開支、律師費、調解費、裁決或賠償金。你應負責開展和控制針對此類索賠要求的抗辯，並承擔相應費用。</p>
-    <p>WAIVER OF LIABILITY: In no event shall WE be liable for any consequential, incidental, indirect, special, or punitive damages incurred by you and arising out fo the use of this program, whether or not such loss or damage is based in contract, warranty, tort, negligence, strict liability, indemnity, or otherwise, even if WE has advised you of the possibility of such damages. These limitations shall apply nothwistnading any failure of essential purpose of any limited remedy. The maximum totaly libality of us shall not be more than HK$1 in any event.</p>
-    <p>You shall fully indemnify and hold us harmless from and against any and all claims of any kind arising out of the use of this program including any and all expenses, costs, legal fees, settlements, judgements or awards incurred by you in in the defense of any such claim or lawsuit.</p>
+    <p>當你瀏覽此網頁或使用本工具，即代表你同意上述條款及免責聲明。</p>
+  </div>
+  <br />
+  <div class="content-container">
+    <p class="title">版權</p>
+    <p>此選民登記填表機的程式碼是源自於鍵盤戰線的一個開源專案。專業議政根據需要作出進一步的修改及調整。你也可一同<a href="https://github.com/yulapshun/voter-registration">貢獻</a>此專案。</p>
   </div>
 </section><!-- #register -->
 <footer>
