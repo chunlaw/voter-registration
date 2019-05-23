@@ -24,6 +24,7 @@
     "address-line1": "",
     "address-line2": "",
     "address-line3": "",
+    "contact-address": "",
     "extra-landline": "",
     "extra-mobile": "",
     "extra-office": "",
@@ -100,6 +101,7 @@
     {"key":"address-line1", "position": [[340,630]], "size": 28, "align": "left"},
     {"key":"address-line2", "position": [[340,678]], "size": 28, "align": "left"},
     {"key":"address-line3", "position": [[[810, 700],[870, 720]],[[890,700],[930,720]],[[945,700],[985,720]]], "size": 28, "align": "left", "type": "strike-except"},
+    {"key":"contact-address", "position": [[125,1965]], "size": 28, "align": "left"},
     {"key":"extra-landline", "position": [[206,762]], "size": 28, "align": "left" },
     {"key":"extra-mobile", "position": [[768,762]] ,"size": 28, "align": "left"},
     {"key":"extra-office", "position": [[206,804]], "size": 28, "align": "left"},
@@ -169,6 +171,7 @@
     {"key":"address-line1", "position": [[344,672]], "size": 28, "align": "left"},
     {"key":"address-line2", "position": [[344,720]], "size": 28, "align": "left"},
     {"key":"address-line3", "position": [[[800,740],[860,760]],[[880,740],[920,760]],[[935,740],[975,760]]], "size": 28, "align": "left", "type": "strike-except"},
+    {"key":"contact-address", "position": [[115,1965]], "size": 28, "align": "left"},
     {"key":"extra-landline", "position": [[202,806]], "size": 28, "align": "left"},
     {"key":"extra-mobile", "position": [[770,806]] ,"size": 28, "align": "left"},
     {"key":"extra-office", "position": [[202,844]], "size": 28, "align": "left"},
@@ -253,6 +256,7 @@
     {"key":"address-line1", "position": [[280,565]], "size": 26, "align": "left"},
     {"key":"address-line2", "position": [[280,598]], "size": 28, "align": "left"},
     {"key":"address-line3", "position": [[[820,615],[870,630]],[[890,615],[920,630]],[[935,615],[970,630]]], "size": 28, "align": "left", "type": "strike-except"},
+    {"key":"contact-address", "position": [[125,1965]], "size": 28, "align": "left"},
     {"key":"extra-landline", "position": [[365,670]], "size": 28, "align": "left" },
     {"key":"extra-mobile", "position": [[890,670]] ,"size": 28, "align": "left"},
     {"key":"extra-office", "position": [[365,710]], "size": 28, "align": "left"},
@@ -1032,5 +1036,11 @@
 
   // skip placeholder step
   voterRegistration.nextStep();
+
+  window.onload = function() {
+    if (voterRegistration.data['application-type'] === 'new-functional') {
+      document.getElementById('contact-address').parentElement.parentElement.style.display = "none";;
+    }
+  }
 
 })();
