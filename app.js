@@ -98,7 +98,7 @@
     {"key":"address-line0", "position": [[340,583]], "size": 28, "align": "left"},
     {"key":"address-line1", "position": [[340,630]], "size": 28, "align": "left"},
     {"key":"address-line2", "position": [[340,678]], "size": 28, "align": "left"},
-    {"key":"address-line3", "position": [[340,720]], "size": 28, "align": "left"},
+    {"key":"address-line3", "position": [[[810, 700],[870, 720]],[[890,700],[930,720]],[[945,700],[985,720]]], "size": 28, "align": "left", "type": "strike-except"},
     {"key":"extra-landline", "position": [[206,762]], "size": 28, "align": "left" },
     {"key":"extra-mobile", "position": [[768,762]] ,"size": 28, "align": "left"},
     {"key":"extra-office", "position": [[206,804]], "size": 28, "align": "left"},
@@ -166,7 +166,7 @@
     {"key":"address-line0", "position": [[344,627]], "size": 28, "align": "left"},
     {"key":"address-line1", "position": [[344,672]], "size": 28, "align": "left"},
     {"key":"address-line2", "position": [[344,720]], "size": 28, "align": "left"},
-    {"key":"address-line3", "position": [[344,762]], "size": 28, "align": "left"},
+    {"key":"address-line3", "position": [[[800,740],[860,760]],[[880,740],[920,760]],[[935,740],[975,760]]], "size": 28, "align": "left", "type": "strike-except"},
     {"key":"extra-landline", "position": [[202,806]], "size": 28, "align": "left"},
     {"key":"extra-mobile", "position": [[770,806]] ,"size": 28, "align": "left"},
     {"key":"extra-office", "position": [[202,844]], "size": 28, "align": "left"},
@@ -249,7 +249,7 @@
     {"key":"address-line0", "position": [[280,536]], "size": 28, "align": "left"},
     {"key":"address-line1", "position": [[280,565]], "size": 26, "align": "left"},
     {"key":"address-line2", "position": [[280,598]], "size": 28, "align": "left"},
-    {"key":"address-line3", "position": [[280,633]], "size": 28, "align": "left"},
+    {"key":"address-line3", "position": [[[820,615],[870,630]],[[890,615],[920,630]],[[935,615],[970,630]]], "size": 28, "align": "left", "type": "strike-except"},
     {"key":"extra-landline", "position": [[365,670]], "size": 28, "align": "left" },
     {"key":"extra-mobile", "position": [[890,670]] ,"size": 28, "align": "left"},
     {"key":"extra-office", "position": [[365,710]], "size": 28, "align": "left"},
@@ -516,8 +516,7 @@
           voterRegistration.data["address-block"]+" "+
           voterRegistration.data["address-line0"]+" "+
           voterRegistration.data["address-line1"]+" "+
-          voterRegistration.data["address-line2"]+" "+
-          voterRegistration.data["address-line3"]
+          voterRegistration.data["address-line2"]+" "
       );
     }
     if (voterRegistration.data.step > 6) {
@@ -769,17 +768,35 @@
     context.fillStyle = "black";
     for (var text of position) {
       context.font = text.size+"px 'Noto Sans TC Regular', sans-serif";
-      if (text.align) {
-        context.textAlign = text.align;
-      } else {
-        context.textAlign = "center"
-      }
-      if (text.position.length > 1) {
-        for (var i = 0; i < text.position.length; i++) {
-          context.fillText(voterRegistration.data[text.key].charAt(i), text.position[i][0], text.position[i][1]);
+      if (text.type === 'strike-except') {
+        var key = voterRegistration.data[text.key];
+        for (var i in text.position) {
+          if (i == key) {
+            continue;
+          }
+          var positions = text.position[i];
+          if (positions.length === 2) {
+            context.beginPath();
+            context.moveTo(positions[0][0], positions[0][1]);
+            context.lineTo(positions[1][0], positions[1][1]);
+            context.strokeStyle = 'black';
+            context.lineWidth = 2;
+            context.stroke();
+          }
         }
       } else {
-        context.fillText(voterRegistration.data[text.key], text.position[0][0], text.position[0][1]);
+        if (text.align) {
+          context.textAlign = text.align;
+        } else {
+          context.textAlign = "center"
+        }
+        if (text.position.length > 1) {
+          for (var i = 0; i < text.position.length; i++) {
+            context.fillText(voterRegistration.data[text.key].charAt(i), text.position[i][0], text.position[i][1]);
+          }
+        } else {
+          context.fillText(voterRegistration.data[text.key], text.position[0][0], text.position[0][1]);
+        }
       }
     }
   }
@@ -797,6 +814,23 @@
   voterRegistration.literalBind = function() {
     voterRegistration.data[this.id] = $(this).val();
   }
+
+  voterRegistration.strikeBind = function() {
+    if (this.id === 'address-line3') {
+      switch ($(this).val()) {
+        case '香港島':
+        voterRegistration.data[this.id] = 0;
+        break;
+        case '九龍':
+        voterRegistration.data[this.id] = 1;
+        break;
+        case '新界':
+        voterRegistration.data[this.id] = 2;
+        break;
+      }
+    }
+    // voterRegistration.data[this.id] = $(this).val().toUpperCase();
+  };
 
   if ($.inArray(voterRegistration.getApplicationType(), ['new-district', 'new-functional', 'change-address', 'change-functional']) >= 0) {
     voterRegistration.data['application-type'] = voterRegistration.getApplicationType();
@@ -952,6 +986,9 @@
   });
   $("#address-form input").each(function(){
     $(this).on('input', voterRegistration.simpleBind);
+  });
+  $("#address-form select").each(function(){
+    $(this).on('change', voterRegistration.strikeBind);
   });
   $("#extra-form input.phone-control").each(function(){
     $(this).on('input', voterRegistration.simpleBind);
