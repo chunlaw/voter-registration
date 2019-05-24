@@ -33,7 +33,7 @@
     "email-to-candidate": "",
     "extra-lang": "✔ ",
     "application-type": "new-district",
-    "extra-not-district-text": "",
+    "extra-not-district": "",
     "functional-constituency": "",
     "election-commitee": "",
     "organisation-name": "",
@@ -328,7 +328,7 @@
      "size": 28,
     },
     {"key":"extra-mobile", "position": [[739,2262]] ,"size": 28, "align": "left"},
-    {"key":"extra-not-district-text",
+    {"key":"extra-not-district",
      "position": [[62, 1497]],
      "size": 20,
     },
@@ -837,15 +837,18 @@
         break;
       }
     }
-    // voterRegistration.data[this.id] = $(this).val().toUpperCase();
   };
+
+  voterRegistration.checkboxBind = function() {
+    console.log($(this).is(':checked'));
+    voterRegistration.data[this.id] = $(this).is(':checked') ? '✔' : '';
+  }
 
   if ($.inArray(voterRegistration.getApplicationType(), ['new-district', 'new-functional', 'change-address', 'change-functional']) >= 0) {
     voterRegistration.data['application-type'] = voterRegistration.getApplicationType();
   }
 
   if (voterRegistration.data['application-type'] === 'new-district') {
-    voterRegistration.data['extra-not-district-text'] = '';
 
     $(".step-nav-1").css('display', 'none');
     $(".step-nav-2").css('display', 'initial');
@@ -876,7 +879,6 @@
     $(".step-8 .form-name").html('Completed REO-1 Form.png');
     $(".step-8 .uploader-img").attr('src', 'assets/uploader-1.png');
   } else if (voterRegistration.data['application-type'] === 'new-functional') {
-    voterRegistration.data['extra-not-district-text'] = '✔';
 
     $(".step-nav-1").css('display', 'none');
     $(".step-nav-2").css('display', 'initial');
@@ -908,9 +910,6 @@
 
     $(".step-8 .form-name").html('Completed REO-41 Form.png');
     $(".step-8 .uploader-img").attr('src', 'assets/uploader-2.png');
-
-    // $('#functional-constituency option.district').css('display', 'none');
-    // $('#election-commitee option.district').css('display', 'none');
   } else if (voterRegistration.data['application-type'] === 'change-address') {
     $(".step-nav-1").css('display', 'initial');
     $(".step-nav-2").css('display', 'initial');
@@ -943,7 +942,6 @@
     $(".step-8 .form-name").html('Completed REO-2 Form.png');
     $(".step-8 .uploader-img").attr('src', 'assets/uploader-1.png');
   } else if (voterRegistration.data['application-type'] === 'change-functional') {
-    voterRegistration.data['extra-not-district-text'] = '✔';
 
     $(".step-nav-1").css('display', 'none');
     $(".step-nav-2").css('display', 'initial');
@@ -972,8 +970,25 @@
     $(".step-8 .form-name").html('Completed REO-43 Form.png');
     $(".step-8 .uploader-img").attr('src', 'assets/uploader-1.png');
 
-    $('#functional-constituency option.district').css('display', 'initial');
-    $('#election-commitee option.district').css('display', 'initial');
+    $('#functional-constituency, #election-commitee, #organisation-name, #membership, #staff-number, #other').on('change', function() {
+      if ($('#functional-constituency').val() ||
+          $('#election-commitee').val() ||
+          $('#organisation-name').val() ||
+          $('#membership').val() ||
+          $('#staff-number').val() ||
+          $('#other').val()) {
+        $('#extra-not-district').parent().css('display', 'none');
+      } else {
+        $('#extra-not-district').parent().css('display', 'initial');
+      }
+    });
+    $('#extra-not-district').on('change', function() {
+      if ($(this).is(':checked')) {
+        $('#functional-constituency, #election-commitee, #organisation-name, #membership, #staff-number, #other').parent().css('display', 'none');
+      } else {
+        $('#functional-constituency, #election-commitee, #organisation-name, #membership, #staff-number, #other').parent().css('display', 'initial');
+      }
+    });
   }
 
   // MISC
@@ -1004,15 +1019,9 @@
   $("#extra-form input.email-control").each(function(){
     $(this).on('input', voterRegistration.emailBind);
   });
+  $('#extra-not-district').on('change', voterRegistration.checkboxBind);
   $(".fc-form select").each(function() {
     $(this).on('change', voterRegistration.literalBind);
-  });
-  $('#functional-constituency, #election-commitee').each(function() {
-    if (voterRegistration.data['application-type'] === 'change-functional') {
-      if ($(this).val() === '區議會（第二）功能界別') {
-        voterRegistration.data['extra-not-district-text'] = '';
-      }
-    }
   });
   $('.fc-form input').each(function() {
     $(this).on('input', voterRegistration.literalBind);
