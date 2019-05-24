@@ -909,8 +909,8 @@
     $(".step-8 .form-name").html('Completed REO-41 Form.png');
     $(".step-8 .uploader-img").attr('src', 'assets/uploader-2.png');
 
-    $('#functional-constituency option.district').css('display', 'none');
-    $('#election-commitee option.district').css('display', 'none');
+    // $('#functional-constituency option.district').css('display', 'none');
+    // $('#election-commitee option.district').css('display', 'none');
   } else if (voterRegistration.data['application-type'] === 'change-address') {
     $(".step-nav-1").css('display', 'initial');
     $(".step-nav-2").css('display', 'initial');
