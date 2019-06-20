@@ -948,7 +948,7 @@
     $(".step-nav-3").css('display', 'initial');
     $(".step-nav-4").css('display', 'initial');
     $(".step-nav-5").css('display', 'none');
-    $(".step-nav-6").css('display', 'none');
+    $(".step-nav-6").css('display', 'initial');
     $(".step-nav-7").css('display', 'initial');
     $(".step-nav-8").css('display', 'initial');
     $(".step-nav-9").css('display', 'initial');
@@ -956,17 +956,27 @@
     $(".step-nav-2 .step-nav-number").html('1');
     $(".step-nav-3 .step-nav-number").html('2');
     $(".step-nav-4 .step-nav-number").html('3');
-    $(".step-nav-7 .step-nav-number").html('4');
-    $(".step-nav-8 .step-nav-number").html('5');
-    $(".step-nav-9 .step-nav-number").html('6');
+    $(".step-nav-6 .step-nav-number").html('4');
+    $(".step-nav-7 .step-nav-number").html('5');
+    $(".step-nav-8 .step-nav-number").html('6');
+    $(".step-nav-9 .step-nav-number").html('7');
 
     $(".step-2 .step-number").html('一');
     $(".step-3 .step-number").html('二');
     $(".step-4 .step-number").html('三');
-    $(".step-7 .step-number").html('四');
-    $(".step-8 .step-number").html('五');
-    $(".step-9 .step-number").html('六');
+    $(".step-6 .step-number").html('四');
+    $(".step-7 .step-number").html('五');
+    $(".step-8 .step-number").html('六');
+    $(".step-9 .step-number").html('七');
 
+    $(".step-6 .step-number").parent().next().css('display', 'none');
+    $(".step-6 #extra-mobile").parent().find('label').html('聯絡電話');
+    $(".step-6 #extra-landline").parent().css('display', 'none');
+    $(".step-6 #extra-office").parent().css('display', 'none');
+    $(".step-6 #extra-fax").parent().css('display', 'none');
+    $(".step-6 #extra-email").parent().css('display', 'none');
+    $(".step-6 .lang-btn").parent().parent().css('display', 'none');
+    $(".step-6 .lang-btn").parent().parent().next().css('display', 'none');
     $(".step-8 .form-name").html('Completed REO-43 Form.png');
     $(".step-8 .uploader-img").attr('src', 'assets/uploader-1.png');
 
