@@ -463,8 +463,6 @@
       } else if (step === 5) {
         voterRegistration.setStep(step);
         step++;
-        voterRegistration.setStep(step);
-        step++;
       }
     }
     voterRegistration.setStep(step);
