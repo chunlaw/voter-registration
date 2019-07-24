@@ -876,6 +876,9 @@
 
     $(".step-8 .form-name").html('Completed REO-1 Form.png');
     $(".step-8 .uploader-img").attr('src', 'assets/uploader-1.png');
+
+    $('#reo1AdressDescription').css('display', 'block');
+    $('#reo1FunctionalDescription').css('display', 'block');
   } else if (voterRegistration.data['application-type'] === 'new-functional') {
 
     $(".step-nav-1").css('display', 'none');
@@ -908,6 +911,9 @@
 
     $(".step-8 .form-name").html('Completed REO-41 Form.png');
     $(".step-8 .uploader-img").attr('src', 'assets/uploader-2.png');
+    
+    $('#reo1AdressDescription').css('display', 'none');
+    $('#reo1FunctionalDescription').css('display', 'none');
   } else if (voterRegistration.data['application-type'] === 'change-address') {
     $(".step-nav-1").css('display', 'initial');
     $(".step-nav-2").css('display', 'initial');
@@ -939,6 +945,9 @@
 
     $(".step-8 .form-name").html('Completed REO-2 Form.png');
     $(".step-8 .uploader-img").attr('src', 'assets/uploader-1.png');
+
+    $('#reo1AdressDescription').css('display', 'block');
+    $('#reo1FunctionalDescription').css('display', 'none');
   } else if (voterRegistration.data['application-type'] === 'change-functional') {
 
     $(".step-nav-1").css('display', 'none');
@@ -977,6 +986,9 @@
     $(".step-6 .lang-btn").parent().parent().next().css('display', 'none');
     $(".step-8 .form-name").html('Completed REO-43 Form.png');
     $(".step-8 .uploader-img").attr('src', 'assets/uploader-1.png');
+
+    $('#reo1AdressDescription').css('display', 'none');
+    $('#reo1FunctionalDescription').css('display', 'none');
 
     $('#functional-constituency, #election-commitee, #organisation-name, #membership, #staff-number, #other').on('change', function() {
       if ($('#functional-constituency').val() ||
