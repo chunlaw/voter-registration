@@ -534,13 +534,15 @@
           emailToCandidateText = '不提供電郵地址予候選人';
         }
       }
+      
       $(".step-nav-6 .nav-content").html('')
         .append($('<div></div>').text(voterRegistration.data["extra-mobile"]))
         .append($('<div></div>').text(voterRegistration.data["extra-landline"]))
         .append($('<div></div>').text(voterRegistration.data["extra-office"]))
         .append($('<div></div>').text(voterRegistration.data["extra-email"]))
         .append($('<div></div>').text($(".lang-btn.active .btn-text").text()))
-        .append($('<div></div>').text(emailToCandidateText))
+        .append($('<div></div>').text(emailToCandidateText)) 
+      
     }
     if (voterRegistration.data.step > 7) {
       $(".step-nav-7 .nav-content").html('')
@@ -982,7 +984,7 @@
     $(".step-6 #extra-office").parent().css('display', 'none');
     $(".step-6 #extra-fax").parent().css('display', 'none');
     $(".step-6 #extra-email").parent().css('display', 'none');
-    $(".step-6 .lang-btn").parent().parent().css('display', 'none');
+    $(".step-6 .lang-btn").parent().parent().css('display', 'block');
     $(".step-6 .lang-btn").parent().parent().next().css('display', 'none');
     $(".step-8 .form-name").html('Completed REO-43 Form.png');
     $(".step-8 .uploader-img").attr('src', 'assets/uploader-1.png');
