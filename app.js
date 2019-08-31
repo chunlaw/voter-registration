@@ -868,13 +868,13 @@
     $(".step-nav-8 .step-nav-number").html('6');
     $(".step-nav-9 .step-nav-number").html('7');
 
-    $(".step-2 .step-number").html('一');
-    $(".step-3 .step-number").html('二');
-    $(".step-4 .step-number").html('三');
-    $(".step-5 .step-number").html('四');
-    $(".step-6 .step-number").html('五');
-    $(".step-8 .step-number").html('六');
-    $(".step-9 .step-number").html('七');
+    $(".step-2 .step-number").html('1');
+    $(".step-3 .step-number").html('2');
+    $(".step-4 .step-number").html('3');
+    $(".step-5 .step-number").html('4');
+    $(".step-6 .step-number").html('5');
+    $(".step-8 .step-number").html('6');
+    $(".step-9 .step-number").html('7');
 
     $(".step-8 .form-name").html('Completed REO-1 Form.png');
     $(".step-8 .uploader-img").attr('src', 'assets/uploader-1.png');
@@ -902,14 +902,14 @@
     $(".step-nav-8 .step-nav-number").html('7');
     $(".step-nav-9 .step-nav-number").html('8');
 
-    $(".step-2 .step-number").html('一');
-    $(".step-3 .step-number").html('二');
-    $(".step-4 .step-number").html('三');
-    $(".step-5 .step-number").html('四');
-    $(".step-6 .step-number").html('五');
-    $(".step-7 .step-number").html('六');
-    $(".step-8 .step-number").html('七');
-    $(".step-9 .step-number").html('八');
+    $(".step-2 .step-number").html('1');
+    $(".step-3 .step-number").html('2');
+    $(".step-4 .step-number").html('3');
+    $(".step-5 .step-number").html('4');
+    $(".step-6 .step-number").html('5');
+    $(".step-7 .step-number").html('6');
+    $(".step-8 .step-number").html('7');
+    $(".step-9 .step-number").html('8');
 
     $(".step-8 .form-name").html('Completed REO-41 Form.png');
     $(".step-8 .uploader-img").attr('src', 'assets/uploader-2.png');
@@ -936,14 +936,14 @@
     $(".step-nav-8 .step-nav-number").html('7');
     $(".step-nav-9 .step-nav-number").html('8');
 
-    $(".step-1 .step-number").html('一');
-    $(".step-2 .step-number").html('二');
-    $(".step-3 .step-number").html('三');
-    $(".step-4 .step-number").html('四');
-    $(".step-5 .step-number").html('五');
-    $(".step-6 .step-number").html('六');
-    $(".step-8 .step-number").html('七');
-    $(".step-9 .step-number").html('八');
+    $(".step-1 .step-number").html('1');
+    $(".step-2 .step-number").html('2');
+    $(".step-3 .step-number").html('3');
+    $(".step-4 .step-number").html('4');
+    $(".step-5 .step-number").html('5');
+    $(".step-6 .step-number").html('6');
+    $(".step-8 .step-number").html('7');
+    $(".step-9 .step-number").html('8');
 
     $(".step-8 .form-name").html('Completed REO-2 Form.png');
     $(".step-8 .uploader-img").attr('src', 'assets/uploader-1.png');
@@ -970,13 +970,13 @@
     $(".step-nav-8 .step-nav-number").html('6');
     $(".step-nav-9 .step-nav-number").html('7');
 
-    $(".step-2 .step-number").html('一');
-    $(".step-3 .step-number").html('二');
-    $(".step-4 .step-number").html('三');
-    $(".step-6 .step-number").html('四');
-    $(".step-7 .step-number").html('五');
-    $(".step-8 .step-number").html('六');
-    $(".step-9 .step-number").html('七');
+    $(".step-2 .step-number").html('1');
+    $(".step-3 .step-number").html('2');
+    $(".step-4 .step-number").html('3');
+    $(".step-6 .step-number").html('4');
+    $(".step-7 .step-number").html('5');
+    $(".step-8 .step-number").html('6');
+    $(".step-9 .step-number").html('7');
 
     $(".step-6 .step-number").parent().next().css('display', 'none');
     $(".step-6 #extra-mobile").parent().find('label').html('聯絡電話');
