@@ -421,6 +421,7 @@
       return false;
     }
     if (this.id == "email-to-candidate-no") {
+      voterRegistration.data[this.name] = " ";
       return false;
     }
     if ($.inArray(this.id, ["gender-male", "extra-lang-zh"]) >= 0) {
