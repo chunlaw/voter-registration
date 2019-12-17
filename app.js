@@ -1038,7 +1038,7 @@ var language = 'zh';
   voterRegistration.resetSign = function(){
     var canvas = voterRegistration.signarea;
     var context = voterRegistration.signarea.getContext('2d');
-    context.fillStyle="white";
+    context.fillStyle="transparent";
     context.fillRect(0, 0, 360, 124);
     context.fillStyle=null;
     context.strokeStyle = '#black';
