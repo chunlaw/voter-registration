@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>選民登記填表機</title>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="2019 選民登記行動">
+  <meta property="og:description" content="只要你是香港永久性居民、通常在香港居住及已年滿 18 歲，參與選舉就是你的基本權利。">
+  <meta property="og:image" content="/assets/preview.png">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="2019 選民登記行動" />
+  <meta name="twitter:description" content="只要你是香港永久性居民、通常在香港居住及已年滿 18 歲，參與選舉就是你的基本權利。" />
+  <meta name="twitter:image" content="/assets/preview.png" />
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  <script src="jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/earlyaccess/notosanstc.css" rel="stylesheet">
+  <link href="bootstrap/css/bootstrap-app.min.css" rel="stylesheet">
+  <link href="assets/app.css" rel="stylesheet">
+  <link href="assets/dropdown.css" rel="stylesheet">
+  <link rel="shortcut icon" href="favicon.png" />
+  <meta name="theme-color" content="#c91f37">
+  <meta name="robots" content="noindex">
+</head>
+<body>
+<nav class="navbar navbar-default navbar-kbfl navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="./en-index.html">
+        <img src="assets/nav-logo.png" alt="Nav Logo" height="50" width="50" class="navbar-brand-logo"></img>
+        <span class="navbar-brand-text">Voter Reg Form Filling Tool </span>
+      </a>
+    </div><!-- /.navbar-header -->
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#">New Voter Reg</a>
+          <ul class="dropdown-menu">
+            <li><a href="en-app.html?type=new-district">Geographical Constituencies</a></li>
+            <li><a href="en-app.html?type=new-functional">Traditional Functional Constituencies</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">Change of Voter Reg Info</a>
+          <ul class="dropdown-menu">
+            <li><a href="en-app.html?type=change-address">Report on Change of Particulars by an Elector in a Geographical Constituency</a></li>
+            <li><a href="en-app.html?type=change-functional">Report on Change of Particulars by an Individual in a Functional Constituency</a></li>
+          </ul>
+        </li>
+        <li><a href="en-note.html">Guidance Notes</a></li>
+        <li><a href="en-terms.html">Terms of use</a></li>
+        <li><a href="index.html">中</a></li>
+      </ul><!-- /.navbar-right -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container -->
+</nav>
+<div class="container mainform">
+  <div class="row">
+    <div class="step-container step-current-0 col-md-9 col-sm-12">
+
+      <div class="row sr-only">
+        <div class="col-sm-12">
+          <h2>表格</h2>
+        </div><!-- /.col-sm-12 -->
+      </div><!-- /.row.sr-only -->
+      <!-- placehoder step -->
+      <div class="step step-0 row" css="display:none"></div>
+      <div class="step step-1 row">
+        <div class="col-sm-8">
+          <h3><span class="step-number">1</span>、Address Proof</h3>
+          <p>Change voter registration information requires to provide the address proof for <b>the latest 3 months</b>, please prepare a scanned or photography copy of the address proof.</p>
+        </div><!-- /.col-sm-6 -->
+        <div class="col-sm-12">
+          <p><button type="button" class="btn btn-primary nextButton">Next step</button></p>
+        </div><!-- /.col-sm-12 -->
+      </div><!-- /.step.step-1.current-step.row -->
+
+      <div class="step step-2 row">
+        <div class="col-sm-12">
+          <h3><span class="step-number">2</span>、Chinese Name</h3>
+        </div><!-- /.col-sm-12 -->
+        <div class="col-sm-8">
+          <div id="name-zh-form">
+            <div class="form-group has-feedback">
+              <p class="redtape">My name as shown on the HK identity card</p>
+              <label class="control-label" for="name-zh" >Chinese Name</label>
+              <input class="form-control name-zh" id="name-zh" type="text" placeholder="王一心" maxlength="6" autocomplete="off">
+            </div>
+          </div><!-- /.name-zh-form -->
+        </div> <!-- /.col-sm-8 -->
+        <div class="col-sm-4">
+          <img src="assets/id-zh.png" class="img-responsive" alt="Illustration">
+        </div><!-- /.col-sm-6 -->
+        <div class="col-sm-12">
+          <p><button type="button" class="btn btn-primary nextButton">Next step</button></p>
+        </div><!-- /.col-sm-12 -->
+      </div><!-- /.step.step-1.next-steps.row -->
+
+      <div class="step step-3 row">
+        <div class="col-sm-12">
+          <h3><span class="step-number">3</span>、English Name</h3>
+        </div><!-- /.col-sm-12 -->
+        <div class="col-sm-8">
+          <div id="name-en-form">
+            <div class="form-group">
+              <p class="redtape">My name as shown on the HK identity card</p>
+              <label class="control-label" for="name-en-surname">Surname</label>
+              <input class="form-control name-en" id="name-en-surname" type="text" placeholder="WONG" maxlength="29" autocomplete="off">
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="name-en-othername">First name</label>
+              <input class="form-control name-en" id="name-en-othername" type="text" placeholder="Yat Sum" maxlength="29" autocomplete="off">
+            </div>
+          </div>
+        </div><!-- /.col-sm-6 -->
+        <div class="col-sm-4">
+          <img src="assets/id-en.png" class="img-responsive" alt="Illustration">
+        </div><!-- /.col-sm-6 -->
+        <div class="col-sm-12">
+          <p><button type="button" class="btn btn-primary nextButton">Next step</button></p>
+        </div><!-- /.col-sm-12 -->
+      </div><!-- /.step.step-2.next-steps.row -->
+
+      <div class="step step-4 row">
+        <div class="col-sm-12">
+          <h3><span class="step-number">4</span>、Other Information on the Identity Card</h3>
+        </div><!-- /.col-sm-12 -->
+        <div class="col-sm-12">
+          <p>HK Identity Card number</p>
+          <div class="row form-inline" id="idcard">
+            <div class="form-group col-sm-1">
+              <label class="sr-only" for="idcard-letters">身份證號碼字母</label>
+              <input class="form-control idcard-letters" id="idcard-letters" type="text" placeholder="K" maxlength="2" autocomplete="off">
+            </div>
+            <div class="form-group col-sm-5 col-md-3">
+              <label class="sr-only" for="idcard-digits">身份證號碼數字</label>
+              <div class="input-group">
+                <input class="form-control idcard-digits" id="idcard-digits" type="text" placeholder="123456" maxlength="6" aria-describedby="idcard-checksum" autocomplete="off">
+                <span class="input-group-addon" id="idcard-checksum">( )</span>
+              </div>
+            </div>
+          </div>
+          <p>Sex on the Identity Card</p>
+          <div class="form-inline" id="gender">
+            <div class="btn-group gender" data-toggle="buttons">
+              <label class="btn gender-btn btn-default">
+                <input type="radio" name="gender" id="gender-male" class="radio-button gender-button" autocomplete="off">
+                <span class="btn-text">Male</span>
+              </label>
+              <label class="btn gender-btn btn-default">
+                <input type="radio" name="gender" id="gender-female" class="radio-button gender-button" autocomplete="off">
+                <span class="btn-text">Female</span>
+              </label>
+            </div>
+          </div>
+        </div><!-- /.col-sm-12 -->
+        <div class="col-sm-12">
+          <p><button type="button" class="btn btn-primary nextButton">Next step</button></p>
+        </div><!-- /.col-sm-12 -->
+      </div>
+
+      <div class="step step-5 row">
+        <div id="address-form" class="address-form">
+          <div class="col-sm-12">
+            <h3><span class="step-number">5</span>、Address</h3>
+            <p class="redtape">My residential address in Hong Kong</p>
+          </div><!-- /.col-sm-12 -->
+          <div class="col-sm-4 col-md-3">
+            <div class="form-group">
+              <label class="control-label" for="address-flat">Flat/Room</label>
+              <input class="form-control" id="address-flat" type="text" maxlength="5" autocomplete="off">
+            </div>
+          </div><!-- /.col-sm-4.col-md-2 -->
+          <div class="col-sm-4 col-md-3">
+            <div class="form-group">
+              <label class="control-label" for="address-floor">Floor</label>
+              <input class="form-control" id="address-floor" type="text" maxlength="3" autocomplete="off">
+            </div>
+          </div><!-- /.col-sm-4.col-md-2 -->
+          <div class="col-sm-4 col-md-3">
+            <div class="form-group">
+              <label class="control-label" for="address-block">Block</label>
+              <input class="form-control" id="address-block" type="text" maxlength="3" autocomplete="off">
+            </div>
+          </div><!-- /.col-sm-4.col-md-2 -->
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label class="control-label" for="address-line0">Name of Building</label>
+              <input class="form-control" id="address-line0" type="text" maxlength="28" autocomplete="off">
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="address-line1">Name of Estate/ Number and Name of Village</label>
+              <input class="form-control" id="address-line1" type="text" maxlength="28" autocomplete="off">
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="address-line2">Number and Name of Street / Lot Number</label>
+              <input class="form-control" id="address-line2" type="text" maxlength="28" autocomplete="off">
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="address-line3">Area and District Name</label>
+              <select class="form-control" id="address-line3">
+                <option selected disabled>Please select</option>
+                <option value="香港島">Hong Kong Island</option>
+                <option value="9龍">Kowloon</option>
+                <option value="新界">New Territories</option>
+              </select>
+              <!-- <input class="form-control" id="address-line3" type="text" maxlength="18" autocomplete="off"> -->
+            </div>
+          </div><!-- /.col-sm-9 -->
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label class="control-label" for="contact-address">Correspondence Address (Only if there is no postal service available for your residential address)</label>
+              <input class="form-control" id="contact-address" type="text" autocomplete="off" />
+            </div>
+          </div>
+        </div><!-- /.address-form -->
+        <div class="col-sm-9" id="reo1AdressDescription">
+          <p class="redtape">(a) You will be allocated to the Legislative Council geographical constituency and the District Council constituency to which you belong according to your residential address which should be your only or principal residence in Hong Kong, i.e. a dwelling-place in Hong Kong at which you reside and which constitutes your sole or main home. The residential address will be provided to the candidates of the constituencies concerned for the purpose of sending election advertisement.</p>
+          <p class="redtape">(b) Please notify the Electoral Registration Officer by completing the application form “Report on Change of Particulars by an Elector in a Geographical Constituency” (REO-2) and attaching your address proof issued within the last three months for any subsequent change of residential address as this might entail a consequential change of the constituency to which you belong.</p>
+        </div><!-- /.col-sm-9 -->
+        <div class="col-sm-12">
+          <p><button type="button" class="btn btn-primary nextButton">Next step</button></p>
+        </div><!-- /.col-sm-12 -->
+      </div>
+
+      <div class="step step-6 row">
+        <div id="extra-form">
+          <div class="col-sm-12">
+            <h3><span class="step-number">6</span>、Contact Information and Others</h3>
+            <p>Please provide at least one means of contact. This will allow the Registration and Electoral Office to check your information and avoid vote-rigging.</p>
+          </div><!-- /.col-sm-12 -->
+          <div class="col-sm-4 col-md-6">
+            <div class="form-group">
+              <label class="control-label" for="extra-mobile">Mobile Phone Number</label>
+              <input class="form-control phone-control" id="extra-mobile" type="text" maxlength="8" autocomplete="off">
+            </div>
+          </div><!-- /.col-sm-4.col-md-3 -->
+          <div class="col-sm-4 col-md-6">
+            <div class="form-group">
+              <label class="control-label" for="extra-landline">Home Phone Number</label>
+              <input class="form-control phone-control" id="extra-landline" type="text" maxlength="8" autocomplete="off">
+            </div>
+          </div><!-- /.col-sm-4.col-md-3 -->
+          <div class="col-sm-4 col-md-6">
+            <div class="form-group">
+              <label class="control-label" for="extra-office">Office Phone Number</label>
+              <input class="form-control phone-control" id="extra-office" type="text" maxlength="8" autocomplete="off">
+            </div>
+          </div><!-- /.col-sm-4.col-md-3 -->
+          <div class="col-sm-4 col-md-6">
+            <div class="form-group">
+              <label class="control-label" for="extra-office">Fax Number</label>
+              <input class="form-control phone-control" id="extra-fax" type="text" maxlength="8" autocomplete="off">
+            </div>
+          </div><!-- /.col-sm-4.col-md-3 -->
+          <div class="col-sm-9">
+            <div class="form-group">
+              <label class="control-label" for="extra-email">E-mail address</label>
+              <input class="form-control email-control" id="extra-email" type="text" maxlength="40" autocomplete="off">
+            </div>
+          </div><!-- /.col-sm-9 -->
+          <div class="col-sm-9 email-to-candidate-container" style="display:none">
+            <p>Agree to provide E-mail above to corresponding election candidates?</p>
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-default email-to-candidate-btn">
+                <input type="radio" name="email-to-candidate" id="email-to-candidate-yes" class="radio-button" autocomplete="off">
+                <span class="btn-text"><span class="glyphicon glyphicon-ok text-primary" aria-hidden="true"></span>Yes</span>
+              </label>
+              <label class="btn btn-default email-to-candidate-btn">
+                <input type="radio" name="email-to-candidate" id="email-to-candidate-no" class="radio-button" autocomplete="off">
+                <span class="btn-text"><span class="glyphicon glyphicon-remove text-primary" aria-hidden="true"></span>No</span>
+              </label>
+            </div>
+          </div><!-- /.col-sm-9 -->
+          <div class="col-sm-9">
+            <p>Lanuage Preference for Election-related Communication</p>
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn lang-btn btn-default active">
+                <input type="radio" name="extra-lang" id="extra-lang-zh" class="radio-button extra-lang" autocomplete="off" checked>
+                <span class="btn-text">中文</span>
+              </label>
+              <label class="btn lang-btn btn-default">
+                <input type="radio" name="extra-lang" id="extra-lang-en" class="radio-button extra-lang" autocomplete="off">
+                <span class="btn-text">English</span>
+              </label>
+            </div>
+          </div><!-- /.col-sm-9 -->
+          <div class="col-sm-9" id="reo1FunctionalDescription">
+            <p>Functional Constituency</p>
+            <p class="redtape">Newly registered voters will be automatically registered in the District Council (Second) Functional Constituency, if you would like to register to vote in other Functional Constituencies, please also register as an elector for traditional Functional Constituencies.</p>
+            <p class="redtape">
+              In the Legislative Council General Election, every elector is entitled to vote in his/her respective geographical constituency and functional constituency. The electorate of the District Council (Second) Functional Constituency (i.e. the commonly-called ‘Super District Council’ Functional Constituency) is made up of electors for geographical constituencies who are not registered in the other traditional functional constituencies. According to the relevant electoral law, a person applying for registration in a geographical constituency is also regarded as having applied for registration as an elector for the District Council (Second) Functional Constituency. If you choose not to be registered as an elector in the District Council (Second) Functional Constituency, you must complete the application form “Report on Change of Particulars by an Individual in a Functional Constituency and/or an Election Committee Subsector/De-registration or Non-registration for the District Council (Second) Functional Constituency” (REO-43). 
+            </p>
+          </div><!-- /.col-sm-9 -->
+          <div class="col-sm-12">
+            <p><button type="button" class="btn btn-primary nextButton">Next step</button></p>
+          </div>
+        </div>
+      </div>
+      <div class="step step-7 row">
+        <div class="col-sm-9">
+          <h3><span class="step-number">7</span>、Functional Constituencies and/or Election Committee Subsector Information</h3>
+          <div class="form-group fc-form">
+            <label for="functional-constituency">Functional Constituency</label>
+            <select class="form-control" id="functional-constituency">
+              <option disabled selected>Please select</option>
+              <option>Accountancy</option>
+              <option>Health Services</option>
+              <option>Medical</option>
+              <option>Architectural, Surveying, Planning and Landscape</option>
+              <option>Heung Yee Kuk</option>
+              <option>Real Estate and Construction</option>
+              <option>Catering</option>
+              <option>Import and Export</option>
+              <option>Social Welfare</option>
+              <option>Commercial (Second)</option>
+              <option>Industrial (First)</option>
+              <option>Sports, Performing Arts, Culture and Publication</option>
+              <option>District Council (First)</option>
+              <option>Information Technology</option>
+              <option>Textiles and Garment</option>
+              <option>Education</option>
+              <option>Legal</option>
+              <option>Wholesale and Retail</option>
+              <option>Engineering</option>
+              <option class="district">District Council (Second)</option>
+            </select>
+          </div>
+          <div class="form-group fc-form">
+            <label for="election-commitee">Election Committee Subsector</label>
+            <select class="form-control" id="election-commitee">
+              <option disabled selected>Please select</option>
+              <option>Accountancy</option>
+              <option>Health Services</option>
+              <option>Medical</option>
+              <option>Architectural, Surveying, Planning and Landscape</option>
+              <option>Heung Yee Kuk</option>
+              <option>Real Estate and Construction</option>
+              <option>Catering</option>
+              <option>Import and Export</option>
+              <option>Social Welfare</option>
+              <option>Commercial (Second)</option>
+              <option>Industrial (First)</option>
+              <option>Sports, Performing Arts, Culture and Publication</option>
+              <option>District Council (First)</option>
+              <option>Information Technology</option>
+              <option>Textiles and Garment</option>
+              <option>Education</option>
+              <option>Higher Education</option>
+              <option>Legal</option>
+              <option>Wholesale and Retail</option>
+              <option>Engineering</option>
+              <option>Chinese Medicine</option>
+              <option>Chinese People's Political Consultative Conference</option>
+              <option>HK Chinese Enterprises Association</option>
+            </select>
+          </div>
+          <p>Eligibility for Registration:(Please fill in whichever is applicable)</p>
+          <div class="form-group fc-form">
+            <label class="control-label" for="organisation-name" >Organisation name</label>
+            <input class="form-control organisation-name" id="organisation-name" type="text" placeholder="" autocomplete="off">
+          </div>
+          <div class="form-group fc-form">
+            <label class="control-label" for="membership" >Membership/Registration/Licence number</label>
+            <input class="form-control membership" id="membership" type="text" placeholder="" autocomplete="off">
+          </div>
+          <div class="form-group fc-form">
+            <label class="control-label" for="staff-number" >Employer and Staff number</label>
+            <input class="form-control staff-number" id="staff-number" type="text" placeholder="" autocomplete="off">
+          </div>
+          <div class="form-group fc-form">
+            <label class="control-label" for="other" >Others (if applicable)</label>
+            <input class="form-control other" id="other" type="text" placeholder="" autocomplete="off">
+          </div>
+          <div class="form-group" style="display: none">
+            <label class="control-label" for="extra-not-district" >Not register as District (Second) voter</label>
+            <input id="extra-not-district" type="checkbox" />
+          </div>
+        </div><!-- /.col-sm-9 -->
+        <div class="col-sm-12">
+          <p><button type="button" class="btn btn-primary nextButton">Next step</button></p>
+        </div><!-- /.col-sm-12 -->
+      </div>
+
+      <div class="step step-8 row">
+        <div class="col-sm-12">
+          <h3><span class="step-number">8</span>、Points to note before submitting the form</h3>
+          <p>Your electronic voter registration form is almost done. You will be able to download the form in png format after signing the form. You can upload this file to the Registration and Electoral Office e-Form Upload Platform to complete the process.</p>
+          <p>When you upload the form, the Registration and Electoral Office e-Form Upload Platform will display the following screen. You must enter the Validation Characters, select "I have signed the electronic registration form" and press the "Submit" button.</p>
+          <p><img class="notice-img uploader-img" src="assets/uploader-1.png" alt="code"></p>
+          <p>After successfully uploading the form, you will receive the reference number shown in the image below. Please write down the number for future enquiry or to follow up. You will receive a written notice from the Registration and Electoral Office within 14 days of submitting the form. If you have not received the notice, you can call the enquiry hotline 2891 1001 to check the progress of the application.</p>
+          <p><img class="notice-img" src="assets/finish.png" alt="code"></p>
+          <p>If you are unable to connect to the Registration and Electoral Office e-Form Upload Platform, please send the form to the Registration and Electoral Office e-mail: form@reo.gov.hk</p>
+          <p>Please press the button below to proceed to the next step:</p>
+          <p><button type="button" class="btn btn-primary nextButton checkButton">I understand</button></p>
+        </div>
+      </div>
+
+      <div class="step step-9 checkout row">
+        <div class="col-sm-12">
+          <h3><span class="step-number">9</span>、Check your Data</h3>
+          <div class="alert alert-success" role="alert"><p>Please check the information and pay attention to the Guidance Notes and statements on the form.</p></div>
+          <div id="canvas-container">
+            <canvas id="reo1-canvas"></canvas>
+            <canvas id="reo2-canvas"></canvas>
+            <canvas id="reo41-canvas"></canvas>
+            <canvas id="reo43-canvas"></canvas>
+          </div>
+          <img id="reo1-source-img" src="reo-1-c.png" style="display:none;" alt="source image loader">
+          <img id="reo2-source-img" src="reo-2-c.png" style="display:none;" alt="source image loader">
+          <img id="reo41-source-img" src="reo-41-c.png" style="display:none;" alt="source image loader">
+          <img id="reo43-source-img" src="reo-43-c.png" style="display:none;" alt="source image loader">
+          <!--<p>請核對以上資料，並留意表格上的注意事項及聲明，然後選擇遞交方式。</p>-->
+        </div>
+        <div class="col-sm-9">
+          <h3><span class="step-number">9</span>、Submitting form to REO website</h3>
+          <p class="redtape" id="reo1DeclarationContainer">
+            I declare that the particulars entered in this form are true and accurate, and that<br>
+            (a) The residential address entered above is the address of my only or principal residence in Hong Kong; and<br>
+            (b) I am eligible to be registered as an elector in a geographical constituency [Note 5]; and <br>
+            (c) I am not subject to any disqualification from registration [Note 6].<br>
+            My consent and authorisation is hereby given to the Electoral Registration Officer, in assessing my eligibility for registration as an elector, to compare and cross check my personal data given in this application form with my personal data collected by other organisations for any other purposes so as to verify if such data are true and accurate. In case of falsity or misleading situation, the Electoral Registration Officer may take appropriate action against me according to such data. I hereby expressly agree that the relevant government departments (including but not limited to the Immigration Department, Housing Department and Home Affairs Department) or any other public/private organisation(s) (including but not limited to the Hong Kong Housing Society), can release my personal data to the Electoral Registration Officer, so that this department can compare and cross check such data with those on this application form when processing the application and updating the voter registration and election-related records annually. 
+          </p>
+          <p class="redtape" id="reo2DeclarationContainer">
+            I declare that the particulars entered in this form and the address proof provided (if applicable) are true and accurate, and that
+            (a) The residential address entered above is the address of my only or principal residence in Hong Kong; and<br>
+            (b) I am eligible to be registered as an elector in a geographical constituency [Note 5]; and <br>
+            (c) I am not subject to any disqualification from registration [Note 6].<br>
+            My consent and authorisation is hereby given to the Electoral Registration Officer, in assessing my eligibility for registration as an elector, to compare and cross check my personal data given in this application form with my personal data collected by other organisations for any other purposes so as to verify if such data are true and accurate. In case of falsity or misleading situation, the Electoral Registration Officer may take appropriate action against me according to such data. I hereby expressly agree that the relevant government departments (including but not limited to the Immigration Department, Housing Department and Home Affairs Department) or any other public/private organisation(s) (including but not limited to the Hong Kong Housing Society), can release my personal data to the Electoral Registration Officer, so that this department can compare and cross check such data with those on this application form when processing the application and updating the voter registration and election-related records annually. 
+          </p>
+          <p class="redtape" id="reo41DeclarationContainer">
+            I declare that the particulars entered in this form and the documentary proofs (if applicable) submitted for this application are true and accurate, and that <br>
+            (a) the residential address entered above is the address of my only or principal residence in Hong Kong; and <br>
+            (b) I am already registered as an elector in a geographical constituency/ I have applied to be registered as an elector in a geographical constituency/ I am eligible to be registered as an elector in a geographical constituency, and hereby apply to be so registered; and
+            (c) I am eligible to be registered as an elector in the functional constituency/as a voter in the Election Committee subsector applied for in Section 5; and <br>
+            (d) I am not subject to any disqualification from registration as an elector/a voter (Note 8); and/or
+            (e) I am not appointed as an authorized representative of a corporate elector in the same functional constituency applied for in Section 5; and/or <br>
+            (f) I am not appointed as an authorized representative of a corporate voter in the same Election Committee subsector applied for in Section 5. <br>
+            In assessing my eligibility for registration as an elector/a voter, I give my consent to the Electoral Registration Officer to compare and cross check my personal data entered in the application form with my personal data collected by other organisations for any other purposes so as to verify if such data are true and accurate. In case of falsity or misleading situation, the Electoral Registration Officer may take appropriate action against me according to such data. I authorise the Electoral Registration Officer to approach other government department(s) or public/private organisation(s) concerned for proof of data collected and verifying the data, and I expressly agree that the relevant government departments (including but not limited to the Immigration Department, Housing Department and Home Affairs Department) or any other public/private organisation(s) (including but not limited to the Hong Kong Housing Society), can release my personal data to the Electoral Registration Officer, so that the Electoral Registration Officer can compare and cross check such data with those on the application form when processing this application and updating the voter registration and election-related records annually
+          </p>
+          <p class="redtape" id="reo43DeclarationContainer">
+            I declare that the particulars entered in this form and the documentary proofs (if applicable) submitted for this application are true and accurate, and that <br>
+            (a) I am already registered as an elector in a geographical constituency/I have applied to be registered as an elector in a geographical constituency; and <br>
+            (b) I am eligible to be registered as an elector in the functional constituency/a voter in the Election Committee subsector applied for in Section 3; and<br>
+            (c) I am not subject to any disqualification from registration as an elector/a voter (Note 8); and/or<br>
+            (d) I am not appointed as an authorized representative of a corporate elector in the same functional constituency applied for in Section 3; and/or<br>
+            (e) I am not appointed as an authorized representative of a corporate voter in the same Election Committee subsector applied for in Section 3.<br>
+            In assessing my eligibility for registration as an elector/a voter, I give my consent to the Electoral Registration Officer to compare and cross check my personal data entered in the application form with my personal data collected by other organisations for any other purposes so as to verify if such data are true and accurate. In case of falsity or misleading situation, the Electoral Registration Officer may take appropriate action against me according to such data. I authorise the Electoral Registration Officer to approach other government department(s) or public/private organisation(s) concerned for proof of data collected and verifying the data, and I expressly agree that the relevant government departments or any other public/private organisation(s), can release my personal data to the Electoral Registration Officer, so that the Electoral Registration Officer can compare and cross check such data with those on the application form when processing this application and updating the voter registration and election-related records annually
+          </p>
+          <p>Signature:</p>
+          <canvas id="sign-area"></canvas>
+          <p>Please use the mouse to sign the form in the space above (<a href="#" class="resetSign">Undo</a>)</p>
+          <p>
+            <div class="reo-download-btn-container" id="reo1DownloadBtnContainer">
+              <a class="btn btn-lg btn-default downloadButton" id="reo1DownloadButton" download="Completed REO-1 Form.png">Download REO-1 form</a>
+              <a class="btn btn-lg btn-primary uploadPrimary" href="https://www.reo-form.gov.hk/eto/ch/upload_form_reo1.jsp" target="_blank">Then upload to REO website</a>
+            </div>
+            <div class="reo-download-btn-container" id="reo2DownloadBtnContainer">
+              <a class="btn btn-lg btn-default downloadButton" id="reo2DownloadButton" download="Completed REO-2 Form.png">Download REO-2 form</a>
+              <a class="btn btn-lg btn-primary uploadPrimary" href="https://www.reo-form.gov.hk/eto/ch/upload_form_reo2.jsp" target="_blank">Then upload to REO website</a>
+            </div>
+            <div class="reo-download-btn-container" id="reo41DownloadBtnContainer">
+              <a class="btn btn-lg btn-default downloadButton" id="reo41DownloadButton" download="Completed REO-41 Form.png">Download REO-41 form</a>
+              <a class="btn btn-lg btn-primary uploadPrimary" href="https://www.reo-form.gov.hk/eto/ch/upload_form_41.jsp" target="_blank">Then upload to REO website</a>
+            </div>
+            <div class="reo-download-btn-container" id="reo43DownloadBtnContainer">
+              <a class="btn btn-lg btn-default downloadButton" id="reo43DownloadButton" download="Completed REO-43 Form.png">Download REO-43 form</a>
+              <a class="btn btn-lg btn-primary uploadPrimary" href="https://www.reo-form.gov.hk/eto/ch/upload_form_43.jsp" target="_blank">Then upload to REO website</a>
+            </div>
+          </p>
+          <p>After downloading the file, open the REO website. Please choose <br>Upload<span class="text-primary">Completed REO Form.png</span>, <wbr>select "I have signed the electronic registration form", enter the Validation Characters, and press the "Submit" button.</p>
+          <p class="text-primary">If you are unable to connect to the Registration and Electoral Office e-Form Upload Platform, please send the form to the Registration and Electoral Office e-mail: form@reo.gov.hk</p>
+          <!--<p>
+            <a class="btn btn-primary uploadPrimary" href="mailto:form@reo.gov.hk?subject=Voter+Registration+REO-1+Submission&body=%E7%B7%8A%E8%A8%98%E4%BD%A0%E8%A6%81%E5%85%88%E4%B8%8B%E8%BC%89%E4%BD%A0%E7%9A%84%E9%81%B8%E6%B0%91%E7%99%BB%E8%A8%98%E8%A1%A8%E6%A0%BC%EF%BC%8C%E5%8A%A0%E5%85%A5%E9%99%84%E4%BB%B6%E5%86%8D%E7%99%BC%E9%80%81%E7%B5%A6%E9%81%B8%E8%88%89%E4%BA%8B%E5%8B%99%E8%99%95%E3%80%82%20Don%27t%20forget%20you%20need%20to%20download%2C%20attach%20and%20send%20your%20form%20to%20the%20Registration%20and%20Electoral%20Office.">開啟 Email App (iOS, Android)</a>
+            - 或 -
+            <a class="btn btn-primary uploadPrimary" href="https://mail.google.com/mail/u/0/?view=cm&ui=2&tf=0&fs=1&to=form@reo.gov.hk&su=Voter+Registration+REO-1+Submission&body=%E7%B7%8A%E8%A8%98%E4%BD%A0%E8%A6%81%E5%85%88%E4%B8%8B%E8%BC%89%E4%BD%A0%E7%9A%84%E9%81%B8%E6%B0%91%E7%99%BB%E8%A8%98%E8%A1%A8%E6%A0%BC%EF%BC%8C%E5%8A%A0%E5%85%A5%E9%99%84%E4%BB%B6%E5%86%8D%E7%99%BC%E9%80%81%E7%B5%A6%E9%81%B8%E8%88%89%E4%BA%8B%E5%8B%99%E8%99%95%E3%80%82%20Don%27t%20forget%20you%20need%20to%20download%2C%20attach%20and%20send%20your%20form%20to%20the%20Registration%20and%20Electoral%20Office." target="_blank">開啟網頁版 Gmail (請先登入)</a>
+          </p>-->
+          <p>After successfully uploading the form, you will receive the reference number shown in the image below. Please write down the number for future enquiry or to follow up. You will receive a written notice from the Registration and Electoral Office within 14 days of submitting the form. If you have not received the notice, you can call the enquiry hotline 2891 1001 to check the progress of the application.</p>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-3 hidden-sm hidden-xs">
+      <h3>&nbsp;</h3>
+      <ul class="nav nav-pills nav-stacked step-nav-container step-current-0">
+        <!-- placeholder -->
+        <li role="presentation" class="step-nav step-nav-0" style="display:none"></li>
+        <li role="presentation" class="step-nav step-nav-1">
+          <div class="step-nav-header" data-step="1">
+            <span class="step-nav-number">1</span>
+            <span class="step-nav-title">Address Proof</span>
+          </div>
+          <ul>
+            <li class="nav-content">&nbsp;</li>
+          </ul>
+        </li>
+        <li role="presentation" class="step-nav step-nav-2">
+          <div class="step-nav-header" data-step="2">
+            <span class="step-nav-number">2</span>
+            <span class="step-nav-title">Chinese Name</span>
+          </div>
+          <ul>
+            <li class="nav-content">&nbsp;</li>
+          </ul>
+        </li>
+        <li role="presentation" class="step-nav step-nav-3">
+          <div class="step-nav-header" data-step="3">
+            <span class="step-nav-number">3</span>
+            <span class="step-nav-title">English Name</span>
+          </div>
+          <ul>
+            <li class="nav-content">&nbsp;</li>
+          </ul>
+        </li>
+        <li role="presentation" class="step-nav step-nav-4">
+          <div class="step-nav-header" data-step="4">
+            <span class="step-nav-number">4</span>
+            <span class="step-nav-title">Other Information on the Identity Card</span>
+          </div>
+          <ul>
+            <li class="nav-content">&nbsp;</li>
+          </ul>
+        </li>
+        <li role="presentation" class="step-nav step-nav-5">
+          <div class="step-nav-header" data-step="5">
+            <span class="step-nav-number">5</span>
+            <span class="step-nav-title">Address</span>
+          </div>
+          <ul>
+            <li class="nav-content">&nbsp;</li>
+          </ul>
+        </li>
+        <li role="presentation" class="step-nav step-nav-6">
+          <div class="step-nav-header" data-step="6">
+            <span class="step-nav-number">6</span>
+            <span class="step-nav-title">Contact Information and Others</span>
+          </div>
+          <ul>
+            <li class="nav-content">&nbsp;</li>
+          </ul>
+        </li>
+        <li role="presentation" class="step-nav step-nav-7">
+          <div class="step-nav-header" data-step="7">
+            <span class="step-nav-number">7</span>
+            <span class="step-nav-title">Functional Constituencies and/or Election Committee Subsector Information</span>
+          </div>
+          <ul>
+            <li class="nav-content">&nbsp;</li>
+          </ul>
+        </li>
+        <li role="presentation" class="step-nav step-nav-8">
+          <div class="step-nav-header" data-step="8">
+            <span class="step-nav-number">8</span>
+            <span class="step-nav-title">Points to note before submitting the form</span>
+          </div>
+          <ul>
+            <li class="nav-content">&nbsp;</li>
+          </ul>
+        </li>
+        <li role="presentation" class="step-nav step-nav-9">
+          <div class="step-nav-header" data-step="9">
+            <span class="step-nav-number">9</span>
+            <span class="step-nav-title">Signature</span>
+          </div>
+          <ul>
+            <li class="nav-content">&nbsp;</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <p class="redtape">此工具在你的電腦上直接產生選民登記表格圖像，我們不會收集你的任何資料。</p>
+        <p class="redtape">Form images are generated locally on your computer, we will not collect your data.</p>
+        <p class="redtape">你必須提供清晰而正確的資料作選民登記。如你提供不清晰或不正確的資料，可引致你未能成功登記為選民。任何人士如明知或罔顧後果地作出任何虛假或不正確的陳述，或提供屬虛假達關鍵程度或具誤導性達關鍵程度的資料，即屬違法 。</p>
+        <p class="redtape">You should provide clear and accurate information for voter registration. Unclear or inaccurate information may lead to unsuccessful voter registration. A person who knowingly or recklessly makes any false or incorrect statement or gives information which is materially false or misleading commits an offence under the law.</p>
+        <p><a href="https://github.com/yulapshun/voter-registration">於 Github 檢視我們的程式碼。</a></p>
+        <p><a href="https://github.com/yulapshun/voter-registration">Fork and review our code on Github.</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+<script async src="bootstrap/js/bootstrap.min.js"></script>
+<script async src="app.js"></script>
+</body>
+</html>

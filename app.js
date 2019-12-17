@@ -141,7 +141,7 @@
     {"key":"name-en-surname",
      "position": [
        [318,469],[350,469],[381,469],[412,469],
-       [443,469],[474,469],[456,469],[537,469],
+       [443,469],[474,469],[506,469],[537,469],
        [568,469],[600,469],[631,469],[662,469],
        [693,469],[724,469],[755,469],[786,469],
        [818,469],[849,469],[880,469],[911,469],
@@ -154,7 +154,7 @@
     {"key":"name-en-othername",
      "position": [
        [318,508],[350,508],[381,508],[412,508],
-       [443,508],[474,508],[456,508],[537,508],
+       [443,508],[474,508],[506,508],[537,508],
        [568,508],[600,508],[631,508],[662,508],
        [693,508],[724,508],[755,508],[786,508],
        [818,508],[849,508],[880,508],[911,508],
@@ -534,13 +534,15 @@
           emailToCandidateText = '不提供電郵地址予候選人';
         }
       }
+      
       $(".step-nav-6 .nav-content").html('')
         .append($('<div></div>').text(voterRegistration.data["extra-mobile"]))
         .append($('<div></div>').text(voterRegistration.data["extra-landline"]))
         .append($('<div></div>').text(voterRegistration.data["extra-office"]))
         .append($('<div></div>').text(voterRegistration.data["extra-email"]))
         .append($('<div></div>').text($(".lang-btn.active .btn-text").text()))
-        .append($('<div></div>').text(emailToCandidateText))
+        .append($('<div></div>').text(emailToCandidateText)) 
+      
     }
     if (voterRegistration.data.step > 7) {
       $(".step-nav-7 .nav-content").html('')
@@ -866,16 +868,19 @@
     $(".step-nav-8 .step-nav-number").html('6');
     $(".step-nav-9 .step-nav-number").html('7');
 
-    $(".step-2 .step-number").html('一');
-    $(".step-3 .step-number").html('二');
-    $(".step-4 .step-number").html('三');
-    $(".step-5 .step-number").html('四');
-    $(".step-6 .step-number").html('五');
-    $(".step-8 .step-number").html('六');
-    $(".step-9 .step-number").html('七');
+    $(".step-2 .step-number").html('1');
+    $(".step-3 .step-number").html('2');
+    $(".step-4 .step-number").html('3');
+    $(".step-5 .step-number").html('4');
+    $(".step-6 .step-number").html('5');
+    $(".step-8 .step-number").html('6');
+    $(".step-9 .step-number").html('7');
 
     $(".step-8 .form-name").html('Completed REO-1 Form.png');
     $(".step-8 .uploader-img").attr('src', 'assets/uploader-1.png');
+
+    $('#reo1AdressDescription').css('display', 'block');
+    $('#reo1FunctionalDescription').css('display', 'block');
   } else if (voterRegistration.data['application-type'] === 'new-functional') {
 
     $(".step-nav-1").css('display', 'none');
@@ -897,17 +902,20 @@
     $(".step-nav-8 .step-nav-number").html('7');
     $(".step-nav-9 .step-nav-number").html('8');
 
-    $(".step-2 .step-number").html('一');
-    $(".step-3 .step-number").html('二');
-    $(".step-4 .step-number").html('三');
-    $(".step-5 .step-number").html('四');
-    $(".step-6 .step-number").html('五');
-    $(".step-7 .step-number").html('六');
-    $(".step-8 .step-number").html('七');
-    $(".step-9 .step-number").html('八');
+    $(".step-2 .step-number").html('1');
+    $(".step-3 .step-number").html('2');
+    $(".step-4 .step-number").html('3');
+    $(".step-5 .step-number").html('4');
+    $(".step-6 .step-number").html('5');
+    $(".step-7 .step-number").html('6');
+    $(".step-8 .step-number").html('7');
+    $(".step-9 .step-number").html('8');
 
     $(".step-8 .form-name").html('Completed REO-41 Form.png');
     $(".step-8 .uploader-img").attr('src', 'assets/uploader-2.png');
+    
+    $('#reo1AdressDescription').css('display', 'none');
+    $('#reo1FunctionalDescription').css('display', 'none');
   } else if (voterRegistration.data['application-type'] === 'change-address') {
     $(".step-nav-1").css('display', 'initial');
     $(".step-nav-2").css('display', 'initial');
@@ -928,17 +936,20 @@
     $(".step-nav-8 .step-nav-number").html('7');
     $(".step-nav-9 .step-nav-number").html('8');
 
-    $(".step-1 .step-number").html('一');
-    $(".step-2 .step-number").html('二');
-    $(".step-3 .step-number").html('三');
-    $(".step-4 .step-number").html('四');
-    $(".step-5 .step-number").html('五');
-    $(".step-6 .step-number").html('六');
-    $(".step-8 .step-number").html('七');
-    $(".step-9 .step-number").html('八');
+    $(".step-1 .step-number").html('1');
+    $(".step-2 .step-number").html('2');
+    $(".step-3 .step-number").html('3');
+    $(".step-4 .step-number").html('4');
+    $(".step-5 .step-number").html('5');
+    $(".step-6 .step-number").html('6');
+    $(".step-8 .step-number").html('7');
+    $(".step-9 .step-number").html('8');
 
     $(".step-8 .form-name").html('Completed REO-2 Form.png');
     $(".step-8 .uploader-img").attr('src', 'assets/uploader-1.png');
+
+    $('#reo1AdressDescription').css('display', 'block');
+    $('#reo1FunctionalDescription').css('display', 'none');
   } else if (voterRegistration.data['application-type'] === 'change-functional') {
 
     $(".step-nav-1").css('display', 'none');
@@ -959,13 +970,13 @@
     $(".step-nav-8 .step-nav-number").html('6');
     $(".step-nav-9 .step-nav-number").html('7');
 
-    $(".step-2 .step-number").html('一');
-    $(".step-3 .step-number").html('二');
-    $(".step-4 .step-number").html('三');
-    $(".step-6 .step-number").html('四');
-    $(".step-7 .step-number").html('五');
-    $(".step-8 .step-number").html('六');
-    $(".step-9 .step-number").html('七');
+    $(".step-2 .step-number").html('1');
+    $(".step-3 .step-number").html('2');
+    $(".step-4 .step-number").html('3');
+    $(".step-6 .step-number").html('4');
+    $(".step-7 .step-number").html('5');
+    $(".step-8 .step-number").html('6');
+    $(".step-9 .step-number").html('7');
 
     $(".step-6 .step-number").parent().next().css('display', 'none');
     $(".step-6 #extra-mobile").parent().find('label').html('聯絡電話');
@@ -973,10 +984,13 @@
     $(".step-6 #extra-office").parent().css('display', 'none');
     $(".step-6 #extra-fax").parent().css('display', 'none');
     $(".step-6 #extra-email").parent().css('display', 'none');
-    $(".step-6 .lang-btn").parent().parent().css('display', 'none');
+    $(".step-6 .lang-btn").parent().parent().css('display', 'block');
     $(".step-6 .lang-btn").parent().parent().next().css('display', 'none');
     $(".step-8 .form-name").html('Completed REO-43 Form.png');
     $(".step-8 .uploader-img").attr('src', 'assets/uploader-1.png');
+
+    $('#reo1AdressDescription').css('display', 'none');
+    $('#reo1FunctionalDescription').css('display', 'none');
 
     $('#functional-constituency, #election-commitee, #organisation-name, #membership, #staff-number, #other').on('change', function() {
       if ($('#functional-constituency').val() ||
