@@ -370,8 +370,8 @@ var language = 'zh';
          "size": 26,
         },
         {"key":"name-zh",
-         "position": [[780,2226]],
-         "size": 26,
+         "position": [[780,2234]],
+         "size": 22,
          "align": "left"
         },
         {"key":"name-en-surname",
@@ -1061,11 +1061,23 @@ var language = 'zh';
     if (voterRegistration.data['application-type'] === 'new-district') {
       reo1Context.drawImage(voterRegistration.signarea, 807, 1555);
     } else if (voterRegistration.data['application-type'] === 'new-functional') {
-      reo41Context.drawImage(voterRegistration.signarea, 716, 2107, 288, 99.2);
+      if (language === 'en') {
+        reo41Context.drawImage(voterRegistration.signarea, 770, 2126, 265.58, 87);
+      } else {
+        reo41Context.drawImage(voterRegistration.signarea, 716, 2107, 288, 99.2);
+      }
     } else if (voterRegistration.data['application-type'] === 'change-address') {
-      reo2Context.drawImage(voterRegistration.signarea, 845, 1589, 288, 99.2);
+      if (language === 'en') {
+        reo2Context.drawImage(voterRegistration.signarea, 828, 1575, 288, 99.2);
+      } else {
+        reo2Context.drawImage(voterRegistration.signarea, 845, 1589, 288, 99.2);
+      }
     } else if (voterRegistration.data['application-type'] === 'change-functional') {
-      reo43Context.drawImage(voterRegistration.signarea, 840, 2082, 180, 62);
+      if (language === 'en') {
+        reo43Context.drawImage(voterRegistration.signarea, 700, 2101 , 226.45, 78);
+      } else {
+        reo43Context.drawImage(voterRegistration.signarea, 840, 2082, 180, 62);
+      }
     }
   }
 
