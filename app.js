@@ -1038,7 +1038,11 @@ var language = 'zh';
     var bgContext = bgCanvas.getContext('2d');
     voterRegistration.signareaBg = bgCanvas;
     if (voterRegistration.data['application-type'] === 'new-district') {
-      bgContext.drawImage(voterRegistration.reo1Canvas, 807, 1555, 360, 124, 0, 0, 360, 124);
+      if (language === 'en') {
+        bgContext.drawImage(voterRegistration.reo1Canvas, 825, 1570, 280, 96.44, 0, 0, 360, 124);
+      } else {
+        bgContext.drawImage(voterRegistration.reo1Canvas, 807, 1555, 360, 124, 0, 0, 360, 124);
+      }
     } else if (voterRegistration.data['application-type'] === 'new-functional') {
       if (language === 'en') {
         bgContext.drawImage(voterRegistration.reo41Canvas, 770, 2126, 265.58, 87, 0, 0, 360, 124);
@@ -1087,8 +1091,13 @@ var language = 'zh';
     var reo41Context = voterRegistration.reo41Canvas.getContext('2d');
     var reo43Context = voterRegistration.reo43Canvas.getContext('2d');
     if (voterRegistration.data['application-type'] === 'new-district') {
-      reo1Context.drawImage(voterRegistration.signareaBg, 807, 1555);
-      reo1Context.drawImage(voterRegistration.signarea, 807, 1555);
+      if (language === 'en') {
+        reo1Context.drawImage(voterRegistration.signareaBg, 825, 1570, 280, 96.44);
+        reo1Context.drawImage(voterRegistration.signarea, 825, 1570, 280, 96.44);
+      } else {
+        reo1Context.drawImage(voterRegistration.signareaBg, 807, 1555);
+        reo1Context.drawImage(voterRegistration.signarea, 807, 1555);
+      }
     } else if (voterRegistration.data['application-type'] === 'new-functional') {
       if (language === 'en') {
         reo41Context.drawImage(voterRegistration.signareaBg, 770, 2126, 265.58, 87);
